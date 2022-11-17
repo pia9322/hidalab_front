@@ -1,0 +1,133 @@
+<?
+session_start();
+include "../../include/dbconn.html";
+
+function referer_check() {
+    if (!preg_match("/^http['s']?:\/\/".$_SERVER['HTTP_HOST']."/", $_SERVER['HTTP_REFERER'])) {
+        echo "<script>alert('Invalid Access - REF'); history.back();</script>";
+		exit;
+	}
+}
+echo referer_check();
+
+
+
+$mode = htmlspecialchars(trim($_POST['mode']), ENT_QUOTES);
+$f_type = htmlspecialchars(trim($_POST['f_type']), ENT_QUOTES);
+$f_name = htmlspecialchars(trim($_POST['f_name']), ENT_QUOTES);
+$f_tel = htmlspecialchars(trim($_POST['f_tel']), ENT_QUOTES);
+$f_tel_01 = htmlspecialchars(trim($_POST['f_tel_01']), ENT_QUOTES);
+$f_tel_02 = htmlspecialchars(trim($_POST['f_tel_02']), ENT_QUOTES);
+$f_email = htmlspecialchars(trim($_POST['f_email']), ENT_QUOTES);
+$f_title = htmlspecialchars(trim($_POST['f_title']), ENT_QUOTES);
+$f_content = htmlspecialchars(trim($_POST['f_content']), ENT_QUOTES);
+$f_lang = htmlspecialchars(trim($_POST['f_lang']), ENT_QUOTES);
+$f_status = 'N';
+
+$f_date = date("Y-m-d H:i:s");
+$f_ip = $_SERVER["REMOTE_ADDR"];
+
+
+
+$sql_ip = "SELECT * FROM t_ip";
+$rst_ip = mysqli_query($dbconn, $sql_ip);
+while($row_ip = mysqli_fetch_assoc($rst_ip)){
+    if($row_ip['f_ip'] == $f_ip) {
+		echo "<script>alert('접수되었습니다. 감사합니다!'); location.href='../main/index.html';</script>";
+        exit;
+    }
+}
+
+
+if($mode == "add"){
+    
+	for ($i=0; $i<10; $i++) {
+		if ($_FILES['f_file_'.$i]['size'] > 0) {
+			${"f_filename_".($i)} = strtolower(str_replace(" ","",$_FILES['f_file_'. $i]['name'])); // 원래 파일명
+			$file_ext_array = explode(".", ${"f_filename_".($i)});
+			$file_ext = $file_ext_array[count($file_ext_array)-1]; // 파일 확장자
+			${"f_file_".($i)} = time()."_".$i.".".$file_ext; // 저장될 파일명
+			$saving_location = "../../upload/contact/".${"f_file_".($i)}; // 저장될 전체경로+파일명 (상대경로만 작동함!!)
+			$copy = move_uploaded_file($_FILES['f_file_'.$i]['tmp_name'], $saving_location);
+
+			if(!$copy){
+				echo "<script>alert('File Upload Failure - ".${"f_filename_".($i)}."'); history.back();</script>";
+				exit;
+			}
+		}
+	}
+
+
+	$sql = "INSERT INTO t_contact (
+            f_name,
+            f_type,
+            f_tel,
+            f_tel_01,
+            f_tel_02,
+            f_email,
+            f_title,
+            f_content,
+            f_lang,
+            f_status,
+            f_ip,
+            f_date
+		) VALUES (
+            '$f_name',
+            '$f_type',
+            '$f_tel',
+            '$f_tel_01',
+            '$f_tel_02',
+            '$f_email',
+            '$f_title',
+            '$f_content',
+            '$f_lang',
+            '$f_status',
+            '$f_ip',
+            '$f_date'
+		)";
+        
+    // echo $sql;
+    // exit;
+
+
+	$rst = mysqli_query($dbconn, $sql);
+
+	if($rst){
+
+        ######################### [메일발송 - 시작] ############################
+        $recipients = array( // 받는사람
+        'pia9322@naver.com' => '고객님'
+        );
+
+        $subject = "닥터에디션 웹사이트 문의가 접수되었습니다.";
+        $body .= '<table align="center" cellpadding="0" cellspacing="0" style="font-family:Apple SD Gothic Neo,Malgun Gothic,sans-serif; width:700px; background:#fff; margin:0 auto; letter-spacing: -0.5px; table-layout:fixed">
+                    <tbody>
+                        <tr><td colspan="2" style="text-align:center;padding:40px;"><a href="http://www.fndmedical.com/" rel="noreferrer noopener" target="_blank"><img style="border:0" src="https://www.fndmedical.com/static/img/common/logo.png" loading="lazy"></a></td></tr>
+                        <tr><td colspan="2"><hr style="background-color:#2499cd;height: 2px"></td></tr>';
+        $body .= '<tr><th padding:20px;">이름</th><td>'.$f_name.'</td></tr>';
+        $body .= '<tr><th padding:20px;">전화번호</th><td>'.$f_tel-$f_tel_01-$f_tel_02.'</td></tr>';
+        $body .= '<tr><th padding:20px;">이메일</th><td>'.$f_email.'</td></tr>';
+        $body .= '<tr><th padding:20px;">제목</th><td>'.$f_title.'</td></tr>';
+        $body .= '<tr><th padding:20px;">문의내용</th><td>'.$f_content.'</td></tr>';
+        $body .= '<tr><th colspan="2">자세한 내용은 관리자 페이지를 확인하세요.</th></tr><tr><td colspan="2" style="text-align:center;"><a href="http://" target="_blank">관리자 페이지 바로가기</a></td></tr>
+                        <tr><th colspan="2" style="border-top:4px solid #f1f2f3;"></th></tr>
+                        <tr><td colspan="2" style="font-size:18px; line-height:1.4; color:#999999;text-align:center;padding:35px">본 메일은 발신전용 메일입니다.<br>문의사항이나 불편사항 있으시면 1:1문의를 이용해 주시기 바랍니다</td></tr>
+                        <tr><td colspan="2" style="background: #f1f2f3;font-size:14px;line-height:1.5;color:#999;padding:30px 50px;">서울시 송파구 가락본동 48-7 진성빌딩 3층 ㅣ Tel : 02) 430-9470-1 ㅣ Fax : 02) 430-9472<br>사업자번호 : 215-86-60263 ㅣ 대표 : 정영호<br>COPYRIGHT(C)2018 FNDNET Co., Ltd. ALL RIGHT RESERVED.<br></td></tr>
+                    </tbody>
+                </table>';
+
+        include "../../PHPMailer/mail_post.html";
+        ######################### [메일발송 - 종료] ############################
+
+		echo "<script>alert('접수가 완료 되었습니다.'); location.href='../main/index.html';</script>";
+	}
+	else{
+		// echo $sql;
+		// exit;
+		echo "<script>alert('query error'); history.back();</script>";
+	}
+
+
+}
+?>
+            

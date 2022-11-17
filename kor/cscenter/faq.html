@@ -1,0 +1,168 @@
+<?
+$h_menu = "cscenter";
+
+include "../include/header.html";
+
+$page = htmlspecialchars(trim($_GET['page']), ENT_QUOTES);
+$s_key = htmlspecialchars(trim($_GET['s_key']), ENT_QUOTES);
+$s_value = htmlspecialchars(trim($_GET['s_value']), ENT_QUOTES);
+$f_cate = htmlspecialchars(trim($_GET['f_cate']), ENT_QUOTES);
+
+$where = "where f_show_yn ='Y'";
+if ($f_cate) {
+    $where = "where f_show_yn ='Y' and f_cate='$f_cate'";
+}
+
+if ($s_value) {
+    $where .= " and (f_title like '%$s_value%' or ckeditor_00 like '%$s_value%')";
+}
+
+
+
+############ 전체 데이터 갯수 ############
+$query_cnt = "select count(*) as cnt from t_faq $where";
+// echo "$query_cnt ===<br>";
+$result_cnt = mysqli_query($dbconn, $query_cnt);
+$row_cnt = mysqli_fetch_assoc($result_cnt);
+$total_article = $row_cnt[cnt];
+
+mysqli_free_result($result_cnt);
+
+
+############ 페이지 변수 ############
+$show_per_page = 20;
+$show_page_block = 10;
+$total_page = ceil($total_article / $show_per_page); // 전체 페이지수
+if ($page > $total_page) {
+    $page = $total_page;
+}
+if (!$page || $page < 1) {
+    $page = 1;
+}
+if (!$total_page) {
+    $total_page = 1;
+}
+$article_no = $total_article - $show_per_page * ($page - 1); // 상대 글번호
+$start = ($page * $show_per_page) - $show_per_page;
+?>
+
+<main class="sub_page" id="faq">
+
+    <section class="sec sec_01">
+        <article>
+            <div class="page_info flex">
+                <div>
+                    <h2>FAQ</h2>
+                    <p>
+                        자주 묻는 질문과 답변을 확인해보세요
+                    </p>
+                </div>
+                <form action="">
+                    <select name="f_cate" id="" class="nice">
+                        <option value="">전체</option>
+                        <option value="제품" <?= $f_cate == '제품' ? 'selected' : null ?>>제품 문의</option>
+                        <option value="구입" <?= $f_cate == '구입' ? 'selected' : null ?>>구입 문의</option>
+                        <option value="복용" <?= $f_cate == '복용' ? 'selected' : null ?>>복용 문의</option>
+                        <option value="이벤트" <?= $f_cate == '이벤트' ? 'selected' : null ?>>이벤트</option>
+                        <option value="기타" <?= $f_cate == '기타' ? 'selected' : null ?>>기타</option>
+                    </select>
+
+                    <div class="search_box">
+                        <input type="search" name="s_value" id="" value="<?= $s_value ?>" placeholder="FAQ 내용을 검색해보세요 (제목 또는 내용)">
+                        <input type="submit" name="" id="" placeholder="">
+                    </div>
+                </form>
+            </div>
+        </article>
+    </section>
+
+
+
+    <section class="sec_tab">
+        <article>
+            <ul>
+                <li><a href="?f_cate=" <?= $f_cate == "" ? "class='active'" : null; ?>>전체보기</a></li>
+                <li><a href="?f_cate=제품" <?= $f_cate == "제품" ? "class='active'" : null; ?>>제품 문의</a></li>
+                <li><a href="?f_cate=구입" <?= $f_cate == "구입" ? "class='active'" : null; ?>>구입 문의</a></li>
+                <li><a href="?f_cate=복용" <?= $f_cate == "복용" ? "class='active'" : null; ?>>복용 문의</a></li>
+                <li><a href="?f_cate=이벤트" <?= $f_cate == "이벤트" ? "class='active'" : null; ?>>이벤트</a></li>
+                <li><a href="?f_cate=기타" <?= $f_cate == "기타" ? "class='active'" : null; ?>>기타</a></li>
+            </ul>
+        </article>
+    </section>
+
+    <section class="sec sec_02">
+        <article class="wrap">
+            <ul>
+                <?
+                $sql = "SELECT * from t_faq $where order by f_sort+0 DESC limit $start, $show_per_page";
+                if ($rst = mysqli_query($dbconn, $sql)) {
+                    while ($row = mysqli_fetch_assoc($rst)) {
+                ?>
+                        <li>
+                            <div class="qu">
+                                <p class="tit"><?= $row['f_cate'] ?></p>
+                                <p class="con"><?= $row['f_title'] ?></p>
+                                <p class="arrow"><img src="../images/common/ico_tab_arrow_01.svg" alt=""></p>
+                            </div>
+
+                            <div class="an">
+                                <?= $row['ckeditor_00'] ?>
+                            </div>
+                        </li>
+
+                <?
+                    }
+                }
+                ?>
+
+            </ul>
+        </article>
+    </section>
+    <section class="sec pagenum">
+        <article>
+            <style>
+                .pagenum article {
+                    margin: 60px 0 0;
+                }
+            </style>
+            <?
+            ############ [페이징] ############
+            include "../include/pageNavi.html";
+            $all_query = "?f_cate=$f_cate&s_key=$s_key&s_value=$s_value";
+            pageNavi(2, $bbs_skin, $show_per_page, $show_page_block, $total_article, $all_query, $page);
+            ?>
+        </article>
+    </section>
+
+</main>
+<script>
+    $('.qu').click(function() {
+        $(this).parents('li').toggleClass('active');
+    })
+
+
+    function highlightText(target, value) {
+        $(target).each(function () {
+            var regex = new RegExp(value,'gi');
+            $(this).html( $(this).text().replace(regex, "<mark>"+value+"</mark>") );
+        });
+    }
+    
+    if('<?=$s_value?>') {
+        highlightText('p','<?=$s_value?>');
+    } else {
+        console.log('asd');
+    }
+
+
+</script>
+
+<style>
+.highlight{
+  background: #f1c40f;
+}
+</style>
+<?
+include "../include/footer.html";
+?>

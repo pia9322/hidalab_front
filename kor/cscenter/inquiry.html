@@ -1,0 +1,134 @@
+<?
+$h_menu = "cscenter";
+include "../include/header.html";
+?>
+
+<main class="sub_page" id="inquiry">
+
+    <section class="sec sec_01">
+        <article>
+            <div class="page_info">
+                <div>
+                    <h2>1:1문의</h2>
+                    <p>
+                        고객문의를 남겨주시면 확인 후 이메일로 답변드립니다
+                    </p>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <section class="sec sec_02">
+        <article>
+            <form class="./db_exec.html" id="contact_form" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="mode" value="add">
+                <input type="hidden" name="f_lang" value="kor">
+                <ul>
+                    <li>
+                        <label>구분</label>
+                        <div class="select">
+                            <select name="f_type" id="f_type" class="wide nice" required>
+                                <option value>문의 종류를 선택해주세요.</option>
+                                <option value="제품문의">제품 문의</option>
+                                <option value="구입문의">구입 문의</option>
+                                <option value="복용문의">복용 문의</option>
+                                <option value="이벤트">이벤트</option>
+                                <option value="기타">기타</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="f_name">이름</label>
+                        <div>
+                            <input class="full" type="text" name="f_name" id="f_name" required placeholder="이름을 입력해주세요" >
+                        </div>
+                    </li>
+                    <li>
+                        <label for="f_tel">전화번호</label>
+                        <div class="input_tel">
+                            <input type="tel" name="f_tel" id="f_tel" placeholder="010" required>
+                            -
+                            <input type="tel" name="f_tel_01" id="f_tel_01" placeholder="0000" required>
+                            -
+                            <input type="tel" name="f_tel_02" id="f_tel_02" placeholder="0000" required>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="f_email">이메일주소</label>
+                        <div>
+                            <input class="full" type="email" name="f_email" id="f_email" placeholder="이메일을 입력해주세요"  required>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="f_title">제목</label>
+                        <div>
+                            <input class="full" type="text" name="f_title" id="f_title" required placeholder="제목을 입력해주세요">
+                        </div>
+                    </li>
+                    <li>
+                        <label for="f_content">내용</label>
+                        <div>
+                            <textarea class="full" name="f_content" id="f_content" required placeholder="내용을 입력해주세요"></textarea>
+                        </div>
+                    </li>
+                    <li>
+                        <label>파일첨부</label>
+                        <div>
+                            <label for="f_file_0" class="file_label">
+                                <p class="file_name">첨부된 파일이 없습니다. (첨부파일을 10MB 이하)</p>
+                                <input type="file" name="f_file_0" id="f_file_0" onchange="fileChnageName(this)">
+                                <p class="file_btn">파일선택</p>
+                            </label>
+                        </div>
+                    </li>
+                    <li class="center">
+                        <input type="submit" onclick="formCheck()" value="문의하기">
+                        <!-- <button id="submit" ></button> -->
+                    </li>
+                </ul>
+            </form>
+
+        </article>
+    </section>
+
+</main>
+
+<script>
+    let contact_form = document.querySelector('#contact_form');
+
+
+    function formCheck() {
+        if ($('#f_type').val() == '') {
+            alert('문의사항을 선택해주세요');
+            return false;
+        } else {
+            contact_form.action = './db_exec.html'
+        }
+    }
+
+    function numCheck(target){
+        document.querySelector(target).addEventListener('keyup', (e) => {
+            document.querySelector(target).value = e.target.value.replace(/[^0-9]/gi, '');
+        });
+    }
+   
+
+    function fileChnageName(obj) {
+        var name = obj.value.substr(12, obj.value.length);
+        document.querySelector('.file_name').innerText = name;
+        document.querySelector('.file_name').style['color'] = '#111'
+        document.querySelector('.file_name').style['font-weight'] = 'bold'
+    }
+
+    
+    numCheck('#f_tel')
+    numCheck('#f_tel_01')
+    numCheck('#f_tel_02')
+    
+
+    
+</script>
+
+<?
+include "../include/footer.html";
+?>

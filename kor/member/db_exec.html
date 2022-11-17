@@ -1,0 +1,409 @@
+<?
+session_start();
+include "../../include/dbconn.html";
+
+function referer_check() {
+    if (!preg_match("/^http['s']?:\/\/".$_SERVER['HTTP_HOST']."/", $_SERVER['HTTP_REFERER'])) {
+        echo "<script>alert('Invalid Access - REF'); history.back();</script>";
+		exit;
+	}
+}
+echo referer_check();
+
+
+
+
+
+$mode = htmlspecialchars(trim($_POST['mode']), ENT_QUOTES);
+
+!$f_div ? $f_div = htmlspecialchars($_GET['f_div'], ENT_QUOTES) : $f_div;
+!$mode ? $mode = htmlspecialchars($_GET['mode'], ENT_QUOTES) : $mode;
+!$f_status ? $f_status = htmlspecialchars($_GET['f_status'], ENT_QUOTES) : $f_status;
+
+
+
+$f_uid = htmlspecialchars(trim($_POST['f_uid']), ENT_QUOTES);
+$f_name = htmlspecialchars(trim($_POST['f_name']), ENT_QUOTES);
+$f_email = htmlspecialchars(trim($_POST['f_email']), ENT_QUOTES);
+$f_email_yn = htmlspecialchars(trim($_POST['f_email_yn']), ENT_QUOTES);
+$f_pw = htmlspecialchars(trim($_POST['f_pw']), ENT_QUOTES);
+$f_pw_first = htmlspecialchars(trim($_POST['f_pw_first']), ENT_QUOTES);
+$f_b_y = htmlspecialchars(trim($_POST['f_b_y']), ENT_QUOTES);
+$f_b_m = htmlspecialchars(trim($_POST['f_b_m']), ENT_QUOTES);
+$f_b_d = htmlspecialchars(trim($_POST['f_b_d']), ENT_QUOTES);
+$f_gender = htmlspecialchars(trim($_POST['f_gender']), ENT_QUOTES);
+$f_tel = htmlspecialchars(trim($_POST['f_tel']), ENT_QUOTES);
+$f_tel_01 = htmlspecialchars(trim($_POST['f_tel_01']), ENT_QUOTES);
+$f_tel_02 = htmlspecialchars(trim($_POST['f_tel_02']), ENT_QUOTES);
+$f_tel_yn = htmlspecialchars(trim($_POST['f_tel_yn']), ENT_QUOTES);
+$f_joinPath = htmlspecialchars(trim($_POST['f_joinPath']), ENT_QUOTES);
+$f_intake = htmlspecialchars(trim($_POST['f_intake']), ENT_QUOTES);
+$f_intake_data = $_REQUEST['f_intake_data'];
+
+$f_childrenNum = htmlspecialchars(trim($_POST['f_childrenNum']), ENT_QUOTES);
+$f_childrenNum_1 = htmlspecialchars(trim($_POST['f_childrenNum_1']), ENT_QUOTES);
+$f_childrenNum_2 = htmlspecialchars(trim($_POST['f_childrenNum_2']), ENT_QUOTES);
+$f_childrenNum_3 = htmlspecialchars(trim($_POST['f_childrenNum_3']), ENT_QUOTES);
+$f_childrenNum_4 = htmlspecialchars(trim($_POST['f_childrenNum_4']), ENT_QUOTES);
+$f_childrenNum_5 = htmlspecialchars(trim($_POST['f_childrenNum_5']), ENT_QUOTES);
+$f_childrenNum_6 = htmlspecialchars(trim($_POST['f_childrenNum_6']), ENT_QUOTES);
+$f_childrenNum_7 = htmlspecialchars(trim($_POST['f_childrenNum_7']), ENT_QUOTES);
+$f_childrenNum_8 = htmlspecialchars(trim($_POST['f_childrenNum_8']), ENT_QUOTES);
+$f_childrenNum_9 = htmlspecialchars(trim($_POST['f_childrenNum_9']), ENT_QUOTES);
+
+$f_email_storage = htmlspecialchars(trim($_POST['f_email_storage']), ENT_QUOTES);
+
+
+$f_date = date("Y-m-d H:i:s");
+$f_ip = $_SERVER["REMOTE_ADDR"];
+
+
+!$f_email_yn ? $f_email_yn = 'N' : $f_email_yn;
+!$f_tel_yn ? $f_tel_yn = 'N' : $f_tel_yn;
+
+// f_intake_dataArr
+$f_intake_dataArr = [];
+for($i=0;$i<count($f_intake_data);$i++){
+    array_push($f_intake_dataArr, $f_intake_data[$i]);
+}
+$f_intake_data = implode(',',$f_intake_dataArr);
+// f_intake_dataArr
+
+
+if($mode == "join"){
+	$f_pw = password_hash($f_pw, PASSWORD_DEFAULT);
+
+	$sql = "SELECT * FROM t_user WHERE f_email = '$f_email' ";
+	$rst = mysqli_query($dbconn, $sql);
+	$count = mysqli_num_rows($rst);
+	
+	if($count < 1){
+		$sql = "INSERT INTO t_user (
+            f_name,
+            f_email,
+            f_email_yn,
+            f_pw,
+            f_pw_first,
+            f_b_y,
+            f_b_m,
+            f_b_d,
+            f_gender,
+            f_tel,
+            f_tel_01,
+            f_tel_02,
+            f_tel_yn,
+            f_joinPath,
+            f_intake,
+            f_intake_data,
+            f_childrenNum,
+            f_childrenNum_1,
+            f_childrenNum_2,
+            f_childrenNum_3,
+            f_childrenNum_4,
+            f_childrenNum_5,
+            f_childrenNum_6,
+            f_childrenNum_7,
+            f_childrenNum_8,
+            f_childrenNum_9,
+            f_date,
+            f_ip
+        ) VALUES (
+            '$f_name',
+            '$f_email',
+            '$f_email_yn',
+            '$f_pw',
+            '$f_pw',
+            '$f_b_y',
+            '$f_b_m',
+            '$f_b_d',
+            '$f_gender',
+            '$f_tel',
+            '$f_tel_01',
+            '$f_tel_02',
+            '$f_tel_yn',
+            '$f_joinPath',
+            '$f_intake',
+            '$f_intake_data',
+            '$f_childrenNum',
+            '$f_childrenNum_1',
+            '$f_childrenNum_2',
+            '$f_childrenNum_3',
+            '$f_childrenNum_4',
+            '$f_childrenNum_5',
+            '$f_childrenNum_6',
+            '$f_childrenNum_7',
+            '$f_childrenNum_8',
+            '$f_childrenNum_9',
+            '$f_date',
+            '$f_ip'
+        )";
+        
+        // echo $sql;
+        // exit;
+
+		$rst = mysqli_query($dbconn, $sql);
+
+		if($rst){
+			echo "<script>alert('회원가입이 완료되었습니다🎉'); location.href='./login.html';</script>";
+		} else{
+			echo "<script>alert('query error'); history.back();</script>";
+		}
+	} else{
+		echo "<script>alert('중복된 아이디입니다.'); history.back();</script>";
+	}
+}
+
+if($mode == "login"){
+	$sql = "SELECT * FROM t_user";
+	$rst = mysqli_query($dbconn, $sql);
+
+    
+	while($row = mysqli_fetch_assoc($rst)){
+		if($f_email == $row['f_email']){
+
+            if ($row['f_status']=='3') {
+                echo "<script>alert('탈퇴한 회원입니다'); history.back();</script>";
+                exit;
+            } else if (password_verify($f_pw ,$row['f_pw'])){
+
+                $sql_date = "UPDATE t_user SET f_date_last='$f_date' WHERE f_uid = '$row[f_uid]' ";
+                $rst_date = mysqli_query($dbconn, $sql_date);
+
+                $_SESSION['f_email'] = $f_email;
+                $_SESSION['f_email_storage'] = $f_email_storage;
+                echo "<script>document.cookie='f_email=$f_email';</script>";
+                echo "<script>document.cookie='f_email_storage=$_SESSION[f_email_storage]';</script>";
+                echo "<script>location.href='../index.html';</script>";
+                exit;
+            } else {
+                echo "<script>alert('비밀번호를 확인해주세요.'); history.back();</script>";
+                exit;
+            }
+		}
+	}
+
+	echo "<script>alert('존재하는 아이디가 없습니다'); history.back();</script>";
+	exit;
+}
+
+if($mode == "logout"){
+    session_destroy();
+    echo "<script>alert('로그아웃 되었습니다.'); location.href='../main/index.html';</script>";
+}
+
+
+if($mode == "profile_mod"){
+	$sql = "SELECT * FROM t_user";
+	$rst = mysqli_query($dbconn, $sql);
+
+	$f_pw_old = $_POST[f_pw_old];
+	$f_pw_new = $_POST[f_pw_new];
+
+	while($row = mysqli_fetch_assoc($rst)){
+		if($f_email == $row['f_email']){
+			if(password_verify($f_pw_old ,$row[f_pw])){
+				$f_pw = password_hash($f_pw_new, PASSWORD_DEFAULT);
+				$sql_up = "UPDATE t_user SET f_pw='$f_pw' WHERE f_email = '$f_email' ";
+				$rst_up = mysqli_query($dbconn, $sql_up);
+
+				echo "<script>alert('변경 완료되었습니다 다시 로그인해 주세요.'); location.href='./logout.html';</script>";
+				exit;
+			}
+			else{
+				echo "<script>alert('비밀번호를 확인해주세요.'); history.back();</script>";
+				exit;
+			}
+		}
+	}
+
+	echo "<script>alert('존재하는 아이디가 없습니다'); history.back();</script>";
+	exit;
+}
+
+
+if($mode == "modi"){
+	$sql = "UPDATE t_user SET 
+        f_name='$f_name', 
+        f_tel='$f_tel', 
+        f_company='$f_company', 
+        f_email='$f_email', 
+        f_memo='$f_memo'
+        WHERE f_uid = '$f_uid' ";
+	$rst = mysqli_query($dbconn, $sql);
+
+	if($rst){
+		echo "<script>alert('수정 완료'); location.href='./list.html?f_div=$_GET[f_div]';</script>";
+	} else{
+		// echo $sql;
+		// exit;
+		echo "<script>alert('query error'); history.back();</script>";
+	}
+}
+
+
+if($mode == 'del'){
+    
+    ######## 파일 삭제하깅 ######## 
+    $sql_filedel = "SELECT * FROM t_user WHERE f_uid = '$_GET[f_uid]'";
+    $rst_filedel = mysqli_query($dbconn, $sql_filedel);
+    $row_filedel = mysqli_fetch_assoc($rst_filedel);
+    for($i=0;$i<=9;$i++) {
+        unlink('../../upload/'.$row_filedel['f_file_'.$i.'']);
+    }
+    ######## 파일 삭제하깅 ######## 
+
+	$sql ="DELETE FROM t_user WHERE f_uid = '$_GET[f_uid]' ";
+	$rst = mysqli_query($dbconn, $sql);
+
+	if($rst){
+		echo "<script>alert('탈퇴 완료'); location.href='./list.html?f_div=$_GET[f_div]';</script>";
+	} else{
+		echo "<script>alert('query error'); history.back();</script>";
+	}
+}
+
+
+
+// 아이디 찾기
+
+if ($mode=="find_id") {
+	$query = "SELECT * from t_user 
+            where f_name='$f_name' 
+            and f_b_y='$f_b_y' and f_b_m='$f_b_m' and f_b_d='$f_b_d'
+            and f_tel='$f_tel' and f_tel_01='$f_tel_01' and f_tel_02='$f_tel_02'
+            ";
+    // echo $query;
+    // exit;
+
+	if ($result = mysqli_query($dbconn, $query)) {
+		if ($result->num_rows) {
+			while ($row = mysqli_fetch_assoc($result)) {
+				if ($row['f_status']=='3') {
+					echo "<script>alert('탈퇴한 회원입니다'); history.back();</script>";
+					break;
+				} else {
+					// echo "<script>alert('회원 아이디는 ".str_asterisk($row['f_user_id'], 4)." 입니다.'); history.back();</script>";
+					echo "<script>alert('회원 아이디는 ".$row['f_email']." 입니다.'); location.href='./login.html'</script>";
+					break;
+				}
+			}
+		} else {
+			echo "<script>alert('입력한 정보와 일치하는 회원이 없습니다.'); history.back();</script>";
+		}
+		mysqli_free_result($result);
+	} 
+
+
+
+} else if ($mode=="find_pw") {
+	$query = "SELECT * from t_user 
+                where f_email='$f_email' and f_name='$f_name' 
+                and f_tel='$f_tel' and f_tel_01='$f_tel_01' and f_tel_02='$f_tel_02'
+            ";
+    // echo $query;
+    // exit;
+	if ($result = mysqli_query($dbconn, $query)) {
+		if ($result->num_rows) {
+			while ($row = mysqli_fetch_assoc($result)) {
+				if ($row['f_status']=='3') {
+					echo "<script>alert('탈퇴한 회원입니다'); history.back();</script>";
+					break;
+				} else {
+					$_SESSION['f_temp_email'] = $f_email;
+					echo "<script>alert('다음 화면에서 비밀번호를 재설정 하세요'); location.href='./change_pw.html';</script>";
+					break;
+				}
+			}
+		} else {
+			echo "<script>alert('입력한 정보와 일치하는 회원이 없습니다.'); history.back();</script>";
+		}
+		mysqli_free_result($result);
+	}
+
+
+
+} else if ($mode=="change_pw") {
+	
+	$f_pw = password_hash($f_pw, PASSWORD_BCRYPT);
+
+	$query = "UPDATE t_user set f_pw='$f_pw' where f_email='$_SESSION[f_temp_email]'";
+	$result = mysqli_query($dbconn, $query);
+
+    // echo $query;
+    if($result) {
+        echo "<script>alert('패스워드가 변경되었습니다.'); location.href='./login.html';</script>";
+        exit;
+    } 
+    
+} 
+else if ($mode=="change_user_date") {
+
+	$f_pw = password_hash($f_pw, PASSWORD_BCRYPT);
+
+	$query = "UPDATE t_user set
+        f_pw='$f_pw',
+        f_b_y='$f_b_y',
+        f_b_m='$f_b_m',
+        f_b_d='$f_b_d',
+        f_tel='$f_tel',
+        f_tel_01='$f_tel_01',
+        f_tel_02='$f_tel_02',
+        f_childrenNum='$f_childrenNum',
+        f_childrenNum_1='$f_childrenNum_1',
+        f_childrenNum_2='$f_childrenNum_2',
+        f_childrenNum_3='$f_childrenNum_3',
+        f_childrenNum_4='$f_childrenNum_4',
+        f_childrenNum_5='$f_childrenNum_5',
+        f_childrenNum_6='$f_childrenNum_6',
+        f_childrenNum_7='$f_childrenNum_7',
+        f_childrenNum_8='$f_childrenNum_8',
+        f_childrenNum_9='$f_childrenNum_9',
+        f_email_yn='$f_email_yn',
+        f_tel_yn='$f_tel_yn'
+    where f_uid='$f_uid'";
+
+    // echo $query;
+    // exit;
+    
+	$result = mysqli_query($dbconn, $query);
+
+	echo "<script>alert('회원정보가 변경되었습니다. 다시 로그인해주세요'); location.href='../main/index.html';</script>";
+    session_destroy();
+	exit;
+}
+else if ($f_status == '3') {
+    $sql = "UPDATE t_user set
+        f_status='$f_status'
+    where f_uid='$_GET[f_uid]'";
+
+    // echo $sql;
+    // exit;
+    $rst = mysqli_query($dbconn, $sql);
+    $row = mysqli_fetch_assoc($rst);
+
+    
+    if($rst) {
+        echo "<script>alert('탈퇴처리가 완료되었습니다.'); location.href='./login.html';</script>";
+        session_destroy();
+        exit;
+    } 
+
+}
+// }  else if($mode == "check_pw") {
+
+//     ######### 마이페이지 비밀번호 확인 #########
+    
+//     $sql = "SELECT * from t_user where f_user_id='$_SESSION[f_user_id]'";
+//     $rst = mysqli_query($dbconn, $sql);
+//     $row = mysqli_fetch_assoc($rst);
+
+//     if (!password_verify($f_user_pw_check, $row['f_user_pw'])) {
+//         echo "<script>alert('패스워드가 일치하지 않습니다'); history.back()</script>";
+//     } else {
+//         echo "<script>location.href = './modify.html'; </script>";
+//         mysqli_free_result($rst);
+//     }
+    
+// }
+
+?>

@@ -1,0 +1,122 @@
+<link href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet">
+
+<style>
+.page_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.page-link {
+	padding:0;
+	margin-left:unset;
+    line-height:unset;
+    color:unset;
+    background-color:unset;
+    border:0;
+    display: flex; align-items: center; justify-content: center;
+
+}
+.page-link:hover {
+    background-color:unset;
+    border-color:unset;
+}
+.num_box a {
+    margin: 0 10px !important;
+    color: #111;
+    font-size: 16px;
+}
+.num_box a.active {
+    color: #00823D; font-weight: bold;
+}
+.fas {color: #666;}
+.fas:hover {color: #00823D;}
+</style>
+
+
+<?
+function pageNavi($TYPE, $bbs_skin, $show_per_page, $show_page_block, $total_article, $all_query, $page) {
+
+    $block_list .= "
+        <div class='page_btn'>
+        ";
+
+	$page_count = ceil($total_article / $show_per_page);
+
+	if ($page <= ceil($show_page_block/2)) {
+		$block_start = 1;
+	} else {
+		$block_start = $page - floor($show_page_block/2);
+	}
+
+
+	#################### [처음 페이지로 가기] ######################
+	if ($TYPE=="2") {
+		if ($page == 1) {
+			$block_list .= "<li class='page-item btn_box' style='padding: 0 5px;'><a class='page-link' href='javascript:;'><i class='fas fa-angle-double-left'></i></a></li>";
+		} else {
+			$block_list .= "<li class='page-item btn_box' style='padding: 0 5px;'><a class='page-link' href='$PHP_SELF?page=1&$all_query'><i class='fas fa-angle-double-left'></i></a></li>";
+		}
+	}
+
+
+	#################### [한페이지 이전으로 가기] ######################
+	if ($page>1) {
+		//$prev_page = $page-$show_page_block;
+        $prev_page = $page-1;
+		// $block_list .= "<div class='btn_box' style='padding: 0 5px;'><a href='?page=$prev_page&$all_query'><i class='fas fa-angle-left'></i></a></div>";
+		$block_list .= "<div class='btn_box prev arrow' style='padding: 0 5px;'><a href='?page=$prev_page&$all_query'></a></div>";
+	} else {
+		// $block_list .= "<div class='btn_box' style='padding: 0 5px;'><a href='javascript:;'><i class='fas fa-angle-left'></i></a></div>";
+		$block_list .= "<div class='btn_box prev arrow' style='padding: 0 5px;'><a href='javascript:;'></a></div>";
+	}
+
+	$block_end = $block_start + $show_page_block - 1;
+
+	#################### [페이지 번호 뿌리기] ######################
+	$block_list .= "<div class='num_box' style='margin: 0 10px;'>";
+
+// echo $block_start."<br>";
+// echo $block_end."<br>";
+// echo $page_count."<br>";
+// echo $page."<br>";
+
+	while($block_start<=$block_end && $block_start<=$page_count) {
+		if($page != $block_start) {
+			$block_list .= "<a class='' href='?page=$block_start&$all_query'>$block_start</a>";
+		} else {
+			$block_list .= "<a class='active' href='javascript:;'>$block_start</a>";
+		}
+		$block_start++;
+	}
+	if ($page_count==0) {
+		$block_list .= "<a class='active' href='javascript:;'>$block_start</a>";
+	}
+	$block_list .= "</div>";
+	#################### [한페이지 다음으로 가기] ######################
+	if ($page!=$page_count) {
+		//$next_page = $page+$show_page_block;
+        $next_page = $page+1;
+		// $block_list .= "<div class='btn_box' style='padding: 0 5px;'><a href='?page=$next_page&$all_query'><i class='fas fa-angle-right'></i></a></div>";
+		$block_list .= "<div class='btn_box next arrow' style='padding: 0 5px;'><a href='?page=$next_page&$all_query'></a></div>";
+	} else {
+		// $block_list .= "<div class='btn_box' style='padding: 0 5px;'><a href='javascript:;'><i class='fas fa-angle-right'></i></a></div>";
+		$block_list .= "<div class='btn_box next arrow' style='padding: 0 5px;'><a href='javascript:;'></a></div>";
+	}
+
+	#################### [마지막 페이지로 가기] ######################
+	if ($TYPE=="2") {
+		if ($page == $page_count) {
+			$block_list .= "<li class='page-item btn_box' style='padding: 0 5px;'><a class='page-link' href='javascript:;'><i class='fas fa-angle-double-right'></i></a></li>";
+		} else {
+			$block_list .= "<li class='page-item btn_box' style='padding: 0 5px;'><a class='page-link' href='$PHP_SELF?page=$page_count&$all_query'><i class='fas fa-angle-double-right'></i></a></li>";
+		}
+	}
+
+
+    $block_list .= "
+        </div>
+        ";
+
+	echo $block_list;
+}
+?>

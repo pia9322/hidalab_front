@@ -1,0 +1,60 @@
+<?
+$h_menu = "product";
+include "../include/header.html";
+
+$f_season = htmlspecialchars(trim($_GET['f_season']), ENT_QUOTES);
+!$f_season ? $f_season = '소아과' : $f_season;
+
+
+$sql = "SELECT * FROM t_product WHERE f_season = '$f_season'";
+$rst = mysqli_query($dbconn, $sql);
+$row = mysqli_fetch_assoc($rst);
+?>
+<script src="/ckeditor5/build/ckeditor.js"></script>
+
+
+    <main class="sub_page" id="product_season">
+
+        <section class="sec sec_01">
+            <article>
+                <div class="page_info">
+                    <div>
+                        <h2>시기별 제품보기</h2>
+                        <p>
+                            에프앤디넷은 믿을 수 있는 건강기능 식품을 제공합니다
+                        </p>
+                    </div>
+                </div>
+            </article>
+        </section>
+        
+        <section class="sec_tab">
+            <article>
+                <ul>
+                    <li><a href="?f_season=소아과"   <?=$f_season == '소아과' ? "class='active'" : null; ?>>소아과</a></li>
+                    <li><a href="?f_season=산부인과" <?=$f_season == '산부인과' ? "class='active'" : null; ?>>산부인과</a></li>
+                </ul>
+            </article>
+        </section>
+       
+
+
+        <!-- 
+            9개
+        -->
+
+
+        <section class="sec sec_product">
+            <article>
+                <div class="ck-content">
+                    <?=$row['ckeditor_00']?>
+                </div>
+            </article>
+        </section>
+
+    </main>
+
+<?
+include "../include/footer.html";
+?>
+

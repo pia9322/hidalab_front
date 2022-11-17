@@ -1,0 +1,12 @@
+     $.ajax({
+        url:'https://aaaa.com/id/',
+        type:'post',
+        dataType:'json',
+        data:'이메일주소',
+        success:function(data){
+            alert(data);
+        }
+        error:function(data){
+            alert(data);
+        }
+    });

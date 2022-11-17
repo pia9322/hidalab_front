@@ -1,0 +1,544 @@
+<?
+session_start();
+include "../../include/dbconn.html";
+
+?>
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- --------------------SEO-------------------- -->
+    <link rel="canonical" href="Canonical URL">
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+
+
+    <meta name="description" content="에프엔디넷 메디컬 닥터에디션 공식 홈페이지입니다">
+    <meta name="author" content="piajj">
+    <meta name="keywords" content="에프엔디넷, fndnet, medical, fndnet_medical, 닥터에디션">
+
+    <meta property="og:title" content="에프엔디넷 메디컬 닥터에디션">
+    <meta property="og:site_name" content="에프엔디넷 메디컬 닥터에디션">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="../../og_img.png">
+    <meta property="og:description" content="에프엔디넷 메디컬 닥터에디션 공식 홈페이지입니다">
+
+    <meta name="twitter:card" content="...">
+    <meta name="twitter:title" content="...">
+    <meta name="twitter:description" content="...">
+    <meta name="twitter:image" content="...">
+    <!-- --------------------SEO-------------------- -->
+
+    <title>닥터에디션</title>
+
+    <!-- --------------------CSS-------------------- -->
+    <link rel="stylesheet" href="../css/swiper.css">
+    <link rel="stylesheet" href="../css/aos.css">
+    <link rel="stylesheet" href="../css/jquery.fullpage.min.css">
+    <link rel="stylesheet" href="../css/nice-select.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/media.css">
+
+
+
+
+
+    <!-- --------------------CSS-------------------- -->
+
+
+    <!-- --------------------Script-------------------- -->
+    <script src="../js/jquery.js"></script>
+    <script src="../js/swiper.js"></script>
+    <script src="../js/aos.js"></script>
+    <script src="../js/fullpage.min.js"></script>
+    <script src="../js/nice-select-min.js"></script>
+    <script src="../js/gsap.min.js"></script>
+    <script src="../js/ScrollTrigger.min.js"></script>
+    <!-- --------------------Script-------------------- -->
+</head>
+
+
+<body>
+
+    <header id="header">
+        <nav id="header_wrap">
+
+            <!-- HEADER_LEFT -->
+            <h1 id="header_left">
+                <a href="../main/index.html"><img src="../images/common/logo_01.svg" alt="회사 로고"></a>
+            </h1>
+
+            <!-- HEADER_CENTER -->
+            <ul id="header_center">
+
+                <li>
+                    <a href="#none">CMF Library</a>
+                </li>
+                <li>
+                    <a href="#none">Trend Library</a>
+                </li>
+                <li>
+                    <a href="#none">Category</a>
+                </li>
+                <li>
+                    <a href="#none">Category</a>
+                </li>
+                <li>
+                    <a href="#none">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#none">Contact</a>
+                </li>
+
+            </ul>
+
+
+            <ul id="header_right">
+                <? if (!$_SESSION['f_email']) { ?>
+                    <li><a href="../member/login.html">Log in</a></li>
+                    <li><a href="../member/join.html">Join for free</a></li>
+                <? } else { ?>
+                    <!-- <li><a href="../member/db_exec.html?mode=logout">로그아웃</a></li> -->
+                    <!-- <li><a href="../member/mypage.html">마이페이지</a></li> -->
+                <? } ?>
+            </ul>
+
+            <div class="header_ham">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+
+            <!-- HEADER_FULL -->
+            <ul id="header_full">
+            </ul>
+        </nav>
+    </header>
+
+
+    <main id="main_page">
+        <section class="ms ms_01 swiper-container">
+            <article class="swiper-wrapper">
+                <figure class="swiper-slide mv_01">
+                    <figcaption>
+                        <p class="text_01">
+                            CMF trend 2022
+                            <br class="pc_only">
+                            Vibrant ocean
+                        </p>
+                        <p class="text_02">
+                            hida is researching materials, techniques, and
+                            <br class="pc_only">
+                            manufacturing methods to create differentiated designs.
+                        </p>
+                        <div class="swiper-pagination"></div>
+                    </figcaption>
+                </figure>
+                <figure class="swiper-slide mv_02">
+                    <figcaption>
+                        <p class="text_01">
+                            CMF trend 2022
+                            <br class="pc_only">
+                            Vibrant ocean
+                        </p>
+                        <p class="text_02">
+                            hida is researching materials, techniques, and
+                            <br class="pc_only">
+                            manufacturing methods to create differentiated designs.
+                        </p>
+                        <div class="swiper-pagination"></div>
+                    </figcaption>
+                </figure>
+                <figure class="swiper-slide mv_03">
+                    <figcaption>
+                        <p class="text_01">
+                            CMF trend 2022
+                            <br class="pc_only">
+                            Vibrant ocean
+                        </p>
+                        <p class="text_02">
+                            hida is researching materials, techniques, and
+                            <br class="pc_only">
+                            manufacturing methods to create differentiated designs.
+                        </p>
+                        <div class="swiper-pagination"></div>
+                    </figcaption>
+                </figure>
+            </article>
+        </section>
+
+        <section class="ms ms_02">
+            <article>
+
+                <div class="top">
+                    <div class="product_wrap">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <figure class="swiper-slide">
+                                    <img src="../images/product/p_s_01.png" alt="">
+                                    <figcaption>FM-A166</figcaption>
+                                </figure>
+                                <figure class="swiper-slide">
+                                    <img src="../images/product/p_s_02.png" alt="">
+                                    <figcaption>FM-A166</figcaption>
+                                </figure>
+                                <figure class="swiper-slide">
+                                    <img src="../images/product/p_s_02.png" alt="">
+                                    <figcaption>FM-A166</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="text_wrap">
+                        <h2>CMF Library</h2>
+                        <p>
+                            hida is researching materials, techniques, and
+                            <br class="pc_only">
+                            manufacturing methods to create differentiated designs.
+                        </p>
+                    </div>
+
+
+                </div>
+
+                <div class="bottom">
+
+                    <div class="text_wrap">
+                        <h2>CMF Library</h2>
+                        <p>
+                            hida is researching materials, techniques, and
+                            <br class="pc_only">
+                            manufacturing methods to create differentiated designs.
+                        </p>
+                    </div>
+
+                    <div class="product_wrap">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <figure class="swiper-slide">
+                                    <img src="../images/product/p_s_01.png" alt="">
+                                    <figcaption>FM-A166</figcaption>
+                                </figure>
+                                <figure class="swiper-slide">
+                                    <img src="../images/product/p_s_02.png" alt="">
+                                    <figcaption>FM-A166</figcaption>
+                                </figure>
+                                <figure class="swiper-slide">
+                                    <img src="../images/product/p_s_02.png" alt="">
+                                    <figcaption>FM-A166</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </article>
+        </section>
+
+
+        <section class="ms ms_03">
+            <article>
+
+                <div class="box box_01">
+                    <div class="text_wrap text_01">
+                        <h2>
+                            Meet the latest CMFs
+                            <br class="pc_only">
+                            and trends updated
+                            <br class="pc_only">
+                            on a weekly basis.
+                        </h2>
+                        <p>
+                            We develop trend-focused CMF based on trend research and
+                            <br class="pc_only">
+                            update it on the CMF library to provide designers with new insights.
+                        </p>
+                    </div>
+
+                    <div class="img_wrap img_01">
+                        <img src="../images/main/sec_03_01_01.png" alt="" data-aos="fade-up">
+                        <img src="../images/main/sec_03_01_02.png" alt="" data-aos="fade-up">
+                    </div>
+                </div>
+
+                <div class="box box_02">
+                    <div class="text_wrap">
+                        <h2>
+                            Create your own
+                            <br class="pc_only">
+                            library and get CMF
+                            <br class="pc_only">
+                            consultation.
+                        </h2>
+                        <p>
+                            Find the CMF you are interested in, save it to your library and
+                            <br class="pc_only">
+                            contact hida for inquiry. hida's CMF experts can help you find out
+                            <br class="pc_only">
+                            how to apply the appropriate CMF to your products.
+                        </p>
+                    </div>
+
+                    <div class="img_wrap img_02">
+                        <img src="../images/main/sec_03_02_01.png" alt="" data-aos="fade-up">
+                        <img src="../images/main/sec_03_02_02.png" alt="" data-aos="fade-up">
+                        <img src="../images/main/sec_03_02_03.png" alt="" data-aos="fade-right">
+                        <img src="../images/main/sec_03_02_04.png" alt="" data-aos="fade-left">
+                    </div>
+                </div>
+
+
+                <div class="box box_03">
+                    <div class="text_wrap">
+                        <h2>
+                            Get CMF insights
+                            <br class="pc_only">
+                            with our monthly
+                            <br class="pc_only">
+                            newsletter.
+                        </h2>
+                        <p>
+                            Every month, hida releases a free newsletter
+                            <br class="pc_only">
+                            that introduces CMF of new topics and design trends.
+                        </p>
+                    </div>
+
+                    <div class="img_wrap img_03">
+                        <div>
+                            <img src="../images/main/sec_03_03_01.png" alt="" data-aos="fade-left">
+                        </div>
+                        <div>
+                            <img src="../images/main/sec_03_03_02.png" alt="" data-aos="fade-up">
+                            <img src="../images/main/sec_03_03_03.png" alt="" data-aos="fade-up">
+                            <img src="../images/main/sec_03_03_04.png" alt="" data-aos="fade-up">
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- <div class="img_box"> -->
+
+                    <!--
+                    
+                    <div class="text_box">
+                        <div class="text_01">
+                            <h2>
+                                Meet the latest CMFs
+                                <br class="pc_only">
+                                and trends updated
+                                <br class="pc_only">
+                                on a weekly basis.
+                            </h2>
+                            <p>
+                                We develop trend-focused CMF based on trend research and
+                                <br class="pc_only">
+                                update it on the CMF library to provide designers with new insights.
+                            </p>
+                        </div>
+
+                        <div class="text_02">
+                            <h2>
+                                Create your own
+                                <br class="pc_only">
+                                library and get CMF
+                                <br class="pc_only">
+                                consultation.
+                            </h2>
+                            <p>
+                                Find the CMF you are interested in, save it to your library and
+                                <br class="pc_only">
+                                contact hida for inquiry. hida's CMF experts can help you find out
+                                <br class="pc_only">
+                                how to apply the appropriate CMF to your products.
+                            </p>
+                        </div>
+
+                        <div class="text_03">
+                            <h2>
+                                Get CMF insights
+                                <br class="pc_only">
+                                with our monthly
+                                <br class="pc_only">
+                                newsletter.
+                            </h2>
+                            <p>
+                                Every month, hida releases a free newsletter
+                                <br class="pc_only">
+                                that introduces CMF of new topics and design trends.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="img_01">
+                        <img src="../images/main/sec_03_01_01.png" alt="">
+                        <img src="../images/main/sec_03_01_02.png" alt="">
+                    </div>
+
+                    <div class="img_02">
+                        <img src="../images/main/sec_03_02_01.png" alt="">
+                        <img src="../images/main/sec_03_02_02.png" alt="">
+                        <img src="../images/main/sec_03_02_03.png" alt="">
+                        <img src="../images/main/sec_03_02_04.png" alt="">
+                    </div>
+
+                    <div class="img_03">
+                        <img src="../images/main/sec_03_03_01.png" alt="">
+                        <img src="../images/main/sec_03_03_02.png" alt="">
+                        <img src="../images/main/sec_03_03_03.png" alt="">
+                        <img src="../images/main/sec_03_03_04.png" alt="">
+                    </div>
+
+                    
+
+    
+
+                    <div class="img_01">
+                        <img src="../images/main/sec_03_01_01.png" alt="">
+                    </div>
+                    <div>
+                        <img src="../images/main/sec_03_01_02.png" alt="">
+                    </div>
+                    <div>
+                        <img src="../images/main/sec_03_02_01.png" alt="">
+                    </div>
+                    <div>
+                        <img src="../images/main/sec_03_02_02.png" alt="">
+                    </div>
+                    <div>
+                        <img src="../images/main/sec_03_02_03.png" alt="">
+                    </div>
+                    <div>
+                        <img src="../images/main/sec_03_02_04.png" alt="">
+                    </div>
+
+                    <div class="img_03">
+                        <img src="../images/main/sec_03_03_01.png" alt="">
+                        <img src="../images/main/sec_03_03_02.png" alt="">
+                        <img src="../images/main/sec_03_03_03.png" alt="">
+                        <img src="../images/main/sec_03_03_04.png" alt="">
+                    </div> -->
+
+                <!-- </div> -->
+
+            </article>
+        </section>
+
+        
+        <section class="ms ms_04">
+            <article>
+                
+            </article>
+        </section>
+    </main>
+
+    <!--  -->
+    <!-- <div class="section section03">
+        <div class="inner">
+            <div class="txt-wrap">
+                <div class="txt-box" style="transform: translate(0px, 0px);">
+                    <p>
+                        Get your Insoles ready
+                    </p>
+                    <span>
+                        NEUROGAIT Insole is a medical device.<br>
+                        This will capture every biomarker from the feet.
+                    </span>
+                </div>
+                <div class="txt-box" style="transform: translate(0px, 0px);">
+                    <p>
+                        How NEUROGAIT works?
+                    </p>
+                    <span>
+                        Providers need iOS tablet<br>
+                        Payers need any kinds of smartphone
+                    </span>
+                </div>
+                <div class="txt-box" style="transform: translate(0px, 0px);">
+                    <p>
+                        Start walking
+                    </p>
+                    <span>
+                        Gait data will be captured on the application,<br>
+                        and we provide specific parameters once <br class="ta-only mo-only">walking is done.
+                    </span>
+                </div>
+                <div class="txt-box" style="transform: translate(0px, 0px);">
+                    <p>
+                        Analyzing a gold data
+                    </p>
+                    <span>
+                        You will literally see how you walk<br>
+                        And analyzed data will be given.
+                    </span>
+                </div>
+            </div>
+            <div class="vis-wrap">
+                <div>
+                    <img src="./images/manual01.png" alt="">
+                </div>
+                <div>
+                    <img src="./images/manual02.png" alt="">
+                </div>
+                <div class="record">
+                    <img src="./images/manual03.png" alt="">
+                    <video playsinline="" muted="" autoplay="" loop="">
+                        <source src="./images/manual03.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="active">
+                    <img src="./images/manual04.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- --------------------------- MAIN --------------------------- -->
+
+
+    <script src="../js/index.js"></script>
+<!-- 
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.to(".ms_03 .img_box", {
+            scrollTrigger: {
+                trigger: ".ms_03 .img_box",
+                start: "top top",
+                endTrigger: ".ms_03 .text_box .text_03",
+                end: "bottom bottom",
+                markers: true,
+                scrub: 1,
+                pin: true,
+            },
+        });
+
+        let ms_03Text = gsap.utils.toArray(".ms_03 .text_box > div"),
+            ms_03Img = gsap.utils.toArray(".ms_03 .img_box > div");
+
+        ms_03Text.forEach((item, index) => {
+            ScrollTrigger.create({
+                trigger: item,
+                start: "top center",
+                end: "bottom center",
+                toggleClass: {
+                    targets: ms_03Img[index],
+                    className: "active"
+                },
+                // markers: true,
+            });
+        });
+    </script> -->
+
+</body>
+
+</html>

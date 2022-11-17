@@ -1,0 +1,67 @@
+<?
+include "../include/header.html";
+include "../include/session_check.html";
+?>
+
+<main class="sub_page search" id="member">
+
+    <section class="sec">
+        <article class="wrap">
+
+            <div class="tit">
+                <h2>비밀번호 변경</h2>
+            </div>
+
+            <div class="layout_box">
+
+                <div class="form_wrap">
+
+                    <form action="./db_exec.html" method="post" class="active" onsubmit="return onSubmit()">
+                        <input type="hidden" name="mode" value="change_pw">
+
+                        <div class="user_input">
+                            <label>
+                                <p class="box_01">이메일</p>
+                                <input type="text" name="f_email" id="" value="<?=$_SESSION['f_temp_email']?>" readonly>
+                            </label>
+
+                            <label>
+                                <p class="box_01">비밀번호</p>
+                                <input type="password" name="f_pw" id="f_pw">
+                            </label>
+
+                            <label>
+                                <p class="box_01">비밀번호 확인</p>
+                                <input type="password" id="f_pw_check">
+                            </label>
+                        </div>
+
+                        <div class="user_help">
+                            <input class="btn submit" type="submit" value="확인">
+                        </div>
+
+                    </form>
+                    
+                </div>
+            </div>
+
+        </article>
+    </section>
+
+</main>
+
+<?
+include "../include/footer.html";
+?>
+
+
+<script>
+     function onSubmit(e) {
+        let ps_01 = document.querySelector('#f_pw').value,
+            ps_02 = document.querySelector('#f_pw_check').value;
+        if (ps_01 != ps_02) {
+            alert('password 불일치'); 
+            return false;
+        }
+    }
+</script>

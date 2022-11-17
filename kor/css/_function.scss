@@ -1,0 +1,439 @@
+// ====================================DEFAULT MIXIN====================================
+
+
+$color-100 : #0fa39a;
+$color-200 : #ea5417;
+
+
+
+@mixin fullsize {width: 100%; height: 100%;}
+@mixin flexCenter { display: flex; justify-content: center; align-items: center; }
+@mixin layoutBoxColor {border: 2px solid #f00;}
+
+@mixin absolute-center {position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);}
+@mixin absolute-x($left, $top) {position: absolute;left: $left;top: $top;transform: translateX(-$left);}
+@mixin absolute-y($left, $top) {position: absolute;left: $left;top: $top;transform: translateY(-$top);}
+@mixin absolute-left($left, $top) {
+    position: absolute;
+    left: $left; top: $top;
+    transform: translateX(-$left);
+}
+@mixin absolute-top($left, $top) {
+    position: absolute;
+    left: $left; top: $top;
+    transform: translateY(-$top);
+}
+
+@mixin transition($x) {transition: $x;-webkit-transition: $x;-moz-transition: $x;-ms-transition: $x;-o-transition: $x;};
+@mixin border-radius($radius) { -webkit-border-radius: $radius; -moz-border-radius: $radius; -ms-border-radius: $radius; border-radius: $radius; }
+@mixin board_text {white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+@mixin ellipsis($line: 1) {
+    @if ($line == 1) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    } @else {
+      display: -webkit-box;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: $line;
+    }
+}
+  @mixin clearfix {
+    &::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+  }
+
+@mixin clipText($num) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $num;
+    overflow: hidden;
+}
+
+@mixin treeLine_x {
+    background: linear-gradient(to left, $color-100 50%, rgba(255, 255, 255, 0) 0%) repeat-x;
+    background-size: 7px 1px;
+}
+
+@mixin treeLine_y {
+    background: linear-gradient(to top, $color-100 50%, rgba(255, 255, 255, 0) 0%) repeat-y;
+    background-size: 1px 7px;
+}
+@mixin boxTitle {
+    cursor: pointer;
+    @include transition(.15s);
+    display: flex; align-items: center;
+    height: 60px;
+    border-radius: 80px; background-color: #fff;
+}
+
+@mixin textNum {
+    @include transition(.15s);
+    @include font-M();
+    @include flexCenter();
+    margin-left: 6px;
+    width: 50px; height: 50px;
+    background-color: $color-100; border-radius: 100%;
+}
+@mixin textTit {margin-left: 14px;font-size: 18px; font-weight: 500;letter-spacing: -1.44px;}
+@mixin map-circle($size) { content: ''; position: absolute; left: 50%;  transform: translateX(-50%); width: $size; height: $size; border-radius: 100%;}
+
+@mixin section_tit_01 {font-size: 40px;font-weight: bold; letter-spacing: -0.8px;}
+@mixin section_tit_02 {font-size: 20px;letter-spacing: -0.8px;}
+@mixin section_tit_03 {font-size: 18px;font-weight: bold;line-height: 1.39;letter-spacing: -1.08px;}
+@mixin section_tit_04 {
+    @include font-nm; @include font-32; 
+    display: flex; align-items: center; justify-content: space-between;
+    font-weight: bold; line-height: 1.5; 
+    a {display: flex;}
+}
+
+@mixin dots_01($wid, $hei) {
+  display: inline-block;
+  width: $wid; height: $hei; background-color: $color-100; border-radius: 100%
+}
+@mixin circle_01($wid, $hei) {
+  @include flexCenter;
+  width: $wid; height: $hei; background-color: $color-100; border-radius: 100%;
+  min-width: $wid; min-height: $hei;
+}
+
+
+
+// ====================================DEFAULT MIXIN====================================
+
+
+
+
+// ====================================JJ MIXIN====================================
+@mixin fixed-layout_1920 {max-width: 1920px; width: 100%; margin: 0 auto; }
+@mixin fixed-layout {max-width: 1470px; width: 100%; margin: 0 auto; }
+@mixin fixed-layout_02 {max-width: 1600px; width: 100%; }
+@mixin fixed-layout-subpage {max-width: 1360px;  width: 100%; margin: 0 auto;}
+@mixin not_fixed_layout {max-width: 100%; width: 100%; margin: 0 auto;}
+@mixin header-height {height: 100px;}
+
+@mixin subMainLine { padding-bottom: 120px; border-bottom: 1px solid #ddd;}
+
+// Margin
+// Top
+@mixin marginTop-140 {margin-top: 140px;}
+@mixin marginTop-120 {margin-top: 120px;}
+@mixin marginTop-100 {margin-top: 100px;}
+@mixin marginTop-80 {margin-top: 80px;}
+@mixin marginTop-70 {margin-top: 70px;}
+@mixin marginTop-60 {margin-top: 60px;}
+@mixin marginTop-40 {margin-top: 40px;}
+@mixin marginTop-30 {margin-top: 30px;}
+
+// Bottom
+@mixin marginBot-120 {margin-bottom: 120px;}
+
+
+// Padding
+@mixin padding_1480 {padding: 0 5%;}
+
+@mixin paddingTop-70 {padding-top: 70px;}
+@mixin paddingTop-40 {padding-top: 40px;}
+
+
+
+
+// FONT
+@mixin font-M {font-family: 'Montserrat';}
+@mixin font-nm {font-family: 'Nanum Myeongjo';}
+@mixin font-R {font-family: 'Roboto';}
+@mixin font-Nanum {font-family: 'Nanum Brush Script';}
+@mixin font-gmark-bold {font-family: 'gmarket-b'; font-weight: bold;}
+@mixin font-gmark-m {font-family: 'gmarket-m'; font-weight: 500;}
+@mixin font-gmark-l {font-family: 'gmarket-l';}
+
+
+
+@mixin hidaFont_50 {
+  font-size: 50px;
+  font-weight: bold;
+  line-height: 1.2;
+  letter-spacing: -1.25px;
+}
+@mixin hidaFont_16 {
+  font-size: 16px;
+  line-height: 1.38;
+}
+
+
+// ====================================JJ MIXIN====================================
+
+
+// ====================================JJ For====================================
+
+@for $i from 1 to 100{
+  .wid_#{$i}{
+      width: $i + %;
+  }
+}
+// ====================================JJ For====================================
+
+
+
+
+// ==================================== KEYFRAMES ====================================
+@keyframes rotateinfin {
+  0%{transform:rotate(0); }
+  100%{transform:rotate(360deg);}
+}
+
+@keyframes dash {
+  90% {stroke-dashoffset: 0;}
+  100% {fill: $color-100;}
+}
+@keyframes dotscolor {
+  10% {background: red;}
+  30% {background: orange;}
+  50% {background: yellow;}
+
+  70% {background: green;}
+  100% {background: blue;}
+}
+
+@keyframes dotscolor_02 {
+  10% {color: red;}
+  30% {color: orange;}
+  50% {color: yellow;}
+  70% {color: green;}
+  100% {color: blue;}
+}
+
+@keyframes barload {
+  0% {width: 0}
+  100% {width: 100%}
+}
+
+@keyframes mapCircle_01 {
+  0% {opacity: 0;}
+  50% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@keyframes mapline_01 {
+  0% {height: 0;}
+  100% {height: 60px;}
+}
+
+@keyframes dashCircle {
+    from {stroke-dashoffset: 1000}
+    to {stroke-dashoffset: 0}
+}
+
+// ==================================== KEYFRAMES ====================================
+
+
+
+
+
+
+
+
+/* 
+  DEFLUE CSS
+*/
+body {
+
+  .lity-close {color: $color-100 !important; }
+  .member_layout {max-width: 800px; margin: 0 auto;}
+  // a link hover effect
+  a.a_link {@include transition(.15s);&:hover { color: $color-100 !important; }}
+  .non_link {cursor: default;}
+  
+  
+  #arrow{
+    &.arrow_01 {
+        display: block;
+        width: 8px; height: 8px;
+        border-right: 1px solid $color-100; border-top: 1px solid $color-100;
+        transform: translateX(-30px) rotate(45deg); margin-bottom: 2px;
+    }
+    &.arrow_02 {
+        display: block;
+        width: 8px; height: 8px;
+        min-width: 8px; min-height: 8px;
+        border-right: 1px solid $color-100; border-top: 1px solid $color-100;
+        transform: rotate(45deg);
+    }
+  }
+
+  #cursor_01 {
+    $ballWH: 15px;
+    width: $ballWH; height: $ballWH;
+    position: fixed; top: 0; left: 0; z-index: 9999;
+    background: $color-100; border-radius: 50%; 
+    pointer-events: none;
+    mix-blend-mode: difference;
+    transition: width .3s, height .3s;
+    &.active {
+        $ballWH: 30px;
+        opacity: .7;
+        width: $ballWH; height: $ballWH;
+    }
+  }
+
+  #search_box_popup {
+    width: 90vw; height: 90vh;
+    overflow: auto; z-index: 99999;
+    padding: 100px; background: #fff;
+    button[type=submit] {border: none; background-color: $color-100;}
+    .product-inner {img {width: 200px; height: 200px; object-fit: cover;}}
+  }
+
+}
+
+
+
+
+// ==================================== common ====================================
+/* import */
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap'); */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css'); /* 프리스텐다드 */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); /* Poppins */
+
+
+
+/* common */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {border: 0; word-break: keep-all;}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {display: block;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after, q:before, q:after {content: '';content: none;}
+table {border-collapse: collapse;border-spacing: 0;}
+a{ text-decoration: none; color: inherit; }n
+img {vertical-align: top; max-width: 100%;}
+i {font-style: normal;}
+p::first-line {}
+p::first-letter {}
+
+/* JJ */
+
+*{
+	box-sizing: border-box; padding:0; margin:0;
+	font-family:  'Arial', 'sans-serif';
+}
+
+/* dragg */
+.draggable_off { -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; }
+.draggable_on { -webkit-user-select:all; -moz-user-select:all; -ms-user-select:all; user-select:all; }
+
+
+html{
+	/* width: 100%; height: 100%;  */
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: auto;
+	overflow-x: hidden;
+}
+
+body {
+	line-height: 1.3;
+	width: 100%; height: 100%;
+	/* max-width: 2560px; margin: 0 auto; */
+	color: #000;
+}
+
+strong {font-weight: bold;}
+em, i {font-style: normal;}
+
+
+input:focus, textarea:focus {outline: 2px solid #0a4b90;}
+
+
+ion-icon { width: 100%; height: 100%; }
+
+/* scroll_bar */
+/*
+	*::-webkit-scrollbar {display: none;}
+	*::-webkit-scrollbar {width: 5px;}
+	*::-webkit-scrollbar-thumb {background-color: #005baa;}
+	*::-webkit-scrollbar-track {background-color: transparent;} 
+ */
+/* scroll_bar_iex */
+/*
+	html {
+		scrollbar-width: 3px;
+		scrollbar-track-color: transparent;
+		scrollbar-arrow-color: #fff;
+		scrollbar-base-color: transparent;
+		scrollbar-face-color: #005baa;
+		overflow-x: hidden;
+	}
+*/
+
+
+/* --------------------Tag-------------------- */
+
+
+
+/* --------------------Class-------------------- */
+.pc_only {display: block;}
+.ta_only {display: none;}
+.mo_only {display: none;}
+
+/* MEDIA */
+@media (min-width: 2560px) {
+	html {font-size: 73%;}
+}
+
+/* media br */
+@media (max-width: 1440px) {
+	.pc_only {display: block !important;}
+	.ta_only, .mo_only {display: none !important;}
+	/* default */
+}
+@media (max-width: 1100px) {
+	html{font-size: 50% !important;}
+	/* html{font-size: 44% !important;} */
+}
+
+@media (max-width: 1023px) {
+	.pc_only, .ta_only {display: block !important;}
+	.mo_only {display: none !important;}
+	/* default */
+}
+
+@media (max-width: 767px) {
+	html{font-size: 44% !important;}
+	.pc_only {display: none !important;}
+	.ta_only, .mo_only {display: block !important;}
+	/* default */
+}
+
+@media (max-width: 479px) {
+	/* html {font-size: 37.5% !important;} */
+    .pc_only, .ta_only {display: none !important;}
+	.mo_only {display: block !important;}
+	/* default */
+}
+
+

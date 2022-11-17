@@ -1,0 +1,237 @@
+* Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com
+<!-- 
+    table_bundel_jj
+    ver 1.0 
+
+    jj_add
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./jj_main.css">
+</head>
+
+<body>
+    <!-- 
+    메인 CSS 는 ID값을 따라감
+
+    ==== 고정 ==== 
+    #table_header - searchBox
+    #table_footer - table_pageing
+    #table_default - 모든 table List 묶음은 해당 id로 고정
+
+
+
+    ==== 유동 ====
+    #table_list 
+    #table_gallery
+
+    #&Class (ex.type_01 ... ) type 변경으로 전환 
+    -->
+
+
+    <!-- =================== table_header ===================  -->
+    <div id="table_header">
+
+        <div class="table_company_select"></div>
+
+        <div class="table_text_search">
+            <div class="search_form">
+                <fieldset>
+                    <legend>검색명</legend>
+
+                    <form class="form_02_selectbox" action="" method="">
+                        <select name="" id="">
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                        </select>
+                        <input type="text" name="" id="" placeholder="제목을 입력해주세요.">
+                        <input type="submit" value="검색">
+                    </form>
+
+                </fieldset>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- =================== table_footer ===================  -->
+    <div id="table_footer">
+        <div class="btn_box">
+            <a href="">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </a>
+        </div>
+
+        <div class="num_box type_circle_01">
+            <a href="#none" class="active">1</a>
+            <a href="#none">2</a>
+            <a href="#none">3</a>
+            <a href="#none">4</a>
+        </div>
+
+
+        <div class="btn_box">
+            <a href="">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+            </a>
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================== table_list (List 형식 type_01) ===================  -->
+    <div id="table_default">
+        <div class="type_01" id="table_list">
+            <div class="table_warp">
+
+                <!-- #table_list 일때만 노출됌
+                    table_title 요소들 ClassName은
+                    figcaption.text_wrap의 
+                    p className을 따라가셈
+                -->
+                <div class="table_title" id="table_title">
+                    <p class="text text_01">제목</p>
+                    <p class="text text_02">다운로드</p>
+                    <p class="text text_03">작성일</p>
+                </div>
+
+                <figure class="list">
+
+                    <!-- #table_gallery 일때만 노출됌 -->
+                    <div class="img_wrap"> <img src="../images/main/bg_02_01.png" alt=""> </div>
+
+                    <!-- detail -->
+                    <figcaption class="text_wrap">
+                        <p class="text text_01 hover"><a href="./media_more.html">게시판입니다</a></p> <!-- title -->
+                        <p class="text text_02">
+                            <a href="" download="">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 13" fill="none" class="hover">
+                                    <path d="M0 12L12 12" stroke="black" stroke-width="2"></path>
+                                    <path d="M1.71484 5.19922L6.00056 9.27917L10.2863 5.19922" stroke="black" stroke-width="2"></path>
+                                    <path d="M6 8.7999L6 0" stroke="black" stroke-width="2"></path>
+                                </svg>
+                            </a>
+                        </p>
+                        <p class="text text_03">2022.03.24</p>
+                    </figcaption>
+                </figure>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =================== table_gallery (gallery 형식 type_01) ===================  -->
+    <div id="table_default">
+        <div class="type_01" id="table_gallery">
+            <div class="table_warp">
+
+                <!-- #table_list 일때만 노출됌 -->
+                <div class="table_title" id="table_title">
+                    <p class="text text_01">제목</p>
+                    <p class="text text_02">다운로드</p>
+                    <p class="text text_03">작성일</p>
+                </div>
+
+                <figure class="list">
+
+                    <!-- #table_gallery 일때만 노출됌 -->
+                    <div class="img_wrap"> <img src="../images/main/bg_02_01.png" alt=""> </div>
+
+                    <!-- detail -->
+                    <figcaption class="text_wrap">
+                        <p class="text text_01 hover"><a href="./media_more.html">게시판입니다</a></p> <!-- title -->
+                        <p class="text text_03">2022.03.24</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="list">
+
+                    <!-- #table_gallery 일때만 노출됌 -->
+                    <div class="img_wrap"> <img src="../images/main/bg_02_01.png" alt=""> </div>
+
+                    <!-- detail -->
+                    <figcaption class="text_wrap">
+                        <p class="text text_01 hover"><a href="./media_more.html">게시판입니다</a></p> <!-- title -->
+                        <p class="text text_03">2022.03.24</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="list">
+
+                    <!-- #table_gallery 일때만 노출됌 -->
+                    <div class="img_wrap"> <img src="../images/main/bg_02_01.png" alt=""> </div>
+
+                    <!-- detail -->
+                    <figcaption class="text_wrap">
+                        <p class="text text_01 hover"><a href="./media_more.html">게시판입니다</a></p> <!-- title -->
+                        <p class="text text_03">2022.03.24</p>
+                    </figcaption>
+                </figure>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- =================== table_more (상세보기_viewPage) ===================  -->
+    <!-- =================== table_more (상세보기_viewPage) ===================  -->
+    <!-- =================== table_more (상세보기_viewPage) ===================  -->
+    <!-- =================== table_more (상세보기_viewPage) ===================  -->
+    <div class="table_more" id="table_more">
+        <!-- table -->
+        <div class="table_notice">
+            <ul class="table_title">
+                <li>
+                    <p class="table_notice_title">title</p>
+                    <p class="table_notice_data">Now_data</p>
+                </li>
+                <li>
+
+                    <p class="file_download">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 448 512" style="vertical-align: middle; margin-right:10px;">
+                            <path d="M364.2 83.8C339.8 59.39 300.2 59.39 275.8 83.8L91.8 267.8C49.71 309.9 49.71 378.1 91.8 420.2C133.9 462.3 202.1 462.3 244.2 420.2L396.2 268.2C407.1 257.3 424.9 257.3 435.8 268.2C446.7 279.1 446.7 296.9 435.8 307.8L283.8 459.8C219.8 523.8 116.2 523.8 52.2 459.8C-11.75 395.8-11.75 292.2 52.2 228.2L236.2 44.2C282.5-2.08 357.5-2.08 403.8 44.2C450.1 90.48 450.1 165.5 403.8 211.8L227.8 387.8C199.2 416.4 152.8 416.4 124.2 387.8C95.59 359.2 95.59 312.8 124.2 284.2L268.2 140.2C279.1 129.3 296.9 129.3 307.8 140.2C318.7 151.1 318.7 168.9 307.8 179.8L163.8 323.8C157.1 330.5 157.1 341.5 163.8 348.2C170.5 354.9 181.5 354.9 188.2 348.2L364.2 172.2C388.6 147.8 388.6 108.2 364.2 83.8V83.8z" />
+                        </svg>
+                        <a class="down_link" target="_blank" href="">download file</a>
+                    </p>
+                </li>
+            </ul>
+
+            <!-- tobdy -->
+            <ul class="table_body">
+                <li>content</li>
+                <li class="link"></li>
+            </ul>
+        </div>
+
+
+
+
+        <div class="table_notice_more">
+            <a href="javascript:history.back()">목록</a>
+        </div>
+
+    </div>
+
+
+    
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<?
+$h_menu = "member";
+include "../include/header.html";
+include "../include/session_check.html";
+
+?>
+
+
+    <main class="sub_page login" id="member">
+
+        <section>
+            <article class="wrap">
+
+                    <div class="tit">
+                        <h2>로그인</h2>
+                        <p>에프앤디넷 닥터브랜드 홈페이지에 오신 것을 환영합니다.</p>
+                    </div>
+                    
+                    <div class="layout_box">
+                        <div class="form_wrap">
+                            <form action="./db_exec.html" method="POST" class="type_01">
+                                <input type="hidden" name="mode" value="login">
+                                
+                                <div class="user">
+                                    <div>
+                                        <label><p class="box_01">이메일</p><input type="email" id="f_email" name="f_email" required></label>
+                                        <label><p class="box_01">비밀번호</p><input type="password" name="f_pw" required></label>
+                                    </div>
+
+                                    <input class="btn submit" type="submit" value="로그인">
+                                </div>
+
+                                <div class="user_help">
+                                    <label><input type="checkbox" name="f_email_storage" id="f_email_storage"  value="Y"><i class="ico check"></i>이메일 저장</label>
+                                    <p>
+                                        <a href="./search.html">아이디/패스워드 찾기</a>
+                                        <a href="./join.html">회원가입</a>
+                                    </p>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+            </article>
+        </section>
+
+    </main>
+
+
+
+<?
+include "../include/footer.html";
+?>
+
+
+<script>
+    function getCookie(cookie_name) {
+        var x, y;
+        var val = document.cookie.split(';');
+        
+        for (var i = 0; i < val.length; i++) {
+            x = val[i].substr(0, val[i].indexOf('='));
+            y = val[i].substr(val[i].indexOf('=') + 1);
+            x = x.replace(/^\s+|\s+$/g, ''); // 앞과 뒤의 공백 제거하기
+            
+            if (x == cookie_name) {
+            return unescape(y); // unescape로 디코딩 후 값 리턴
+            }
+        }
+    }
+
+    if(getCookie('f_email_storage') == 'Y') {
+        document.querySelector('#f_email').value = getCookie('f_email')
+        document.querySelector('#f_email_storage').checked = true
+    }
+</script>
+                

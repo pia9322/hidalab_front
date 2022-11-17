@@ -1,0 +1,189 @@
+<?
+$h_menu = "product";
+include "../include/header.html";
+
+$page = htmlspecialchars(trim($_GET['page']), ENT_QUOTES);
+$s_key = htmlspecialchars(trim($_GET['s_key']), ENT_QUOTES);
+$s_value = htmlspecialchars(trim($_GET['s_value']), ENT_QUOTES);
+
+$productList = htmlspecialchars($_GET['productList'], ENT_QUOTES);
+
+$searchType = htmlspecialchars($_GET['searchType'], ENT_QUOTES);
+$f_target = htmlspecialchars($_GET['f_target'], ENT_QUOTES);
+$f_function = htmlspecialchars($_GET['f_function'], ENT_QUOTES);
+
+
+############################ [검색조건 검색] ###############################
+// $where = "where f_div='$f_div'";
+if($f_function) {
+    $where = "where f_show ='Y' and f_function Like '%$f_function%'";
+} else if($f_target) {
+    $where = "where f_show ='Y' and f_target Like '%$f_target%'";
+}else if ($s_value) {
+    $where = "where f_show ='Y' and f_title like '%$s_value%'";
+}
+
+
+// if ($s_key && $s_value) {
+//     $where .= " and $s_key like '%$s_value%'";
+// }
+
+
+
+
+############ 전체 데이터 갯수 ############
+$query_cnt = "select count(*) as cnt from t_product $where";
+// echo "$query_cnt ===<br>";
+$result_cnt = mysqli_query($dbconn, $query_cnt);
+$row_cnt = mysqli_fetch_assoc($result_cnt);
+$total_article = $row_cnt['cnt'];
+
+mysqli_free_result($result_cnt);
+
+
+############ 페이지 변수 ############
+$show_per_page = 9;
+$show_page_block = 10;
+$total_page = ceil($total_article / $show_per_page); // 전체 페이지수
+if ($page > $total_page) {
+    $page = $total_page;
+}
+if (!$page || $page < 1) {
+    $page = 1;
+}
+if (!$total_page) {
+    $total_page = 1;
+}
+$article_no = $total_article - $show_per_page * ($page - 1); // 상대 글번호
+$start = ($page * $show_per_page) - $show_per_page;
+?>
+<main class="sub_page" id="product_list">
+
+    <section class="sec sec_01">
+        <article>
+            <div class="page_info flex">
+                <div>
+                    <? if ($productList == "target") { ?>
+                        <h2>대상별 제품보기</h2>
+                    <? } else if($productList == "function") { ?>
+                        <h2>기능별 제품보기</h2>
+                    <? } else if($searchType == "mainsearch") { ?>
+                        <h2>제품보기</h2>
+                    <? } ?>
+
+                    <p>
+                        에프앤디넷은 믿을 수 있는 건강기능 식품을 제공합니다
+                    </p>
+                </div>
+                <form action="">
+                    <div class="search_box">
+                        <input type="hidden" name="productList" value="<?=$productList?>">
+                        <input type="search" name="s_value" id="" placeholder="찾으시는 제품명을 입력해주세요" value="<?=$s_value?>">
+                        <input type="submit" name="" id="" placeholder="">
+                    </div>
+                </form>
+            </div>
+        </article>
+    </section>
+
+    <section class="sec_tab">
+        <article>
+            <? if ($productList == "target") { ?>
+                <ul>
+                    <li><a href="?f_target=all&productList=target" <?= $f_target == 'all' ? "class='active'" : null; ?>>전체보기</a></li>
+                    <li><a href="?f_target=유소아&productList=target" <?= $f_target == '유소아' ? "class='active'" : null; ?>>유·소아</a></li>
+                    <li><a href="?f_target=청소년&productList=target" <?= $f_target == '청소년' ? "class='active'" : null; ?>>청소년</a></li>
+                    <li><a href="?f_target=임산부&productList=target" <?= $f_target == '임산부' ? "class='active'" : null; ?>>임산부</a></li>
+                    <li><a href="?f_target=성인여성&productList=target" <?= $f_target == '성인여성' ? "class='active'" : null; ?>>성인여성</a></li>
+                    <li><a href="?f_target=성인남성&productList=target" <?= $f_target == '성인남성' ? "class='active'" : null; ?>>성인남성</a></li>
+                </ul>
+            <? } else { ?>
+                <ul>
+                    <li><a href="?f_function=all&productList=function" <?= $f_function == 'all' ? "class='active'" : null; ?>>전체보기</a></li>
+                    <li><a href="?f_function=장건강&productList=function" <?= $f_function == '장건강' ? "class='active'" : null; ?>>장건강</a></li>
+                    <li><a href="?f_function=영양보충&productList=function" <?= $f_function == '영양보충' ? "class='active'" : null; ?>>영양보충</a></li>
+                    <li><a href="?f_function=뼈건강&productList=function" <?= $f_function == '뼈건강' ? "class='active'" : null; ?>>뼈건강</a></li>
+                    <li><a href="?f_function=혈행건강&productList=function" <?= $f_function == '혈행건강' ? "class='active'" : null; ?>>혈행건강</a></li>
+                    <li><a href="?f_function=기초건강&productList=function" <?= $f_function == '기초건강' ? "class='active'" : null; ?>>기초건강</a></li>
+                    <li><a href="?f_function=기타제품&productList=function" <?= $f_function == '기타제품' ? "class='active'" : null; ?>>기타제품</a></li>
+                </ul>
+            <? } ?>
+        </article>
+    </section>
+
+
+    <!-- 
+            9개
+        -->
+
+
+    <section class="sec sec_product">
+        <article>
+            <ul>
+                <?
+                $sql = "SELECT * from t_product $where order by f_sort+0 DESC limit $start, $show_per_page";
+                if ($f_target == 'all' || $f_function == 'all') {
+                    $sql = "SELECT * from t_product where f_show ='Y' order by f_sort+0 DESC limit $start, $show_per_page";
+                }
+                if ($rst = mysqli_query($dbconn, $sql)) {
+                    if ($rst->num_rows) {
+                        while ($row = mysqli_fetch_assoc($rst)) {
+                ?>
+                            <li onclick="location.href='../product/detail.html?f_uid=<?= $row['f_uid'] ?>'" style="cursor:pointer;">
+                                <div class="banner">
+                                    <?
+                                    $functionArr = explode(',', $row['f_function']);
+                                    for ($i = 0; $i < count($functionArr); $i++) {
+                                    ?>
+                                        <div data-name="<?= $functionArr[$i] ?>"><?= $functionArr[$i] ?></div>
+                                    <? }  ?>
+                                </div>
+                                <figure>
+                                    <div class="img_wrap">
+                                        <img src="../../upload/product/<?= $row['f_file_0'] ?>" alt="<?= $row['f_filename_0'] ?>">
+                                    </div>
+                                    <figcaption>
+                                        <p class="cate">
+                                            <?
+                                            $f_targetArr = explode(',', $row['f_target']);
+                                            for ($i = 0; $i < count($f_targetArr); $i++) {
+                                            ?>
+                                                <span data-name="<?= $f_targetArr[$i] ?>"><?= $f_targetArr[$i] ?></span>
+                                            <? }  ?>
+                                        </p>
+                                        <p class="tit">
+                                            <?= $row['f_title'] ?>
+                                        </p>
+                                        <!-- <p class="link">
+                                            <a href="../product/detail.html?f_uid=<?= $row['f_uid'] ?>">자세히보기</a>
+                                        </p> -->
+                                    </figcaption>
+                                </figure>
+                            </li>
+                <?
+                        }
+                    }
+                }
+                ?>
+            </ul>
+        </article>
+    </section>
+
+    <section class="sec pagenum">
+        <article>
+            <style>
+                .pagenum article {margin: 60px 0 0;}
+            </style>
+            <?
+            ############ [페이징] ############
+            include "../include/pageNavi.html";
+            $all_query = "productList=$productList&f_target=$f_target&f_function=$f_function&f_div=$f_div&s_key=$s_key&s_value=$s_value";
+            pageNavi(2, $bbs_skin, $show_per_page, $show_page_block, $total_article, $all_query, $page);
+            ?>
+        </article>
+    </section>
+
+</main>
+<?
+include "../include/footer.html";
+?>

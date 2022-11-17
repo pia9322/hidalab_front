@@ -1,0 +1,78 @@
+
+
+
+
+<?
+/****
+####### [수정할 파일]
+/www/ckfinder/ckfinder_3.5.0
+
+####### [업로드 권한 설정]
+$config['authentication'] = function () {
+    return true;
+};
+
+
+####### [업로드 파일위치 설정]
+$config['backends'][] = array(
+    'name'         => 'default',
+    'adapter'      => 'local',
+    'baseUrl'      => '/ckfinder_3.5.0/userfiles/',
+//  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
+    'chmodFiles'   => 0777,
+    'chmodFolders' => 0755,
+    'filesystemEncoding' => 'UTF-8',
+);
+***/
+?>
+
+
+
+
+
+
+
+<!-- [해더 삽입 코드] -->
+<script src="/ckeditor/ckeditor_4.11.4/ckeditor.js"></script>
+
+
+
+
+
+
+<form name="write" method="post" enctype="multipart/form-data" onSubmit="return checkIt();">
+	<textarea name="ckeditor" id="ckeditor"></textarea>
+	<input type="submit">
+</form>
+
+
+
+<?
+echo "$_POST[ckeditor]";
+?>
+
+
+
+<!-- [푸터 삽입 코드] -->
+
+<script>
+	CKEDITOR.replace('ckeditor', {
+		extraPlugins: 'image2,uploadimage',
+
+		// Configure your file manager integration. This example uses CKFinder 3 for PHP.
+		filebrowserBrowseUrl: '/ckfinder/ckfinder_3.5.0/ckfinder.html',
+		filebrowserImageBrowseUrl: '/ckfinder/ckfinder_3.5.0/ckfinder.html?type=Images',
+		filebrowserUploadUrl: '/ckfinder/ckfinder_3.5.0/core/connector/php/connector.php?command=QuickUpload&type=Files',
+		filebrowserImageUploadUrl: '/ckfinder/ckfinder_3.5.0/core/connector/php/connector.php?command=QuickUpload&type=Images',
+
+		// Upload dropped or pasted images to the CKFinder connector (note that the response type is set to JSON).
+		uploadUrl: '/ckfinder/ckfinder_3.5.0/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
+
+		// Reduce the list of block elements listed in the Format drop-down to the most commonly used.
+		format_tags: 'p;h1;h2;h3;pre',
+		// Simplify the Image and Link dialog windows. The "Advanced" tab is not needed in most cases.
+		removeDialogTabs: 'image:advanced;link:advanced',
+	});
+</script>
+
+

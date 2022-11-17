@@ -1,0 +1,54 @@
+html
+<strong id="counting_01">55.4</strong>세
+<strong id="counting_02">97</strong>%
+<strong id="counting_03">24</strong>회
+
+
+
+        gsap.registerPlugin(ScrollTrigger);
+        var startCount = {
+            var: 0
+        };
+
+        gsap.to(startCount, {
+            var: 55.4,
+            duration: 1.5,
+            ease: "none",
+            onUpdate: changeNumber01,
+            scrollTrigger: {
+                trigger: "#counting_01",
+            },
+        });
+
+        gsap.to(startCount, {
+            var: 97,
+            duration: 1.5,
+            ease: "none",
+            onUpdate: changeNumber02,
+            scrollTrigger: {
+                trigger: "#counting_02",
+            },
+        });
+
+        gsap.to(startCount, {
+            var: 24,
+            duration: 1.5,
+            ease: "none",
+            onUpdate: changeNumber03,
+            scrollTrigger: {
+                trigger: "#counting_03",
+            },
+        });
+
+
+        function changeNumber01() {
+            counting_01.innerHTML = (startCount.var).toFixed(1);
+        }
+
+        function changeNumber02() {
+            counting_02.innerHTML = (startCount.var).toFixed();
+        }
+
+        function changeNumber03() {
+            counting_03.innerHTML = (startCount.var).toFixed();
+        }

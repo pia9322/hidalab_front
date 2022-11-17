@@ -1,0 +1,104 @@
+<?
+include "../../include/dbconn.html";
+
+$today = date("Y-m-d");
+
+$sql_pop = "SELECT * FROM t_popup WHERE (f_start_day <= '$today' AND f_end_day > '$today') AND f_show_yn ='Y'";
+$rst_pop = mysqli_query($dbconn, $sql_pop);
+$cnt_pop = mysqli_num_rows($rst_pop);
+
+while ($row_pop = mysqli_fetch_assoc($rst_pop)) {
+    $id = $row_pop['f_uid'];
+?>
+
+    <div id="pop_<?= $id ?>" class="pop_box_wrap" style="top: <?= $row_pop['f_top'] ?>px;  left: <?= $row_pop['f_left'] ?>px; ">
+
+        <div id="pop_img_wrap">
+            <a href="<?= $row_pop['f_link_0'] ?>" target="<?= $row_pop['f_link_target'] == 'Y' ? '_blank' : '_self' ?>">
+                <img class="p_img" src="../../upload/<?= $row_pop['f_file_0'] ?>" alt="<?= $row_pop['f_filename_0'] ?>">
+            </a>
+        </div>
+
+        <div class="pop_close_wrap">
+            <form name="pop_form_<?= $id ?>">
+                <div id="check">
+                    <input type="checkbox" name="chkbox" value="checkbox" id="checkbox_<?= $id ?>" onchange="javascript:closePop_<?= $id ?>();">
+                    <label class="text text_01"  for="checkbox_<?= $id ?>" >오늘 하루동안 열지 않기</label>
+                    <!-- <label class="text text_01"  for="checkbox_<?= $id ?>" >Not open for a day</label> -->
+                </div>
+                <div id="close"><a class="text text_01" href="#none" onclick="closePop_<?= $id ?>();">창 닫기</a></div>
+                <!-- <div id="close"><a class="text text_01" href="#none" onclick="closePop_<?= $id ?>();">Close</a></div> -->
+            </form>
+        </div>
+    </div>
+
+    <style>
+
+        .pop_box_wrap {position: fixed; z-index: 10001; visibility: visible;}
+        .pop_box_wrap #pop_img_wrap {max-width: 1000px; border: 1px solid #ddd; border-bottom: none; background: #fff;}
+        .pop_box_wrap #pop_img_wrap a img {max-width: 100%; height: auto;}
+
+        .pop_box_wrap .text.text_01 {display: flex; align-items: center; justify-content: center;width: 100%;height: 100%; cursor: pointer; text-align: center; font-size: 16px; font-weight: 500;padding: 7px 9px;background: #fff;transition: background .15s;}
+        .pop_box_wrap .text.text_01:hover {background: #ddd; }
+
+        .pop_box_wrap .pop_close_wrap form {display: flex; justify-content: space-between;}
+        .pop_box_wrap .pop_close_wrap form > div {display: flex; align-items: center; justify-content: center; width:50%;  border: 1px solid #ddd;}
+
+        .pop_box_wrap #check {border-right: none;}
+        .pop_box_wrap #check input {display: none;}
+
+        @media (max-width: 767px) {
+            .pop_box_wrap {
+                width: 100%;
+                top: 0 !important; bottom:0 !important; left: 0 !important;
+                display: flex;flex-direction: column;justify-content: flex-end;
+                background: rgba(000, 000, 000, .5);
+                backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
+            }
+            /* #pop_img_wrap {height: 80%;} */
+            .pop_box_wrap #pop_img_wrap {border: none;}
+
+            .pop_box_wrap .pop_close_wrap form > div {border: none;}
+
+            .pop_box_wrap .text.text_01 {font-size: 14px; color: #9e9e9e;}
+            .pop_box_wrap #check .text.text_01 {justify-content: flex-start;}
+            .pop_box_wrap #close .text.text_01 {justify-content: flex-end;}
+            .pop_box_wrap .text.text_01:hover {background: #fff;}
+        }
+        
+    </style>
+
+    <script>
+            
+        var setCookie = function(name, value, exp) {
+            var date = new Date();
+            date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
+            document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
+        };
+
+        var getCookie = function(name) {
+            var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+            return value ? value[2] : null;
+        };
+        
+        var is_pop_<?= $id ?> = getCookie("popup_<?= $id ?>");
+
+
+        var closePop_<?= $id ?> = function() {
+            document.querySelector('#pop_<?= $id ?>').style.visibility = "hidden";
+
+            var ischeck = document.querySelector('#checkbox_<?= $id ?>').checked;
+            if (ischeck) {
+                setCookie("popup_<?= $id ?>", "done", 1);
+            }
+        }
+
+        
+        if (is_pop_<?= $id ?> == "done") {
+            document.querySelector('#pop_<?= $id ?>').style.visibility = "hidden";
+        }
+
+    </script>
+<?
+} mysqli_free_result($rst_pop);
+?>

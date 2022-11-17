@@ -1,0 +1,141 @@
+/* import */
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap'); */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css'); /* 프리스텐다드 */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); /* Poppins */
+
+
+
+/* common */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {border: 0; word-break: keep-all;}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {display: block;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after, q:before, q:after {content: '';content: none;}
+table {border-collapse: collapse;border-spacing: 0;}
+a{ text-decoration: none; color: inherit; }
+img {vertical-align: top; max-width: 100%;}
+i {font-style: normal;}
+p::first-line {}
+p::first-letter {}
+
+/* JJ */
+
+*{
+	box-sizing: border-box; padding:0; margin:0;
+	font-family:  'Poppins', 'Pretendard', 'sans-serif';
+}
+
+/* dragg */
+.draggable_off { -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; }
+.draggable_on { -webkit-user-select:all; -moz-user-select:all; -ms-user-select:all; user-select:all; }
+
+
+html{
+	/* width: 100%; height: 100%;  */
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: auto;
+	overflow-x: hidden;
+}
+
+body {
+	line-height: 1.3;
+	width: 100%; height: 100%;
+	/* max-width: 2560px; margin: 0 auto; */
+	color: #000;
+}
+
+strong {font-weight: bold;}
+em, i {font-style: normal;}
+
+
+input:focus, textarea:focus {outline: 2px solid #0a4b90;}
+
+
+ion-icon { width: 100%; height: 100%; }
+
+/* scroll_bar */
+/*
+	*::-webkit-scrollbar {display: none;}
+	*::-webkit-scrollbar {width: 5px;}
+	*::-webkit-scrollbar-thumb {background-color: #005baa;}
+	*::-webkit-scrollbar-track {background-color: transparent;} 
+ */
+/* scroll_bar_iex */
+/*
+	html {
+		scrollbar-width: 3px;
+		scrollbar-track-color: transparent;
+		scrollbar-arrow-color: #fff;
+		scrollbar-base-color: transparent;
+		scrollbar-face-color: #005baa;
+		overflow-x: hidden;
+	}
+*/
+
+
+/* --------------------Tag-------------------- */
+
+
+
+/* --------------------Class-------------------- */
+.pc_only {display: block;}
+.ta_only {display: none;}
+.mo_only {display: none;}
+
+/* MEDIA */
+@media (min-width: 2560px) {
+	html {font-size: 73%;}
+}
+
+/* media br */
+@media (max-width: 1440px) {
+	.pc_only {display: block !important;}
+	.ta_only, .mo_only {display: none !important;}
+	/* default */
+}
+@media (max-width: 1100px) {
+	html{font-size: 50% !important;}
+	/* html{font-size: 44% !important;} */
+}
+
+@media (max-width: 1023px) {
+	.pc_only, .ta_only {display: block !important;}
+	.mo_only {display: none !important;}
+	/* default */
+}
+
+@media (max-width: 767px) {
+	html{font-size: 44% !important;}
+	.pc_only {display: none !important;}
+	.ta_only, .mo_only {display: block !important;}
+	/* default */
+}
+
+@media (max-width: 479px) {
+	/* html {font-size: 37.5% !important;} */
+    .pc_only, .ta_only {display: none !important;}
+	.mo_only {display: block !important;}
+	/* default */
+}
+
+
