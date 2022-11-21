@@ -311,6 +311,7 @@ body {
     main {
         // INDEX MAIN
         &#main_page {
+         
             .ms {
                 position: relative;z-index: 3;
                 overflow: hidden;
@@ -332,10 +333,10 @@ body {
                     .swiper-wrapper {
                         height: 100vh;
                         .swiper-slide {
-                            &.mv_01 {background: url('../images/main/mv_pc_01.png')no-repeat center/cover}
-                            &.mv_02 {background: url('../images/main/mv_pc_02.png')no-repeat center/cover}
+                            position: relative;
                             @include fullsize;
                             display: flex; justify-content: center; flex-direction: column;
+
                             figcaption {
                                 @include paddingLeft_10;
                                 p {
@@ -349,9 +350,48 @@ body {
                                     }
                                 }
                             }
+
+                            .point_xy {
+                                position: absolute; left: 0; top: 0;
+                                width: 100%; height: 100%;
+                                border: 1px solid #f00;
+                                > a {
+                                    display: flex; align-items: center;
+                                    position: absolute;
+                                    background-color: #000;
+                                    overflow: hidden;
+                                    &:hover, &.active {
+                                        border-radius: 30px;
+                                        padding: 0 0 0 20px;
+                                        span {
+                                            &:nth-of-type(1) {
+                                                @include fullsize;
+                                                opacity: 1;
+                                            }
+                                        }
+                                    }
+                                    span {
+                                        display: inline-block;
+                                        &:nth-of-type(1) {
+                                            width: 0; opacity: 0;
+                                            color: #fff;
+                                            font-size: 16px;
+                                            font-weight: bold;
+                                            line-height: 1.38;
+                                        }
+                                        &:nth-of-type(2) {
+                                            @include flexCenter;
+                                            $wh : 32px;
+                                            width:$wh;max-width:$wh;
+                                            min-width: $wh; min-height: $wh;
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
+
                 &.ms_02 {
                     @include fixed-layout_1920;
                     overflow: hidden;
@@ -364,39 +404,52 @@ body {
                                 display: flex;
                                 .swiper-wrapper {
                                     display: flex;
+                                    overflow: hidden;
                                     gap: 40px;
                                 }
                             }
                             &.top {
-                                justify-content: flex-end;
                                 margin-bottom: 80px;
+                                .swiper-container {
+                                    margin: 0;
+                                    .swiper-wrapper {
+                                        justify-content: flex-end;
+                                        .swiper-slide {
+                                            &:first-child {
+                                                &::before {
+                                                    @include transition(all .15s);
+                                                    content: '';
+                                                    position: absolute; right: 0; top: 0;
+                                                    width: 100%; height: 100%;
+                                                    background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                }
+                                
+                                
+                            }
+                            &.bottom {
                                 @include paddingLeft_10;
                                 .swiper-slide {
-                                    &:first-child {
+                                    &:last-child {
                                         &::before {
                                             @include transition(all .15s);
                                             content: '';
                                             position: absolute; right: 0; top: 0;
                                             width: 100%; height: 100%;
-                                            background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
+                                            background: linear-gradient(to left, #fff, rgba(204, 204, 204, 0))
                                         }
+
                                     }
-                                }
-                            }
-                            &.bottom {
-                                @include paddingLeft_10;
-                                .swiper-slide-duplicate-prev {
-                                    &::before {
-                                        @include transition(all .15s);
-                                        content: '';
-                                        position: absolute; right: 0; top: 0;
-                                        width: 100%; height: 100%;
-                                        background: linear-gradient(to left, #fff, rgba(204, 204, 204, 0))
-                                    }
+                                    
                                 }
                             }
                             .product_wrap {
                                 width: 100%;
+                                max-width: 1160px;
                                 figure.swiper-slide{
                                     width: 400px;
                                     figcaption {

@@ -126,10 +126,10 @@ $(function () {
         slidesPerView: 1,
         loop: true,
         loopAdditionalSlides: 1,
-        autoplay: {
-            delay: 4000,
-            disableOnInteraction: false,
-        },
+        // autoplay: {
+        //     delay: 4000,
+        //     disableOnInteraction: false,
+        // },
         lazy: {
             loadPrevNext: true
         },
