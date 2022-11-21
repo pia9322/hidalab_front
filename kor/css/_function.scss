@@ -155,6 +155,13 @@ $color-200 : #ea5417;
 
 
 
+@mixin hidagradient_01 {
+  position: absolute;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
 @mixin hidaFont_50 {
   font-size: 50px;
   font-weight: bold;
@@ -164,6 +171,11 @@ $color-200 : #ea5417;
 @mixin hidaFont_16 {
   font-size: 16px;
   line-height: 1.38;
+}
+@mixin hidaFont_14 {
+  font-size: 14px;
+  line-height: 1.43;
+  letter-spacing: -0.28px;
 }
 
 
@@ -328,7 +340,7 @@ ol, ul {list-style: none;}
 blockquote, q {quotes: none;}
 blockquote:before, blockquote:after, q:before, q:after {content: '';content: none;}
 table {border-collapse: collapse;border-spacing: 0;}
-a{ text-decoration: none; color: inherit; }n
+a{ text-decoration: none; color: inherit; }
 img {vertical-align: top; max-width: 100%;}
 i {font-style: normal;}
 p::first-line {}

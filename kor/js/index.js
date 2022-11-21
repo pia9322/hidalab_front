@@ -184,16 +184,19 @@ $(function () {
     });
     
     const mainTopproduct = new Swiper('.ms_02 .top .swiper-container', {
-        effect: "slide",
+        // effect: "slide",
         slidesPerView: "auto",
-        spaceBetween: 40,
-        loop: true,
+        touchRatio: 0,//드래그 금지
+        // spaceBetween: 40,
+        // loop: true,
     });
     const mainbottomproduct = new Swiper('.ms_02 .bottom .swiper-container', {
-        effect: "slide",
+        // effect: "slide",
         slidesPerView: "auto",
-        spaceBetween: 40,
-        loop: true,
+        touchRatio: 0,//드래그 금지
+
+        // spaceBetween: 40,
+        // loop: true,
     });
     
     const img_mainSlide = new Swiper('.img_main .swiper-container', {
