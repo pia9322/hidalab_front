@@ -4,9 +4,9 @@ include "../../include/dbconn.html";
 
 ?>
 <!DOCTYPE html>
+
 <html lang="ko">
 
-<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,25 +15,26 @@ include "../../include/dbconn.html";
     <link rel="canonical" href="Canonical URL">
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
-
-    <meta name="description" content="에프엔디넷 메디컬 닥터에디션 공식 홈페이지입니다">
     <meta name="author" content="piajj">
-    <meta name="keywords" content="에프엔디넷, fndnet, medical, fndnet_medical, 닥터에디션">
+	<meta name="description" content="hida, Innovative CMF(Color Material Finish) Design Lab, product design, industrial design, 히다 CMF디자인, 히다랩">
+    <meta name="keyword" content="color, material, finish, design, technology, surface, texture, pattern, decoration, product, packaging, plate, nameplate, case, bottle, cosmetic, makeup, trend, fashion, pantone, consulting, manufacturing, production">
 
-    <meta property="og:title" content="에프엔디넷 메디컬 닥터에디션">
-    <meta property="og:site_name" content="에프엔디넷 메디컬 닥터에디션">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="">
-    <meta property="og:image" content="../../og_img.png">
-    <meta property="og:description" content="에프엔디넷 메디컬 닥터에디션 공식 홈페이지입니다">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:url" content="https://www.hidalab.com/">
+    <meta property="og:image" content="https://www.hidalab.com/images/contents/og_title2.png">
+    <meta property="og:title" content="hida - Color Material Finish specialists (히다랩)">
+    <meta property="og:description" content="hida, Innovative CMF(Color Material Finish) Design Lab, product design, industrial design, 히다 CMF디자인, 히다랩">
 
-    <meta name="twitter:card" content="...">
-    <meta name="twitter:title" content="...">
-    <meta name="twitter:description" content="...">
-    <meta name="twitter:image" content="...">
+
+    <meta name="twitter:card" content="photo">
+    <meta name="twitter:title" content="hida - Color Material Finish specialists (히다랩)">
+    <meta name="twitter:url" content="https://www.hidalab.com//">
+    <meta name="twitter:image" content="https://www.hidalab.com//images/contents/og_title2.png">
+    <meta name="twitter:description" content="hida, Innovative CMF(Color Material Finish) Design Lab, product design, industrial design, 히다 CMF디자인, 히다랩">
     <!-- --------------------SEO-------------------- -->
 
-    <title>닥터에디션</title>
+	<title>hida - Color Material Finish specialists (히다랩)</title>
 
     <!-- --------------------CSS-------------------- -->
     <link rel="stylesheet" href="../css/swiper.css">
@@ -339,7 +340,7 @@ include "../../include/dbconn.html";
                 <div class="left">
                     <h2>
                         Explore more
-                        <br class="pc_only">
+                        <br>
                         our CMF library
                     </h2>
                     <p>
@@ -462,6 +463,15 @@ include "../../include/dbconn.html";
                     </div>
                 </div>
 
+                <ul class="mo_tab">
+                    <li><a href="javascript:;" class="active">Instagram</a></li>
+                    <li><a href="javascript:;">Facebook</a></li>
+                    <li><a href="javascript:;">LinkedIn</a></li>
+                    <li><a href="javascript:;">Behance</a></li>
+                    <li><a href="javascript:;">Pinterest</a></li>
+                    <li><a href="javascript:;">Naver Blog</a></li>
+                </ul>
+
             </article>
         </section>
 
@@ -486,12 +496,12 @@ include "../../include/dbconn.html";
                     </form>
                     <ul>
                         <li>
-                            <a href="">About us</a>
-                            <a href="">Privacy policy</a>
-                            <a href="">News</a>
-                            <a href="">Terms & Conditions</a>
-                            <a href="">Event</a>
-                            <a href="">Contact</a>
+                            <a href="#none">About us</a>
+                            <a href="#none">Privacy policy</a>
+                            <a href="#none">News</a>
+                            <a href="#none">Terms & Conditions</a>
+                            <a href="#none">Event</a>
+                            <a href="#none">Contact</a>
                         </li>
                     </ul>
 
@@ -534,90 +544,134 @@ include "../../include/dbconn.html";
         $(function() {
 
             gsap.registerPlugin(ScrollTrigger);
-
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".ms_03 .box_01",
-                    pin: true,
-                    start: "top top",
-                    end: "+=150%",
-                    pin: true,
-                    scrub: 1,
-                    // markers: true
-                },
-            });
-            tl.to(".img_01 img:first-child", {
-
-                opacity: 0,
-            });
-            const t2 = gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".ms_03 .box_02",
-                    pin: true,
-                    start: "top top",
-                    end: "+=300%",
-                    pin: true,
-                    scrub: 1,
-                    // markers: true
-                },
-                defaults: {
-                    duration: 2,
-                }
-            });
-            t2.to(".img_02 img:nth-of-type(1)", {
+            if(window.innerWidth >= 1200) {
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".ms_03 .box_01",
+                        start: "top top",
+                        end: "+=150%",
+                        pin: true,
+                        scrub: 1,
+                        // markers: true
+                    },
+                });
+                tl.to(".img_01 img:first-child", {
 
                     opacity: 0,
-                })
-                .to(".img_02 img:nth-of-type(2)", {
-                    opacity: 1,
-                })
-                .to(".img_02 img:nth-of-type(1), .box_02 img:nth-of-type(2)", {
-                    scale: 0,
-                })
-                .to(".img_02 img:nth-of-type(3), .box_02 img:nth-of-type(4)", {
-                    top: "0",
-                    duration: 3
-                }, "<")
+                });
 
-            const t3 = gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".ms_03 .box_03",
-                    // pin: true,
-                    start: "top top",
-                    end: "+=200%",
-                    pin: true,
-                    scrub: 1,
-                    // markers: true
-                },
-                defaults: {
-                    duration: 2,
-                }
-            });
-            t3.to(".img_03 img:nth-of-type(3)", {
-                    scale: .75,
-                })
-                .to(".img_03 img:nth-of-type(3)", {
-                    top: "100%",
-                })
-                .to(".img_03 img:nth-of-type(2)", {
-                    bottom: '10%',
-                }, '<')
-                .to(".img_03 img:nth-of-type(4)", {
-                    bottom: '5%',
-                }, '<')
-                .to(".img_03 img:nth-of-type(1)", {
-                    bottom: 'unset',
-                    top: '0',
-                }, '<')
-        
-        
-                $('.ms_04 .left ul li').click(function(){
-                    snsIndex = $(this).index();
-                    $('.ms_04 .left ul li a, .right > div').removeClass('active');
+                const t2 = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".ms_03 .box_02",
+                        start: "top top",
+                        end: "+=300%",
+                        pin: true,
+                        scrub: 1,
+                        // markers: true
+                    },
+                    defaults: {
+                        duration: 2,
+                    }
+                });
+                t2.to(".img_02 img:nth-of-type(1)", {
 
-                    $(this).find('a').addClass('active');
-                    $('.right > div').eq(snsIndex).addClass('active')
-                })
+                        opacity: 0,
+                    })
+                    .to(".img_02 img:nth-of-type(2)", {
+                        opacity: 1,
+                    })
+                    .to(".img_02 img:nth-of-type(1), .box_02 img:nth-of-type(2)", {
+                        scale: 0,
+                    })
+                    .to(".img_02 img:nth-of-type(3), .box_02 img:nth-of-type(4)", {
+                        top: "0",
+                        duration: 3
+                    }, "<")
+
+                const t3 = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".ms_03 .box_03",
+                        start: "top top",
+                        end: "+=200%",
+                        pin: true,
+                        scrub: 1,
+                        // markers: true
+                    },
+                    defaults: {
+                        duration: 2,
+                    }
+                });
+                t3.to(".img_03 img:nth-of-type(3)", {
+                        scale: .75,
+                    })
+                    .to(".img_03 img:nth-of-type(3)", {
+                        top: "100%",
+                    })
+                    .to(".img_03 img:nth-of-type(2)", {
+                        bottom: '10%',
+                    }, '<')
+                    .to(".img_03 img:nth-of-type(4)", {
+                        bottom: '5%',
+                    }, '<')
+                    .to(".img_03 img:nth-of-type(1)", {
+                        bottom: 'unset',
+                        top: '0',
+                    }, '<');
+            
+            } else {
+                // 1200
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".ms_03 .box_01 .img_wrap",
+                        start: "top top",
+                        end: "+=60%",
+                        scrub: 1,
+                        pin: true,
+                        markers: true
+                    },
+                });
+                tl.to(".img_01 img:first-child", {
+                    opacity: 0,
+                });
+
+                const t2 = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".ms_03 .box_02 .img_wrap",
+                        start: "top top",
+                        end: "+=100%",
+                        scrub: 1,
+                        pin: true,
+                        markers: true
+                    },
+                    defaults: {
+                        duration: 10,
+                    }
+                });
+                t2.to(".img_02 img:nth-of-type(1)", {
+
+                        opacity: 0,
+                    })
+                    .to(".img_02 img:nth-of-type(2)", {
+                        opacity: 1,
+                    })
+                    .to(".img_02 img:nth-of-type(1), .box_02 img:nth-of-type(2)", {
+                        scale: 0,
+                    })
+                    .to(".img_02 img:nth-of-type(3), .box_02 img:nth-of-type(4)", {
+                        top: "0",
+                        duration: 3
+                    }, "<")
+        
+            }
+            
+            $('.ms_04 .left ul li, .mo_tab li').click(function(){
+                snsIndex = $(this).index();
+                $('.ms_04 .left ul li a, .mo_tab li a, .right > div').removeClass('active');
+
+                $(this).find('a').addClass('active');
+                $('.right > div').eq(snsIndex).addClass('active')
+            })
+           
         })
 
 

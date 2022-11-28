@@ -180,14 +180,13 @@ body {
 
                     form {
                         height: 55px;
-                        > input {height: 100%;border: none;}
+                        > input {height: 100%;border: none;color: #fff;}
                         input[type=email] {
                             padding: 0 20px;
                             background-color: #111;
                             font-size: 18px;
                             line-height: 1.5;
                             letter-spacing: -0.36px;
-                            color: #666;
                         }
                         input[type=submit] {
                             background-color: #222;
@@ -196,7 +195,6 @@ body {
                             font-weight: bold;
                             line-height: 1.5;
                             letter-spacing: -0.4px;
-                            color: #fff;
                         }
                     }
                     ul {
@@ -497,6 +495,7 @@ body {
                                 width: 100%;
                                 max-width: 960px;
 
+                                img {object-fit: contain;}
                                 &.img_01 {
                                     img {
                                         position: absolute; left: 50%; top: 50%;
@@ -556,7 +555,6 @@ body {
                     @include fixed-layout_1920;
                     background-color: #fff;
                     article {
-                        height: 100vh;
                         padding: 205px 0 0 0;
                         @include paddingLeft_10();
                         display: flex; justify-content: space-between;
@@ -587,12 +585,10 @@ body {
                                             @include transition(all .15s);
                                         }
                                         &::after {
-                                            content: '';
                                             left: 0; bottom: 0;
                                             width: 0; height: 1px; background-color: #000;
                                         }
                                         &::before {
-                                            content: '';
                                             opacity: 0;
                                             width: 8px; height: 8px;
                                             left: calc(100% + 10px); top: 50%;
@@ -627,6 +623,15 @@ body {
                                 }
                                 > a {
                                     width: 189px; height: 189px;
+                                }
+                            }
+                        }
+                        .mo_tab {
+                            display: flex; flex-direction:  column; gap: 16px 0;
+                            display: none;
+                            margin-top: 50px;
+                            li {
+                                a {
                                 }
                             }
                         }
