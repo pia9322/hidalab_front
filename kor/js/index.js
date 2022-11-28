@@ -189,14 +189,34 @@ $(function () {
         touchRatio: 0,//드래그 금지
         // spaceBetween: 40,
         // loop: true,
+        breakpoints: {
+            1470: {
+                slidesPerView: 3,
+                spaceBetween: 10,
+            },
+            720: {
+                slidesPerView: 2.5,
+                spaceBetween: 10,
+            },
+        },
+        
     });
     const mainbottomproduct = new Swiper('.ms_02 .bottom .swiper-container', {
         // effect: "slide",
         slidesPerView: "auto",
         touchRatio: 0,//드래그 금지
-
         // spaceBetween: 40,
         // loop: true,
+        breakpoints: {
+            1470: {
+                slidesPerView: 3,
+                spaceBetween: 10,
+            },
+            720: {
+                slidesPerView: 2.5,
+                spaceBetween: 10,
+            },
+        },
     });
     
     const img_mainSlide = new Swiper('.img_main .swiper-container', {

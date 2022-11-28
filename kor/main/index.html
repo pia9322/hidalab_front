@@ -124,7 +124,7 @@ include "../../include/dbconn.html";
         <section class="ms ms_01 swiper-container">
             <article class="swiper-wrapper">
                 
-                <figure class="swiper-slide mv_01" style="background: url('../images/main/mv_pc_01.png')no-repeat center/cover;">
+                <figure class="swiper-slide mv_01" style="background: url('../images/main/mv_pc_01.png')no-repeat  center / cover;">
                     <figcaption>
                         <p class="text_01">
                             CMF trend 2022
@@ -140,8 +140,18 @@ include "../../include/dbconn.html";
                     </figcaption>
                     
                     <div class="point_xy">
-                        <a href="">
-                            <span>asdasdsadasdsda</span>
+                        <a href="#none" style="left: 53.3%; top:56.5%;">
+                            <span>Circle Name</span>
+                            <span><img src="../images/common/ico_plus_02.svg" alt=""></span>
+                        </a>
+
+                        <a href="#none" style="left: 53%; top: 36%;">
+                            <span>Material Name</span>
+                            <span><img src="../images/common/ico_plus_02.svg" alt=""></span>
+                        </a>
+
+                        <a href="#none" style="left: 78%; top: 34%;">
+                            <span>Material Name</span>
                             <span><img src="../images/common/ico_plus_02.svg" alt=""></span>
                         </a>
                     </div>
@@ -344,17 +354,17 @@ include "../../include/dbconn.html";
                     </p>
                     
                     <ul>
-                        <li><a href="" class="active">Instagram</a></li>
-                        <li><a href="">Facebook</a></li>
-                        <li><a href="">LinkedIn</a></li>
-                        <li><a href="">Behance</a></li>
-                        <li><a href="">Pinterest</a></li>
-                        <li><a href="">Naver Blog</a></li>
+                        <li><a href="javascript:;" class="active">Instagram</a></li>
+                        <li><a href="javascript:;">Facebook</a></li>
+                        <li><a href="javascript:;">LinkedIn</a></li>
+                        <li><a href="javascript:;">Behance</a></li>
+                        <li><a href="javascript:;">Pinterest</a></li>
+                        <li><a href="javascript:;">Naver Blog</a></li>
                     </ul>
 
                 </div>
                 <div class="right">
-                    <div class="sns_wrap">
+                    <div class="sns_wrap active">
                         <a href="https://www.hidalab.com/cmf_library/view.php?&amp;page=1&amp;num=217" target="_blank">
                             <div class="img"><img src="../images/sns/4.sns-01.jpg" alt=""></div>
                         </a>
@@ -385,6 +395,40 @@ include "../../include/dbconn.html";
                         <a href="https://www.instagram.com/p/CcR5HSkpQCN/" target="_blank">
                             <div class="img"><img src="../images/sns/4.sns-10.jpg" alt=""></div>
                         </a>
+                        <a href="https://www.hidalab.com/cmf_library/view.php?&amp;page=1&amp;num=538" target="_blank">
+                            <div class="img"><img src="../images/sns/4.sns-11.jpg" alt=""></div>
+                        </a>
+                        <a href="https://www.instagram.com/p/CYVLc-XJ24o/" target="_blank">
+                            <div class="img"><img src="../images/sns/4.sns-12.jpg" alt=""></div>
+                        </a>
+                        <a href="https://www.hidalab.com/cmf_library/view.php?&amp;page=1&amp;num=555" target="_blank">
+                            <div class="img"><img src="../images/sns/4.sns-13.jpg" alt=""></div>
+                        </a>
+                        <a href="https://www.instagram.com/p/CbhC1mopWrB/" target="_blank">
+                            <div class="img"><img src="../images/sns/4.sns-14.jpg" alt=""></div>
+                        </a>
+                        <a href="https://www.hidalab.com/cmf_library/view.php?&amp;page=1&amp;num=546" target="_blank">
+                            <div class="img"><img src="../images/sns/4.sns-15.jpg" alt=""></div>
+                        </a>
+                        <a href="https://www.instagram.com/p/Calu46ZJysS/" target="_blank">
+                            <div class="img"><img src="../images/sns/4.sns-16.jpg" alt=""></div>
+                        </a>
+                        <a href="https://www.hidalab.com/material/view.php?cate1_seq=174&amp;cate2_seq=187&amp;num=517" target="_blank">
+                            <div class="img"><img src="../images/sns/4.sns-17.jpg" alt=""></div>
+                        </a>
+                        <a href="https://www.instagram.com/p/Cb_3jSprAif/" target="_blank">
+                            <div class="img"><img src="../images/sns/4.sns-18.jpg" alt=""></div>
+                        </a>
+                        <a href="https://www.hidalab.com/technique/view.php?num=42" target="_blank">
+                            <div class="img"><img src="../images/sns/4.sns-19.jpg" alt=""></div>
+                        </a>
+                        <a href="https://www.instagram.com/p/CbO8beuJBQg/" target="_blank">
+                            <div class="img"><img src="../images/sns/4.sns-20.jpg" alt=""></div>
+                        </a>
+
+                    </div>
+
+                    <div class="sns_wrap">
                         <a href="https://www.hidalab.com/cmf_library/view.php?&amp;page=1&amp;num=538" target="_blank">
                             <div class="img"><img src="../images/sns/4.sns-11.jpg" alt=""></div>
                         </a>
@@ -490,6 +534,7 @@ include "../../include/dbconn.html";
         $(function() {
 
             gsap.registerPlugin(ScrollTrigger);
+
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".ms_03 .box_01",
@@ -502,10 +547,9 @@ include "../../include/dbconn.html";
                 },
             });
             tl.to(".img_01 img:first-child", {
+
                 opacity: 0,
             });
-
-
             const t2 = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".ms_03 .box_02",
@@ -521,6 +565,7 @@ include "../../include/dbconn.html";
                 }
             });
             t2.to(".img_02 img:nth-of-type(1)", {
+
                     opacity: 0,
                 })
                 .to(".img_02 img:nth-of-type(2)", {
@@ -537,7 +582,7 @@ include "../../include/dbconn.html";
             const t3 = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".ms_03 .box_03",
-                    pin: true,
+                    // pin: true,
                     start: "top top",
                     end: "+=200%",
                     pin: true,
@@ -564,6 +609,15 @@ include "../../include/dbconn.html";
                     bottom: 'unset',
                     top: '0',
                 }, '<')
+        
+        
+                $('.ms_04 .left ul li').click(function(){
+                    snsIndex = $(this).index();
+                    $('.ms_04 .left ul li a, .right > div').removeClass('active');
+
+                    $(this).find('a').addClass('active');
+                    $('.right > div').eq(snsIndex).addClass('active')
+                })
         })
 
 

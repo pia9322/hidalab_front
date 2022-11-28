@@ -112,8 +112,7 @@ $color-200 : #ea5417;
 
 // ====================================JJ MIXIN====================================
 @mixin fixed-layout_1920 {max-width: 1920px; width: 100%; margin: 0 auto; }
-@mixin fixed-layout {max-width: 1470px; width: 100%; margin: 0 auto; }
-@mixin fixed-layout_02 {max-width: 1600px; width: 100%; }
+@mixin fixed-layout_1470 {padding: 0 5%;}
 @mixin fixed-layout-subpage {max-width: 1360px;  width: 100%; margin: 0 auto;}
 @mixin not_fixed_layout {max-width: 100%; width: 100%; margin: 0 auto;}
 @mixin header-height {height: 100px;}
