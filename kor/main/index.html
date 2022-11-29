@@ -181,7 +181,7 @@ include "../../include/dbconn.html";
 
                 <div class="top">
                     <div class="product_wrap">
-                        <div class="swiper-container">
+                        <div class="swiper-container" dir="rtl">
                             <div class="swiper-wrapper">
                            
                                 <figure class="swiper-slide">
@@ -211,6 +211,38 @@ include "../../include/dbconn.html";
                     </div>
 
 
+                </div>
+
+                <div class="top mo_1470">
+                    <div class="product_wrap">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                           
+                                <figure class="swiper-slide">
+                                    <img src="../images/product/p_s_02.png" alt="">
+                                    <figcaption>FM-A166</figcaption>
+                                </figure>
+                                <figure class="swiper-slide">
+                                    <img src="../images/product/p_s_02.png" alt="">
+                                    <figcaption>FM-A166</figcaption>
+                                </figure>
+                                <figure class="swiper-slide">
+                                    <img src="../images/product/p_s_01.png" alt="">
+                                    <figcaption>FM-A166</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="text_wrap">
+                        <h2>CMF Library</h2>
+                        <p>
+                            hida is researching materials, techniques, and
+                            <br class="pc_only">
+                            manufacturing methods to create differentiated designs.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="bottom">
@@ -549,6 +581,7 @@ include "../../include/dbconn.html";
                         end: "+=150%",
                         pin: true,
                         scrub: 1,
+                        // invalidateOnRefresh: true,
                         // markers: true
                     },
                 });
@@ -694,6 +727,7 @@ include "../../include/dbconn.html";
                         top: '10%',
                     })
             };
+
             
             $('.ms_04 .left ul li, .mo_tab li').click(function(){
                 snsIndex = $(this).index();

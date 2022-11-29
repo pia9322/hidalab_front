@@ -185,13 +185,14 @@ $(function () {
     
     const mainTopproduct = new Swiper('.ms_02 .top .swiper-container', {
         // effect: "slide",
+        // freeMode: true,
         slidesPerView: "auto",
-        touchRatio: 0,//드래그 금지
-        // spaceBetween: 40,
+        // touchRatio: 0,//드래그 금지
+        spaceBetween: 40,
         // loop: true,
         breakpoints: {
             1470: {
-                slidesPerView: 3,
+                slidesPerView: 2.7,
                 spaceBetween: 10,
             },
             720: {
@@ -199,17 +200,19 @@ $(function () {
                 spaceBetween: 10,
             },
         },
-        
     });
+
+
     const mainbottomproduct = new Swiper('.ms_02 .bottom .swiper-container', {
         // effect: "slide",
+        // freeMode: true,
         slidesPerView: "auto",
-        touchRatio: 0,//드래그 금지
-        // spaceBetween: 40,
+        // touchRatio: 0,//드래그 금지
+        spaceBetween: 40,
         // loop: true,
         breakpoints: {
             1470: {
-                slidesPerView: 3,
+                slidesPerView: 2.7,
                 spaceBetween: 10,
             },
             720: {
@@ -218,6 +221,9 @@ $(function () {
             },
         },
     });
+    
+
+    
     
     const img_mainSlide = new Swiper('.img_main .swiper-container', {
         slidesPerView: "auto",
