@@ -36,6 +36,8 @@ include "../../include/dbconn.html";
 
 	<title>hida - Color Material Finish specialists (히다랩)</title>
 
+
+    
     <!-- --------------------CSS-------------------- -->
     <link rel="stylesheet" href="../css/swiper.css">
     <link rel="stylesheet" href="../css/aos.css">
@@ -43,11 +45,6 @@ include "../../include/dbconn.html";
     <link rel="stylesheet" href="../css/nice-select.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/media.css">
-
-
-
-
-
     <!-- --------------------CSS-------------------- -->
 
 
@@ -581,7 +578,7 @@ include "../../include/dbconn.html";
                         opacity: 1,
                     })
                     .to(".img_02 img:nth-of-type(1), .box_02 img:nth-of-type(2)", {
-                        scale: 0,
+                        width: 0,
                     })
                     .to(".img_02 img:nth-of-type(3), .box_02 img:nth-of-type(4)", {
                         top: "0",
@@ -602,7 +599,7 @@ include "../../include/dbconn.html";
                     }
                 });
                 t3.to(".img_03 img:nth-of-type(3)", {
-                        scale: .75,
+                        width: '260px',
                     })
                     .to(".img_03 img:nth-of-type(3)", {
                         top: "100%",
@@ -624,7 +621,7 @@ include "../../include/dbconn.html";
                     scrollTrigger: {
                         trigger: ".ms_03 .box_01 .img_wrap",
                         start: "top top",
-                        end: "+=60%",
+                        end: "bottom bottom",
                         scrub: 1,
                         pin: true,
                         markers: true
@@ -638,31 +635,65 @@ include "../../include/dbconn.html";
                     scrollTrigger: {
                         trigger: ".ms_03 .box_02 .img_wrap",
                         start: "top top",
-                        end: "+=100%",
+                        end: "bottom bottom",
                         scrub: 1,
                         pin: true,
-                        markers: true
+                        markers: true,
                     },
                     defaults: {
                         duration: 10,
                     }
                 });
                 t2.to(".img_02 img:nth-of-type(1)", {
-
                         opacity: 0,
                     })
                     .to(".img_02 img:nth-of-type(2)", {
                         opacity: 1,
+                    },'<')
+                    .to(".img_02 img:nth-of-type(2)", {
+                        opacity: 0,
                     })
-                    .to(".img_02 img:nth-of-type(1), .box_02 img:nth-of-type(2)", {
-                        scale: 0,
+                    .to(".img_02 img:nth-of-type(3)", {
+                        opacity: 1,
+                    },'<')
+                    .to(".img_02 img:nth-of-type(3)", {
+                        top: 80,
+                    },'<')
+                    .to(".box_02 img:nth-of-type(4)", {
+                        top: 100,
+                        opacity: 1,
+                    });
+
+                    
+                const t3 = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".ms_03 .box_03 .img_wrap",
+                        start: "top top",
+                        end: "bottom bottom",
+                        pin: true,
+                        scrub: 1,
+                        // markers: true
+                    },
+                    defaults: {
+                        duration: 10,
+                    }
+                });
+                t3.to(".img_03 img:nth-of-type(3)", {
+                        height: '360px',
                     })
-                    .to(".img_02 img:nth-of-type(3), .box_02 img:nth-of-type(4)", {
+                    .to(".img_03 img:nth-of-type(1)", {
                         top: "0",
-                        duration: 3
-                    }, "<")
-        
-            }
+                    })
+                    .to(".img_03 img:nth-of-type(2)", {
+                        top: "30%",
+                    },'<')
+                    .to(".img_03 img:nth-of-type(4)", {
+                        top: "20%",
+                    },'<')
+                    .to(".img_03 img:nth-of-type(3)", {
+                        top: '10%',
+                    })
+            };
             
             $('.ms_04 .left ul li, .mo_tab li').click(function(){
                 snsIndex = $(this).index();
