@@ -3,6 +3,10 @@ $(function () {
     console.log('common_js_start');
     $('select.nice').niceSelect();
 
+    // jj_function
+    headerFullslide()
+    // jj_function
+
     // ======================================= AOS ======================================= 
     AOS.init({
         duration: 1000,
@@ -348,13 +352,12 @@ $(function () {
 
     // header Full depth
     function headerFullslide() {
-        $('.header_ham').click(function(){
+        $('#header_ham').click(function(){
+            $(this).toggleClass('active');
             $('#header_full').toggleClass('active');
-            if($('#header_full').hasClass('active')){
-                $('#header').toggleClass('active');
-            } 
+            $('main, #header_left, footer').toggleClass('blur')
         })
-        $('.header_full_wrap > li > a').click(function(){
+        $('#header_full ul li').click(function(){
             $('.header_full_wrap .depth_01').stop().slideUp()
             $(this).next().stop().slideToggle();
         })
@@ -520,7 +523,7 @@ $(function () {
     // header function
     // headerHover('.header_center > li', '.depth_01');
     // page function
-    pageCheck();
+    // pageCheck();
     // headerClick('.header_lang > ul', '.more_lang');
     // headerFullslide();
     // headerRight();
@@ -531,7 +534,7 @@ $(function () {
     
     if(window.innerWidth <= 1300) {
         // header_curacle()
-        headerScroll_move()
+        // headerScroll_move()
     }
 
 

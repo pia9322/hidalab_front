@@ -461,33 +461,21 @@
     body {
         #header{
             #header_wrap {
-                height: 60px;
+                height: 100px;
                 justify-content: space-between;
+                #header_left {
+                    > a {
+                        img {width: 102px;height: 40px;}
+                    }
+                }
                 #header_center {display: none;}
                 #header_right {display: none;}
             
                 // header_ham
-                .header_ham {
-                    display: flex;
-                    position: relative; top: 0;
-                    width: 28px; height: 18px;
-                    cursor: pointer;
-                    &.active {
-                        span {
-                            &:nth-of-type(1) { top: calc(50% - 1px); transform: rotate(45deg); }
-                            &:nth-of-type(2) { opacity: 0; transform: translateX(100%); }
-                            &:nth-of-type(3) { bottom: 50%; transform: rotate(-45deg); }
-                        }
-                    }
-                    span {
-                        // 햄벅
-                        position: absolute; left: 0; width: 22px; border-bottom: 2px solid #000;
-                        @include transition(all .3s);
-                        &:nth-of-type(1) { top: 0; }
-                        &:nth-of-type(2) { top: calc(50% - 1px); }
-                        &:nth-of-type(3) { bottom: 0; }
-                    }
+                #header_ham {
+                    display: block;
                 }
+                
     
                 // #header_full {
                 //     @include transition(all .3s);

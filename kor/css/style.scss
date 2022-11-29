@@ -20,6 +20,11 @@ body {
         &.ico_01 {width: 10px; height: 10px; background-color: $color-100; border-radius: 100%} 
         &.ico_02 {width: 5px; height: 5px; background-color: $color-100; border-radius: 100%} 
     }
+    .blur {
+        @include transition(filter .3s);
+        filter: blur(5px);
+    }
+
     /*  btn_link  */
 
     .arrow_01 {
@@ -43,7 +48,7 @@ body {
 // ==================================== header, footer ====================================
 body {
     #header{
-        position: fixed; left: 0; top: 0; z-index: 9999;
+        position: fixed; left: 0; top: 0; z-index: 9998;
         width: 100%;
         #header_wrap {
             display: flex; align-items: center;
@@ -75,10 +80,10 @@ body {
             }
         
             // header_ham
-            .header_ham {
+            #header_ham {
                 display: none;
-                position: relative; top: 0;
-                width: 28px; height: 18px;
+                position: relative; z-index: 9999;
+                width: 38px; height: 26px;
                 cursor: pointer;
                 &.active {
                     span {
@@ -89,11 +94,74 @@ body {
                 }
                 span {
                     // 햄벅
-                    position: absolute; left: 0; width: 22px; border-bottom: 2px solid #fff;
+                    position: absolute; left: 0; width: 100%; border-bottom: 2px solid #000;
                     @include transition(all .3s);
                     &:nth-of-type(1) { top: 0; }
                     &:nth-of-type(2) { top: calc(50% - 1px); }
                     &:nth-of-type(3) { bottom: 0; }
+                }
+            }
+            #header_full {
+                @include transition(left .3s);
+                position: fixed; left: 100%; top: 0; z-index: 9998; 
+                display: flex; justify-content: flex-end;
+                width: 100%; height: 100vh;
+                -webkit-backdrop-filter: blur(25px);
+                backdrop-filter: blur(25px);
+                background-color: rgba(255, 255, 255, 0.5);
+
+                &.active {left: 0;}
+                article {
+                    position: relative;
+                    width: 60%; height: 100%;
+                    background-color: #fff;
+                    nav {
+                        &.status {
+                            position: relative;
+                            height: 100px;
+                            display: flex; align-items: center; justify-content: flex-end; 
+                            padding-right: calc(70px + 41px);
+                            a {
+                                display: flex; align-items: center;
+                                font-size: 24px;
+                                line-height: 1.5;
+                                letter-spacing: -0.6px;
+                                color: #000;
+                                img {margin-right: 15px;}
+                            }
+                        }
+                        &.menu {
+                            padding: 10% 15%;
+                            ul {
+                                &.depth_01 {
+                                    li {
+                                        &:last-child a{margin: 0;}
+                                        a {
+                                            display: inline-block;
+                                            font-size: 28px;
+                                            line-height: 1.5;
+                                            letter-spacing: -0.7px;
+                                            margin-bottom: 20px;
+                                        }
+                                    }
+                                }
+                                &.user_depth {
+                                    margin-top: 50px;
+                                    li {
+                                        &:last-child a{margin: 0;}
+                                        a {
+                                            display: inline-block;
+                                            color: #999;
+                                            font-size: 24px;
+                                            line-height: 1.5;
+                                            letter-spacing: -0.6px;
+                                            margin-bottom: 16px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
