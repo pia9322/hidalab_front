@@ -156,11 +156,12 @@
                                 &.top {
                                     // margin-bottom: 80px;
                                     margin-bottom: 100px;
-                                    display: none;
-                                    &.mo_1470 {display:flex;}
                                     .product_wrap {order:2}
                                     .text_wrap {order: 1;}
+
                                     .swiper-container {
+                                        display: none;
+                                        &.mo_1470 {display:flex;}
                                         .swiper-wrapper {
                                             .swiper-slide {
                                                 &:last-child {
@@ -213,7 +214,7 @@
                         article {
                             @include fixed-layout_1920;
                             @include paddingLeft_10();
-                            padding: 0 4%;
+                            padding: 0 0 04%;
                             .box {
                                 .text_wrap {
                                     display: flex; align-items: unset; flex-direction: column;

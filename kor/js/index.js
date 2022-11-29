@@ -187,7 +187,7 @@ $(function () {
         // effect: "slide",
         // freeMode: true,
         slidesPerView: "auto",
-        // touchRatio: 0,//드래그 금지
+        // touchRatio: 0,
         spaceBetween: 40,
         // loop: true,
         breakpoints: {
@@ -207,7 +207,7 @@ $(function () {
         // effect: "slide",
         // freeMode: true,
         slidesPerView: "auto",
-        // touchRatio: 0,//드래그 금지
+        // touchRatio: 0,
         spaceBetween: 40,
         // loop: true,
         breakpoints: {
