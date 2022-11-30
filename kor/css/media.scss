@@ -202,7 +202,8 @@
                                 &.top {
                                     // margin-bottom: 80px;
                                     margin-bottom: 100px;
-                                    .product_wrap {order:2}
+                                    .product_wrap {order:2;
+                                    }
                                     .text_wrap {order: 1;}
 
                                     .swiper-container {
@@ -543,42 +544,29 @@
                                 }
                                 
                                 .img_wrap {
-                                    // width: 100%;
                                     &.img_01 {
                                         height: 500px;
+                                        aspect-ratio: 1/2;
                                         img {
-                                            all: unset;
-                                            position: absolute; left: 50%; top: 120px;
-                                            transform: translateX(-50%);
-                                            height: 500px;
-                                            // 여기까지
+                                            top: 100px;
                                         }
                                     }
                                     &.img_02 {
-                                        aspect-ratio: 1/2;
+                                        aspect-ratio: 1/3;
                                         img {
                                             &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
-                                                all: unset;
-                                                max-width: 100%;
-                                                position: absolute; left: 50%; top: 120px;
-                                                transform: translateX(-50%);
-                                                opacity: 0;
-                                                object-fit: contain;
                                             }
                                             &:nth-child(1) {
-                                                max-height: 350px;
-                                                opacity: 1;
+                                                max-height: 300px;
                                             }
                                             &:nth-child(2) {
-                                                max-height: 350px;
+                                                max-height: 300px;
                                             }
                                             &:nth-child(3) {
-                                                left: 0; transform: translateX(0);
-                                                max-width: 550px;
+                                                max-width: 500px;
                                             }
                                             &:nth-child(4) {
-                                                left:auto; right: 0; transform: translateX(0);
-                                                max-width: 400px;
+                                                max-width: 350px;
                                             }
                                         }
                                     }
@@ -587,21 +575,15 @@
                                         img {
                                             // &:not(:nth-child(3)) {top: 100%;}
                                             &:nth-child(1), &:nth-child(2), &:nth-child(3),&:nth-child(4) {
-                                                all: unset;
-                                                position: absolute;
-                                                height: 400px;
+                                                height: 350px;
                                             }
                                             &:nth-child(1) {
-                                                right: 0; top: 50%;
                                             }
                                             &:nth-child(2) {
-                                                left: 0; top: 100%;
                                             }
                                             &:nth-child(3) {
-                                                top: 120px;
                                             }
                                             &:nth-child(4) {
-                                                right: 0; top: 100%;
                                             }
                                         }
     
@@ -703,6 +685,68 @@
                             }
                         }
                     }
+                    
+                    &.ms_03 {
+                        article {
+                            .box {
+                                .text_wrap {
+                                    h2 {@include hidaFont_50;}
+                                    p {@include hidaFont_16;}
+                                }
+                                
+                                .img_wrap {
+                                    &.img_01 {
+                                        img {
+                                            top: 100px;
+                                        }
+                                    }
+                                    &.img_02 {
+                                        img {
+                                            &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+                                            }
+                                            &:nth-child(1) {
+                                                max-height: 300px;
+                                            }
+                                            &:nth-child(2) {
+                                                max-height: 300px;
+                                            }
+                                            &:nth-child(3) {
+                                                max-width: 400px;
+                                            }
+                                            &:nth-child(4) {
+                                                max-width: 300px;
+                                            }
+                                        }
+                                    }
+                                    &.img_03 {
+                                        img {
+                                            // &:not(:nth-child(3)) {top: 100%;}
+                                            &:nth-child(1), &:nth-child(2), &:nth-child(3),&:nth-child(4) {
+                                                height: 300px;
+                                            }
+                                            &:nth-child(1) {
+                                            }
+                                            &:nth-child(2) {
+                                            }
+                                            &:nth-child(3) {
+                                            }
+                                            &:nth-child(4) {
+                                            }
+                                        }
+    
+                                        // img {
+                                        //     &:nth-child(1) {margin-top: 200px;}
+                                        //     &:nth-child(2) {margin-top: 400px;}
+                                        //     &:nth-child(3) {margin-top: 150px;}
+                                        //     &:nth-child(4) {margin-top: 150px;}
+                                        // }
+                                    }
+                                }
+                            }
+                            
+                        }
+                    }
+    
                 }
             }
         }
@@ -892,25 +936,63 @@
                     &.ms_03 {
                         article {
                             .box {
+                                &:first-child {
+                                    .text_wrap {
+                                        padding-top: 80px;
+                                    }
+                                }
                                 .text_wrap {
+                                    padding-top: 0;
                                     h2 {@include hidaFont_50;}
                                     p {@include hidaFont_16;}
                                 }
                                 
                                 .img_wrap {
                                     &.img_01 {
-                                        img {max-height: 400px;}
+                                        img {
+                                            top: 100px;
+                                        }
                                     }
                                     &.img_02 {
                                         img {
-                                            &:nth-child(1) {max-width: 90%;}                                                
-                                            &:nth-child(2) {max-width: 90%;}                                                
-                                            &:nth-child(3) {max-width: 90%;}
-                                            &:nth-child(4) {max-width: 90%;}
+                                            &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+                                            }
+                                            &:nth-child(1) {
+                                                max-height: 300px;
+                                            }
+                                            &:nth-child(2) {
+                                                max-height: 300px;
+                                            }
+                                            &:nth-child(3) {
+                                                max-width: 400px;
+                                            }
+                                            &:nth-child(4) {
+                                                max-width: 300px;
+                                            }
                                         }
                                     }
                                     &.img_03 {
-                                        img {}
+                                        img {
+                                            // &:not(:nth-child(3)) {top: 100%;}
+                                            &:nth-child(1), &:nth-child(2), &:nth-child(3),&:nth-child(4) {
+                                                height: 300px;
+                                            }
+                                            &:nth-child(1) {
+                                            }
+                                            &:nth-child(2) {
+                                            }
+                                            &:nth-child(3) {
+                                            }
+                                            &:nth-child(4) {
+                                            }
+                                        }
+    
+                                        // img {
+                                        //     &:nth-child(1) {margin-top: 200px;}
+                                        //     &:nth-child(2) {margin-top: 400px;}
+                                        //     &:nth-child(3) {margin-top: 150px;}
+                                        //     &:nth-child(4) {margin-top: 150px;}
+                                        // }
                                     }
                                 }
                             }

@@ -644,7 +644,7 @@ include "../../include/dbconn.html";
                         top: '0',
                     }, '<');
             
-            } else {
+            } else if(window.innerWidth >= 767) {
                 // 1200
                 const tl = gsap.timeline({
                     scrollTrigger: {
@@ -722,7 +722,85 @@ include "../../include/dbconn.html";
                     .to(".img_03 img:nth-of-type(3)", {
                         top: '10%',
                     })
-            };
+            } else {
+                // 767
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".ms_03 .box_01 .img_wrap",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 1,
+                        pin: true,
+                        // markers: true
+                    },
+                });
+                tl.to(".img_01 img:first-child", {
+                    opacity: 0,
+                });
+
+                const t2 = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".ms_03 .box_02 .img_wrap",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 1,
+                        pin: true,
+                        // markers: true,
+                    },
+                    defaults: {
+                        duration: 10,
+                    }
+                });
+                t2.to(".img_02 img:nth-of-type(1)", {
+                        opacity: 0,
+                    })
+                    .to(".img_02 img:nth-of-type(2)", {
+                        opacity: 1,
+                    },'<')
+                    .to(".img_02 img:nth-of-type(2)", {
+                        opacity: 0,
+                    })
+                    .to(".img_02 img:nth-of-type(3)", {
+                        opacity: 1,
+                    },'<')
+                    .to(".img_02 img:nth-of-type(3)", {
+                        top: 120,
+                    },'<')
+                    .to(".box_02 img:nth-of-type(4)", {
+                        top: 150,
+                        opacity: 1,
+                    });
+
+                    
+                const t3 = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".ms_03 .box_03 .img_wrap",
+                        start: "top top",
+                        end: "bottom bottom",
+                        pin: true,
+                        scrub: 1,
+                        // markers: true
+                    },
+                    defaults: {
+                        duration: 10,
+                    }
+                });
+                t3.to(".img_03 img:nth-of-type(3)", {
+                        height: '250px',
+                    })
+                    .to(".img_03 img:nth-of-type(1)", {
+                        top: 100,
+                    })
+                    .to(".img_03 img:nth-of-type(2)", {
+                        top: 150,
+                    },'<')
+                    .to(".img_03 img:nth-of-type(4)", {
+                        top: 250,
+                    },'<')
+                    .to(".img_03 img:nth-of-type(3)", {
+                        top: 300,
+                    })
+            }
 
             
             $('.ms_04 .left ul li, .mo_tab li').click(function(){
