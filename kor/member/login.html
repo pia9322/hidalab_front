@@ -1,43 +1,222 @@
 <?
-$h_menu = "member";
-include "../include/header.html";
-include "../include/session_check.html";
+session_start();
+include "../../include/dbconn.html";
 
 ?>
+<!DOCTYPE html>
+
+<html lang="ko">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- --------------------SEO-------------------- -->
+    <link rel="canonical" href="Canonical URL">
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+
+    <meta name="author" content="piajj">
+	<meta name="description" content="hida, Innovative CMF(Color Material Finish) Design Lab, product design, industrial design, 히다 CMF디자인, 히다랩">
+    <meta name="keyword" content="color, material, finish, design, technology, surface, texture, pattern, decoration, product, packaging, plate, nameplate, case, bottle, cosmetic, makeup, trend, fashion, pantone, consulting, manufacturing, production">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:url" content="https://www.hidalab.com/">
+    <meta property="og:image" content="https://www.hidalab.com/images/contents/og_title2.png">
+    <meta property="og:title" content="hida - Color Material Finish specialists (히다랩)">
+    <meta property="og:description" content="hida, Innovative CMF(Color Material Finish) Design Lab, product design, industrial design, 히다 CMF디자인, 히다랩">
 
 
-    <main class="sub_page login" id="member">
+    <meta name="twitter:card" content="photo">
+    <meta name="twitter:title" content="hida - Color Material Finish specialists (히다랩)">
+    <meta name="twitter:url" content="https://www.hidalab.com//">
+    <meta name="twitter:image" content="https://www.hidalab.com//images/contents/og_title2.png">
+    <meta name="twitter:description" content="hida, Innovative CMF(Color Material Finish) Design Lab, product design, industrial design, 히다 CMF디자인, 히다랩">
+    <!-- --------------------SEO-------------------- -->
 
-        <section>
-            <article class="wrap">
+	<title>hida - Color Material Finish specialists (히다랩)</title>
 
-                    <div class="tit">
-                        <h2>로그인</h2>
-                        <p>에프앤디넷 닥터브랜드 홈페이지에 오신 것을 환영합니다.</p>
+
+    
+    <!-- --------------------CSS-------------------- -->
+    <link rel="stylesheet" href="../css/swiper.css">
+    <link rel="stylesheet" href="../css/aos.css">
+    <link rel="stylesheet" href="../css/jquery.fullpage.min.css">
+    <link rel="stylesheet" href="../css/nice-select.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/media.css">
+    <!-- --------------------CSS-------------------- -->
+
+
+    <!-- --------------------Script-------------------- -->
+    <script src="../js/jquery.js"></script>
+    <script src="../js/swiper.js"></script>
+    <script src="../js/aos.js"></script>
+    <script src="../js/fullpage.min.js"></script>
+    <script src="../js/nice-select-min.js"></script>
+    <script src="../js/gsap.min.js"></script>
+    <script src="../js/ScrollTrigger.min.js"></script>
+    <!-- --------------------Script-------------------- -->
+</head>
+
+
+<body>
+
+    <header id="header">
+        <nav id="header_wrap">
+
+            <!-- HEADER_LEFT -->
+            <h1 id="header_left">
+                <a href="../main/index.html"><img src="../images/common/logo_01.svg" alt="회사 로고"></a>
+            </h1>
+
+            <!-- HEADER_CENTER -->
+            <ul id="header_center">
+
+                <li>
+                    <a href="#none">CMF Library</a>
+                </li>
+                <li>
+                    <a href="#none">Trend Library</a>
+                </li>
+                <li>
+                    <a href="#none">Category</a>
+                </li>
+                <li>
+                    <a href="#none">Category</a>
+                </li>
+                <li>
+                    <a href="#none">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#none">Contact</a>
+                </li>
+
+            </ul>
+
+
+            <ul id="header_right">
+                <? if (!$_SESSION['f_email']) { ?>
+                    <li><a href="../member/login.html">Log in</a></li>
+                    <li><a href="../member/join.html">Join for free</a></li>
+                <? } else { ?>
+                    <!-- <li><a href="../member/db_exec.html?mode=logout">로그아웃</a></li> -->
+                    <!-- <li><a href="../member/mypage.html">마이페이지</a></li> -->
+                <? } ?>
+            </ul>
+
+            <div id="header_ham">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div id="header_full">
+                <article>
+                    <nav class="status">
+                        <a href="../member/login.html">
+                            <img src="../images/common/ico_login_01.svg" alt="">Log in
+                        </a>
+                    </nav>
+                    <nav class="menu">
+                        <ul class="depth_01">
+                            <li><a href="">CMF Library</a></li>
+                            <li><a href="">Trend Library</a></li>
+                            <li><a href="">Category</a></li>
+                            <li><a href="">Portfolio</a></li>
+                            <li><a href="">Contact</a></li>
+                        </ul>
+                        <ul class="user_depth">
+                            <li><a href="">My account</a></li>
+                            <li><a href="">Log out</a></li>
+                        </ul>
+                    </nav>
+                </article>
+            </div>
+
+
+        </nav>
+    </header>
+
+
+    <main class="sub_page" id="member">
+        <section class="login">
+            <article>
+
+                    <div class="sec_tit">
+                        <h2>Log in</h2>
+                        
+                        <ul id="user_lang">
+                            <li class="active">KOR</li>
+                            <li>ENG</li>
+                        </ul>
                     </div>
                     
-                    <div class="layout_box">
+                    <div class="content">
                         <div class="form_wrap">
-                            <form action="./db_exec.html" method="POST" class="type_01">
-                                <input type="hidden" name="mode" value="login">
-                                
-                                <div class="user">
-                                    <div>
-                                        <label><p class="box_01">이메일</p><input type="email" id="f_email" name="f_email" required></label>
-                                        <label><p class="box_01">비밀번호</p><input type="password" name="f_pw" required></label>
+                            <form action="./db_exec.html" method="POST">
+
+                                <div class="layout_box kor active">
+                                    <input type="hidden" name="mode" value="login">
+
+                                    <h2 class="con_tit">아이디와 패스워드를 입력해주세요</h2>
+                                    
+                                    <div class="input_wrap">
+                                        <label for=""><input type="email" id="f_email" name="f_email" class="full" placeholder="아이디(이메일)을 입력해주세요" required></label>
+                                        <label for=""><input type="password" name="f_pw" class="full" placeholder="비밀번호를 입력해주세요" required></label>
                                     </div>
 
-                                    <input class="btn submit" type="submit" value="로그인">
+
+                                    <div class="option_wrap">
+                                        <label class="c_pointer"><input type="checkbox" name="f_email_storage" id="f_email_storage"  value="Y"><i class="ico checkbox"></i>이메일 저장</label>
+                                        <a href="./search.html">패스워드 찾기</a>
+                                    </div>
+
+                                    <input class="full btn_submit" type="submit" value="로그인">
+
+                                    <div class="member_footer">
+                                        <ul class="sns_login">
+                                            <li><a href="javascript:;" onclick=""><img src="../images/common/ico_sns_google.png" alt="google login"></a></li>
+                                            <li><a href="javascript:;" onclick=""><img src="../images/common/ico_sns_facebook.png" alt="facebook login"></a></li>
+                                            <li><a href="javascript:;" onclick=""><img src="../images/common/ico_sns_naver.png" alt="naver login"></a></li>
+                                            <li><a href="javascript:;" onclick=""><img src="../images/common/ico_sns_kakao.png" alt="kakao login"></a></li>
+                                        </ul>
+
+                                        <a href="./join.html" class="btn btn_sign full">회원가입</a>
+                                    </div>
                                 </div>
 
-                                <div class="user_help">
-                                    <label><input type="checkbox" name="f_email_storage" id="f_email_storage"  value="Y"><i class="ico check"></i>이메일 저장</label>
-                                    <p>
-                                        <a href="./search.html">아이디/패스워드 찾기</a>
-                                        <a href="./join.html">회원가입</a>
-                                    </p>
-                                </div>
+                                <div class="layout_box eng">
+                                    <input type="hidden" name="mode" value="login">
 
+                                    <h2 class="con_tit">Enter your ID / Password</h2>
+                                    
+                                    <div class="input_wrap">
+                                        <label for=""><input type="email" id="f_email" name="f_email" class="full" placeholder="Email ID" required></label>
+                                        <label for=""><input type="password" name="f_pw" class="full" placeholder="Password" required></label>
+                                    </div>
+
+
+                                    <div class="option_wrap">
+                                        <label class="c_pointer"><input type="checkbox" name="f_email_storage" id="f_email_storage"  value="Y"><i class="ico checkbox"></i>Remember me</label>
+                                        <a href="./search.html">Forgot Password</a>
+                                    </div>
+
+                                    <input class="full btn_submit" type="submit" value="Log In">
+
+                                    <div class="member_footer">
+                                        <ul class="sns_login">
+                                            <li><a href="javascript:;" onclick=""><img src="../images/common/ico_sns_google.png" alt="google login"></a></li>
+                                            <li><a href="javascript:;" onclick=""><img src="../images/common/ico_sns_facebook.png" alt="facebook login"></a></li>
+                                            <li><a href="javascript:;" onclick=""><img src="../images/common/ico_sns_naver.png" alt="naver login"></a></li>
+                                            <li><a href="javascript:;" onclick=""><img src="../images/common/ico_sns_kakao.png" alt="kakao login"></a></li>
+                                        </ul>
+
+                                        <a href="./join.html" class="btn btn_sign full">Free Sign Up</a>
+                                    </div>
+                                </div>
+                                
+                            
                             </form>
                         </div>
                     </div>
@@ -46,33 +225,76 @@ include "../include/session_check.html";
         </section>
 
     </main>
+    <script>
+        $('#user_lang li').click(function(){
+            $('.layout_box, #user_lang li').removeClass('active');
+            $(this).addClass('active');
+            $('.layout_box').eq($(this).index()).addClass('active');
+        })
+    </script>
 
+    
+    <footer id="footer">
+        <article>
+            <div class="info_01">
+                <nav>
+                    <h2>
+                        Receive free monthly
+                        <br class="pc_only">
+                        CMF newsletter on various
+                        <br class="pc_only">
+                        trending CMFs in the world.
+                    </h2>
+                </nav>
+                <nav>
+                    <form>
+                        <input type="email" name="" id="" placeholder="Email Address" required>
+                        <input type="submit" value="Subscribe">
+                    </form>
+                    <ul>
+                        <li>
+                            <a href="#none">About us</a>
+                            <a href="#none">Privacy policy</a>
+                            <a href="#none">News</a>
+                            <a href="#none">Terms & Conditions</a>
+                            <a href="#none">Event</a>
+                            <a href="#none">Contact</a>
+                        </li>
+                    </ul>
 
+                </nav>
 
-<?
-include "../include/footer.html";
-?>
+            </div>
 
+            <div class="info_02">
+                <nav>
+                    <a href="mailTo:hida@hidalab.com">hida@hidalab.com</a>
+                </nav>
+                <nav>
+                    <p>hida, a part of Intops</p>
+                    <p><a href="">51, Anyangcheonseo-Ro, Manan-Gu, Anyang-Si, Gyeonggi-Do, 14088 South Korea</a></p>
+                    <p><a href="">Tel. +82 31 441 4181</a></p>
+                </nav>
+            </div>
+            <div class="bar"></div>
 
-<script>
-    function getCookie(cookie_name) {
-        var x, y;
-        var val = document.cookie.split(';');
-        
-        for (var i = 0; i < val.length; i++) {
-            x = val[i].substr(0, val[i].indexOf('='));
-            y = val[i].substr(val[i].indexOf('=') + 1);
-            x = x.replace(/^\s+|\s+$/g, ''); // 앞과 뒤의 공백 제거하기
+            <div class="info_03">
+                <p>© 2020-2022. hida, a part of Intops. All rights reserved.</p>
+                <select class="nice">
+                    <option value="">Family Site</option>
+                </select>
+
+            </div>
+
             
-            if (x == cookie_name) {
-            return unescape(y); // unescape로 디코딩 후 값 리턴
-            }
-        }
-    }
+        </article>
+    </footer>
 
-    if(getCookie('f_email_storage') == 'Y') {
-        document.querySelector('#f_email').value = getCookie('f_email')
-        document.querySelector('#f_email_storage').checked = true
-    }
-</script>
-                
+    <!-- --------------------------- MAIN --------------------------- -->
+
+
+    <script src="../js/index.js"></script>
+
+</body>
+
+</html>

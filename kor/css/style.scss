@@ -13,12 +13,16 @@ html,body {
 body {
     // a link hover effect
     a.a_link {@include transition(.15s);&:hover { color: $color-100; }}
+    a.btn {display: block;}
     // icon
     .ico {
         display: inline-block; 
+        vertical-align: middle;
         // dots
-        &.ico_01 {width: 10px; height: 10px; background-color: $color-100; border-radius: 100%} 
-        &.ico_02 {width: 5px; height: 5px; background-color: $color-100; border-radius: 100%} 
+        &.checkbox {
+            width: 20px; height: 20px;
+            border: 2px solid #e5e5e5;
+        }
     }
     .blur {
         @include transition(filter .3s);
@@ -647,9 +651,160 @@ body {
             }
         }
         
-        
-
         &.sub_page {
+            &#member {
+                max-width: 600px; margin: 200px auto 0;
+
+                // default
+                .layout_box {
+                    display: none;
+                    &.active {display: block;}
+                    .con_tit {
+                        margin: 50px 0 0 0;
+                        @include hidaFont_membertit;
+                    }
+                }
+                input{
+                    padding: 13px 20px;
+                    border: 2px solid #e5e5e5;
+                    &::placeholder {font-size: 14px;line-height: 1.43;letter-spacing: -0.28px;color: #999;}
+                }
+                .sec_tit {
+                    position: relative;
+                    display: flex; justify-content: space-between; align-items: center;
+                    padding: 0 0 8px 0;
+                    border-bottom: 2px solid #000;
+                    
+                    h2 {@include hidaFont_subtit;}
+
+                    ul {
+                        display: flex; 
+                        li {
+                            cursor: pointer;
+                            position: relative;
+                            font-size: 18px;
+                            font-weight: bold;
+                            line-height: 1.5;
+                            letter-spacing: -0.36px;
+                            opacity: .2;
+                            &:first-child{margin-right: 15px;}
+                            &.active {opacity: 1;
+                                &::after {
+                                    content: '';
+                                    position: absolute; left: 0; bottom: 0;
+                                    width: 100%; height: 2px; background-color: #000;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .member_footer {
+                    // 공통 SNS 로그인, 회원가입
+                    margin: 50px 0 0 0;
+                    padding: 30px 0 0 0;
+                    border-top: 1px solid #e5e5e5;
+                    .sns_login {display: flex; justify-content: center; gap: 16px;}
+                    .btn_sign {
+                        @include font-openSans;
+                        margin: 30px 0 0 0;
+                        padding: 13px 20px;
+                        border: 1px solid #000;
+                        font-size: 15px;
+                        font-weight: bold;
+                        letter-spacing: -0.3px;
+                        text-align: center;
+                    }
+                                
+                } 
+                .btn_submit {margin: 50px 0 0 0; background-color: #000; color: #fff; @include font-openSans; border: none; cursor: pointer;}
+                textline {text-decoration: underline;}
+                // default
+
+                .login {
+                    article {
+                        .content {
+                            .input_wrap {
+                                margin: 30px 0 0 0;
+                                label {
+                                    display: block;
+                                    margin: 0 0 10px 0;
+                                    &:last-child {margin: 0;}
+                                } 
+                            }
+                            .option_wrap {
+                                display: flex; justify-content: space-between; align-items: center;
+                                margin: 40px 0 0 0;
+                                input {display: none;}
+                                label {
+                                    input:checked + .checkbox {background-color: #000; }
+                                    input:checked + span {color: #000; }
+                                    .checkbox {margin-right: 10px; }
+                                }
+                                label, a {
+                                    font-size: 15px;
+                                    line-height: 1.33;
+                                    letter-spacing: -0.3px;
+                                    color: #999;
+                                }
+                            }
+                        }
+
+
+
+                    }
+                }
+
+                .join {
+                    article {
+                        .content {
+                            .input_wrap {
+                                margin: 30px 0 0 0;
+                                label {
+                                    display: block;
+                                    margin: 0 0 10px 0;
+                                    &:last-child {margin: 0;}
+                                } 
+                            }
+
+                            .option_wrap {
+                                margin: 50px 0 0 0;
+                                padding: 50px 0 0 0;
+                                border-top: 1px solid #e5e5e5;
+                                h2 {
+                                    margin: 0 0 30px 0;
+                                    font-size: 15px;
+                                    line-height: 1.33;
+                                    letter-spacing: -0.3px;
+                                }
+                                label {
+                                    margin: 0 0 16px 0;
+                                    display: block;
+                                    font-size: 15px;
+                                    line-height: 1.33;
+                                    letter-spacing: -0.3px;
+                                    color: #999;
+                                    input {display: none;}
+                                    input:checked + .checkbox {background-color: #000; }
+                                    input:checked ~ span {color: #000;}
+
+                                    .checkbox {margin-right: 10px; }
+                                    em {
+                                        display: block;
+                                        margin: 6px 0 0 32px;
+                                        font-size: 14px;
+                                        line-height: 1.43;
+                                        letter-spacing: -0.28px;
+                                        color: #9dade2;
+                                    }
+
+                                    &:last-child{margin: 0 0 0 0;}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         
     } 

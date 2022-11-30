@@ -423,7 +423,7 @@
                                     max-width: 100%;
                                     // width: 100%;
                                     &.img_01 {
-                                        aspect-ratio: 1/3;
+                                        aspect-ratio: 1/2;
                                         img {
                                             all: unset;
                                             position: absolute; left: 50%; top: 120px;
@@ -545,14 +545,12 @@
                                 
                                 .img_wrap {
                                     &.img_01 {
-                                        height: 500px;
-                                        aspect-ratio: 1/2;
                                         img {
                                             top: 100px;
                                         }
                                     }
                                     &.img_02 {
-                                        aspect-ratio: 1/3;
+                                        aspect-ratio : 1/3;
                                         img {
                                             &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4) {
                                             }
@@ -571,7 +569,6 @@
                                         }
                                     }
                                     &.img_03 {
-                                        aspect-ratio: 1/3;
                                         img {
                                             // &:not(:nth-child(3)) {top: 100%;}
                                             &:nth-child(1), &:nth-child(2), &:nth-child(3),&:nth-child(4) {
@@ -934,6 +931,7 @@
                     }
     
                     &.ms_03 {
+
                         article {
                             .box {
                                 &:first-child {
