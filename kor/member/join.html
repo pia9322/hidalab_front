@@ -154,10 +154,10 @@ include "../../include/dbconn.html";
 
                 <div class="content">
                     <div class="form_wrap">
-                        <form action="./db_exec.html" method="POST">
 
-                            <div class="layout_box kor active">
-                                <input type="hidden" name="mode" value="login">
+                        <div class="layout_box kor active">
+                            <form action="./db_exec.html" method="POST" onsubmit="return onSubmit('.layout_box.kor')">
+                                <input type="hidden" name="mode" value="join">
 
                                 <h2 class="con_tit">Free Membership</h2>
 
@@ -165,14 +165,14 @@ include "../../include/dbconn.html";
                                     <label for=""><input type="text" name="f_name_01" class="full" placeholder="* 이름" required></label>
                                     <label for=""><input type="text" name="f_name_02" class="full" placeholder="* 성" required></label>
                                     <label for=""><input type="email" name="f_email" class="full" placeholder="* 이메일 주소" required></label>
-                                    <label for=""><input type="password" name="f_pw_01" class="full" placeholder="* 암호" required></label>
-                                    <label for=""><input type="password" name="f_pw_02" class="full" placeholder="* 암호 확인" required></label>
+                                    <label for=""><input type="password" name="f_pw_01" id="f_pw_01" class="full" placeholder="* 암호" required></label>
+                                    <label for=""><input type="password" name="f_pw_02" id="f_pw_02" class="full" placeholder="* 암호 확인" required></label>
                                     <label for=""><input type="text" name="f_type" class="full" placeholder="직업, 관련분야, 가입경로"></label>
                                 </div>
 
                                 <div class="option_wrap">
                                     <h2>인탑스의 브랜드 히다가 제공하는 정보 및 서비스의 원활한 이용을 위하여 아래 약관에 동의해 주시기 바랍니다.</h2>
-                                    <label class="c_pointer"><input type="checkbox" id="allCheck_kor" value="Y"><i class="ico checkbox"></i><span>아래 내용을 모두 확인했으며 이에 동의합니다.</span></label>
+                                    <label class="c_pointer"><input type="checkbox" class="allcheck" value="Y"><i class="ico checkbox"></i><span>아래 내용을 모두 확인했으며 이에 동의합니다.</span></label>
                                     <label class="c_pointer"><input type="checkbox" class="checkValue" name="f_email_storage" id="f_email_storage" value="Y"><i class="ico checkbox"></i><span>(필수) <textline>이용약관</textline> 동의</span></label>
                                     <label class="c_pointer"><input type="checkbox" class="checkValue" name="f_email_storage" id="f_email_storage" value="Y"><i class="ico checkbox"></i><span>(필수) <textline>개인정보 수집 및 이용</textline> 동의</span></label>
                                     <label class="c_pointer"><input type="checkbox" class="checkValue" name="f_email_storage" id="f_email_storage" value="Y"><i class="ico checkbox"></i><span>(선택) <textline>개인정보 수집 및 이용</textline> 동의</span><em>* 뉴스레터 및 특별한 제안 받기</em></label>
@@ -192,11 +192,48 @@ include "../../include/dbconn.html";
                                     <a href="./join.html" class="btn btn_sign full">회원가입</a>
                                 </div>
 
-                            </div>
+                            </form>
+                        </div>
 
+                        <div class="layout_box eng">
+                            <form action="./db_exec.html" method="POST" onsubmit="return onSubmit('.layout_box.eng')">
+                                <input type="hidden" name="mode" value="login">
+                                <h2 class="con_tit">Free Membership</h2>
 
+                                <div class="input_wrap">
+                                    <label for=""><input type="text" name="f_name_01" class="full" placeholder="* Fisrt Name" required></label>
+                                    <label for=""><input type="text" name="f_name_02" class="full" placeholder="* Last Name" required></label>
+                                    <label for=""><input type="email" name="f_email" class="full" placeholder="* Email ID" required></label>
+                                    <label for=""><input type="password" name="f_pw_01" id="f_pw_01" class="full" placeholder="* Password" required></label>
+                                    <label for=""><input type="password" name="f_pw_02" id="f_pw_02" class="full" placeholder="* Confirm Password" required></label>
+                                    <label for=""><input type="text" name="f_type" class="full" placeholder="Occupation, Related fields, Subscription path"></label>
+                                </div>
 
-                        </form>
+                                <div class="option_wrap">
+                                    <h2>To continue using the information and services provided by hida, please agree to the terms and conditions below.</h2>
+                                    <label class="c_pointer"><input type="checkbox" class="allcheck" value="Y"><i class="ico checkbox"></i><span>I have read and agree to all of the belowterms and conditions.</span></label>
+                                    <label class="c_pointer"><input type="checkbox" class="checkValue" name="" id="" value="Y"><i class="ico checkbox"></i><span>[Required] Agreement to <textline>terms & conditions</textline> </span></label>
+                                    <label class="c_pointer"><input type="checkbox" class="checkValue" name="" id="" value="Y"><i class="ico checkbox"></i><span>[Required] Agreement to <textline>collect and use of personal information</textline></span></label>
+                                    <label class="c_pointer"><input type="checkbox" class="checkValue" name="" id="" value="Y"><i class="ico checkbox"></i><span>[Optional] Agreement to <textline>and use of personal information</textline></span><em>* Agree to accept hida newsletters and special offers</em></label>
+                                    <label class="c_pointer"><input type="checkbox" class="checkValue" name="" id="" value="Y"><i class="ico checkbox"></i><span>[Optional] Agreement to <textline> marketing and receive advertising information</textline></span><em>* Agree to accept hida newsletters and special offers</em></label>
+                                </div>
+        
+                                <input class="full btn_submit" type="submit" value="Log in">
+
+                                <div class="member_footer">
+                                    <ul class="sns_login">
+                                        <li><a href="javascript:;" onclick=""><img src="../images/common/ico_sns_google.png" alt="google login"></a></li>
+                                        <li><a href="javascript:;" onclick=""><img src="../images/common/ico_sns_facebook.png" alt="facebook login"></a></li>
+                                        <li><a href="javascript:;" onclick=""><img src="../images/common/ico_sns_naver.png" alt="naver login"></a></li>
+                                        <li><a href="javascript:;" onclick=""><img src="../images/common/ico_sns_kakao.png" alt="kakao login"></a></li>
+                                    </ul>
+
+                                    <a href="./join.html" class="btn btn_sign full">Free Sign Up</a>
+                                </div>
+
+                            </form>
+                        </div>
+
                     </div>
                 </div>
 
@@ -211,13 +248,22 @@ include "../../include/dbconn.html";
             $('.layout_box').eq($(this).index()).addClass('active');
         })
 
-        $('#allCheck_kor').click(function(){
-            if($(this).prop('checked')) {
-                $('.layout_box.kor .option_wrap .checkValue').prop("checked", 'checked');
+        $('.allcheck').click(function() {
+            if ($(this).prop('checked')) {
+                $(this).parent().siblings().children('.checkValue').prop("checked", 'checked');
             } else {
-                $('.layout_box.kor .option_wrap .checkValue').prop("checked", '');
+                $(this).parent().siblings().children('.checkValue').prop("checked", '');
             }
         })
+        
+        function onSubmit(langCheck) {
+            let ps_01 = document.querySelector(''+langCheck+' #f_pw_01').value,
+                ps_02 = document.querySelector(''+langCheck+' #f_pw_02').value;
+            if (ps_01 != ps_02) {
+                alert('password 불일치');
+                return false;
+            }
+        }
     </script>
 
 

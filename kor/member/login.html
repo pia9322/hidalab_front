@@ -154,9 +154,9 @@ include "../../include/dbconn.html";
                     
                     <div class="content">
                         <div class="form_wrap">
-                            <form action="./db_exec.html" method="POST">
-
-                                <div class="layout_box kor active">
+                            
+                            <div class="layout_box kor active">
+                                <form action="./db_exec.html" method="POST">
                                     <input type="hidden" name="mode" value="login">
 
                                     <h2 class="con_tit">아이디와 패스워드를 입력해주세요</h2>
@@ -184,9 +184,11 @@ include "../../include/dbconn.html";
 
                                         <a href="./join.html" class="btn btn_sign full">회원가입</a>
                                     </div>
-                                </div>
+                                </form>
+                            </div>
 
-                                <div class="layout_box eng">
+                            <div class="layout_box eng">
+                                <form action="./db_exec.html" method="POST">
                                     <input type="hidden" name="mode" value="login">
 
                                     <h2 class="con_tit">Enter your ID / Password</h2>
@@ -214,10 +216,9 @@ include "../../include/dbconn.html";
 
                                         <a href="./join.html" class="btn btn_sign full">Free Sign Up</a>
                                     </div>
-                                </div>
-                                
+                                </form>
+                            </div>
                             
-                            </form>
                         </div>
                     </div>
 

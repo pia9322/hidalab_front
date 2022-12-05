@@ -503,7 +503,7 @@
 }
 
 
-// header
+// header, ms_03
 @media (max-width: 900px) {
     body {
         // header
@@ -527,7 +527,6 @@
     
             }
         }
-
     }
 
     body {
@@ -603,7 +602,7 @@
         } 
     }
 }
-// footer 
+// footer, ms_01, ms_03
 @media (max-width: 767px) {
     @mixin hidaFont_50 {font-size: 40px;}
     @mixin hidaFont_16 {font-size: 24px;}
@@ -858,7 +857,6 @@
         }
     }
     
-      // ms_01
       body {
         main {
             &#main_page {
@@ -931,7 +929,6 @@
                     }
     
                     &.ms_03 {
-
                         article {
                             .box {
                                 &:first-child {
