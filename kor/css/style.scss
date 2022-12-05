@@ -817,10 +817,11 @@ body {
 
                 .sec_tit {
                     position: sticky; top: 70px; z-index: 10;
+                    display: flex; flex-wrap: wrap;;
                     backdrop-filter: blur(4px);
                     background-color: rgba(255,255,255,0.5);
                     #sec_tab {
-                        display: flex; align-items: center;
+                        display: flex; align-items: center; 
                         li {
                             display: flex; align-items: center;
                             margin-right: 30px; 
@@ -833,14 +834,46 @@ body {
                         }
                     }
 
+                    .selected_tab {
+                        width: 100%;
+                    }
 
                     #hidden_tab {
                         width: 100%;
-                        position: absolute; left: 0; top: 100%; 
+                        position: absolute; left: 0; top: calc(100% + 2px); 
                         background-color: #fff;
-                        padding: 20px 30px;
-                        border: 1px solid #f00;
+
+                        .selected_tab {
+                            display: flex; flex-wrap: wrap; gap: 10px;
+                            padding: 10px 20px;
+                            border-bottom: 1px solid #f1f1f1;
+                            label {
+                                cursor: pointer;
+                                padding: 5px 30px 5px 15px;
+                                display: block;
+                                border-radius: 2px; border: solid 1px #ddd;
+                                input {display: none;}
+                                i {display: none;}
+                                span {
+                                    @include flexCenter;
+                                    position: relative;
+                                    min-width: 24px; min-height: 24px; border-radius: 2px;
+                                    font-size: 14px;
+                                    line-height: 1.43;
+                                    letter-spacing: -0.28px;
+                                    &::after {
+                                        content: '';
+                                        position: absolute; left: calc(100%); top: 50%; transform: translateY(-50%);
+                                        background: url('../images/common/ico_remove_01.svg')no-repeat center;
+                                        width: 6px; height: 6px;
+                                        margin-left: 10px;
+                                    }
+                                }
+                            }
+
+                        }
                         .filter_tab {
+                            padding: 0 30px 20px;
                             display: flex; flex-wrap: wrap; gap: 20px;
                             .w_180 {max-width: 180px; width: 100%;}
                             .w_380 {max-width: 380px; width: 100%;}
@@ -864,17 +897,20 @@ body {
                                         border: solid 1px #d9d9d9;
                                         border-radius: 2px;
                                         input{display: none;}
-                                        
                                         span {
-                                            opacity: 0;
-                                            @include absolute-center;
+                                            position: relative;
+                                            display: block;
                                             @include fullsize;
-                                            background: url('../images/common/ico_checked_01.svg')no-repeat center;
-                                            filter: invert(100%);
+                                            &::after {
+                                                content: '';
+                                                @include absolute-center; z-index: 3;
+                                                filter: invert(100%);
+                                                opacity: 0;
+                                                width: 6px; height: 6px;
+                                                background: url('../images/common/ico_checked_01.svg')no-repeat center;
+                                            }
                                         }
-                                        input:checked + span {opacity: 1;}
-
-                                        
+                                        input:checked + span::after {opacity: 1;}
                                         
                                         // &::after {
                                         //     content: '';

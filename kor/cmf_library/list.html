@@ -151,81 +151,86 @@ include "../../include/dbconn.html";
                         <li><img src="../images/common/ico_save_01.svg" alt="">Save</li>
                     </ul>
 
+
                     <div id="hidden_tab">
-                        <div class="filter_tab">
-                            <div class="w_180">
-                                <dl>
-                                    <dt>color</dt>
-                                    <dd class="color_wrap">
-                                        <label style="background-color: #fff;"><input type="checkbox" name="search_color[]"><span></span></label>
-                                        <label style="background-color: #d9d9d9;"><input type="checkbox" name="search_color[]"><span></span></label>
-                                        <label style="background-color: #7c7c7c;"><input type="checkbox" name="search_color[]"><span></span></label>
-                                        <label style="background-color: #f00;"><input type="checkbox" name="search_color[]"><span></span></label>
-                                        <label style="background-color: #ad0000;"><input type="checkbox" name="search_color[]"><span></span></label>
-                                        <label style="background-color: #ff6126;"><input type="checkbox" name="search_color[]"><span></span></label>
-                                        <label style="background-color: #f90;"><input type="checkbox" name="search_color[]"><span></span></label>
-                                        <label style="background-color: #fff500;"><input type="checkbox" name="search_color[]"><span></span></label>
-                                    </dd>
-                                </dl>
+
+                        <div class="selected_tab"></div>
+
+                        <form name="search_frm">
+                            <div class="filter_tab">
+                                <div class="w_180">
+                                    <dl>
+                                        <dt>color</dt>
+                                        <dd class="color_wrap">
+                                            <label><input type="checkbox" name="search_color[]" value="#fff"><span style="background-color: #fff;"></span></label>
+                                            <label><input type="checkbox" name="search_color[]" value="#d9d9d9"><span style="background-color: #d9d9d9;"></span></label>
+                                            <label><input type="checkbox" name="search_color[]" value="#7c7c7c"><span style="background-color: #7c7c7c;"></span></label>
+                                            <label><input type="checkbox" name="search_color[]" value="#f00"><span style="background-color: #f00;"></span></label>
+                                            <label><input type="checkbox" name="search_color[]" value="#ad0000"><span style="background-color: #ad0000;"></span></label>
+                                            <label><input type="checkbox" name="search_color[]" value="#ff6126"><span style="background-color: #ff6126;"></span></label>
+                                            <label><input type="checkbox" name="search_color[]" value="#f90"><span style="background-color: #f90;"></span></label>
+                                            <label><input type="checkbox" name="search_color[]" value="#fff500"><span style="background-color: #fff500;"></span></label>
+                                        </dd>
+                                    </dl>
+                                </div>
+
+                                <div class="w_380">
+                                    <dl>
+                                        <dt>Material</dt>
+                                        <dd>
+                                            <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Metal</span></label>
+                                            <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Fabric</span></label>
+                                            <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Film</span></label>
+                                            <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Wood</span></label>
+                                            <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Composites</span></label>
+                                            <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Stone</span></label>
+                                            <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Injection molding</span></label>
+                                        </dd>
+                                    </dl>
+
+                                </div>
+
+                                <div class="w_180">
+                                    <dl>
+                                        <dt>Finish</dt>
+                                        <dd>
+                                            <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>Anodizing</span></label>
+                                            <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>3D patterning</span></label>
+                                            <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>UV patterning</span></label>
+                                            <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>Wrapping</span></label>
+                                            <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>Printing</span></label>
+                                            <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>Lamination</span></label>
+                                        </dd>
+                                    </dl>
+                                </div>
+
+
+                                <div class="w_180">
+                                    <dl>
+                                        <dt>Feeling</dt>
+                                        <dd>
+                                            <label><input type="checkbox" name="search_feeling[]"><i class="ico checkbox"></i><span>Press molding</span></label>
+                                            <label><input type="checkbox" name="search_feeling[]"><i class="ico checkbox"></i><span>Forming</span></label>
+                                        </dd>
+                                    </dl>
+                                </div>
+
+                                <div class="w_180">
+                                    <dl>
+                                        <dt>Trends</dt>
+                                        <dd>
+                                            <label><input type="checkbox" name="search_trends[]"><i class="ico checkbox"></i><span>Anodizing</span></label>
+                                            <label><input type="checkbox" name="search_trends[]"><i class="ico checkbox"></i><span>3D patterning</span></label>
+                                            <label><input type="checkbox" name="search_trends[]"><i class="ico checkbox"></i><span>UV patterning</span></label>
+                                            <label><input type="checkbox" name="search_trends[]"><i class="ico checkbox"></i><span>Wrapping</span></label>
+                                            <label><input type="checkbox" name="search_trends[]"><i class="ico checkbox"></i><span>Printing</span></label>
+                                            <label><input type="checkbox" name="search_trends[]"><i class="ico checkbox"></i><span>Lamination</span></label>
+                                        </dd>
+                                    </dl>
+
+                                </div>
                             </div>
-
-                            <div class="w_380">
-                                <dl>
-                                    <dt>Material</dt>
-                                    <dd>
-                                        <label class="half"><input type="checkbox" name=""><i class="ico checkbox"></i><span>Metal</span></label>
-                                        <label class="half"><input type="checkbox" name=""><i class="ico checkbox"></i><span>Fabric</span></label>
-                                        <label class="half"><input type="checkbox" name=""><i class="ico checkbox"></i><span>Film</span></label>
-                                        <label class="half"><input type="checkbox" name=""><i class="ico checkbox"></i><span>Wood</span></label>
-                                        <label class="half"><input type="checkbox" name=""><i class="ico checkbox"></i><span>Composites</span></label>
-                                        <label class="half"><input type="checkbox" name=""><i class="ico checkbox"></i><span>Stone</span></label>
-                                        <label class="half"><input type="checkbox" name=""><i class="ico checkbox"></i><span>Injection molding</span></label>
-                                    </dd>
-                                </dl>
-
-                            </div>
-
-                            <div class="w_180">
-                                <dl>
-                                    <dt>Finish</dt>
-                                    <dd>
-                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Anodizing</span></label>
-                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>3D patterning</span></label>
-                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>UV patterning</span></label>
-                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Wrapping</span></label>
-                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Printing</span></label>
-                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Lamination</span></label>
-                                    </dd>
-                                </dl>
-                            </div>
-
-
-                            <div class="w_180">
-                                <dl>
-                                    <dt>Feeling</dt>
-                                    <dd>
-                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Press molding</span></label>
-                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Forming</span></label>
-                                    </dd>
-                                </dl>
-                            </div>
-
-                            <div class="w_180">
-                                <dl>
-                                    <dt>Trends</dt>
-                                    <dd>
-                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Anodizing</span></label>
-                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>3D patterning</span></label>
-                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>UV patterning</span></label>
-                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Wrapping</span></label>
-                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Printing</span></label>
-                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Lamination</span></label>
-                                    </dd>
-                                </dl>
-
-                            </div>
-                        </div>
-
+                        </form>
                     </div>
                 </div>
 
@@ -290,6 +295,66 @@ include "../../include/dbconn.html";
             </article>
         </section>
     </main>
+    <script>
+        $('form[name=search_frm] input').on('change', function() {
+            if ($(this).is(':checked')) {
+                $(this).parent('label').clone().attr('onclick', 'removeOption(this);').appendTo('.selected_tab')
+            } else {
+                $(this).parent('label').remove()
+            }
+            selectedTag()
+            setList();
+        });
+
+
+        function removeOption(target) {
+            var target = $(target),
+                optionColor = target.find('input').val()
+
+            target.remove();
+
+
+            $('form[name=search_frm] dd:not(.color_wrap) label:contains(' + target.find('span').html() + ')').find('input').prop('checked', false);
+            $('form[name=search_frm] .color_wrap').find('input[value="' + optionColor + '"]').prop('checked', false);
+
+            selectedTag()
+        }
+
+        function selectedTag() {
+            if ($('.selected_tab label').length > 0) {
+                $('.selected_tab').show();
+            } else {
+                $('.selected_tab').hide();
+            }
+        }
+        selectedTag()
+
+
+
+        function setList() {
+            var queryString = $("form[name=search_frm]").serialize();
+            console.log(queryString)
+            // $.ajax({
+            //     type: "POST",
+            //     url: "ajax_list.php",
+            //     data: queryString,
+            //     dataType: "html",
+            //     success: function(result) {
+
+            //         //console.log("result = "+result);
+
+            //         $('.prodList').html(result);
+
+            //     },
+            //     error: function(e) {
+            //         console.log(e);
+            //         alert("del_cmf Error : " + e);
+            //     }
+
+            // });
+
+        }
+    </script>
 
 
     <footer id="footer">
