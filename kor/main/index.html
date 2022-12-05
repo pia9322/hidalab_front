@@ -570,6 +570,7 @@ include "../../include/dbconn.html";
 
             gsap.registerPlugin(ScrollTrigger);
             if(window.innerWidth >= 1200) {
+                console.log('>=1200')
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".ms_03 .box_01",
@@ -581,37 +582,31 @@ include "../../include/dbconn.html";
                     },
                 });
                 tl.to(".img_01 img:first-child", {
-
                     opacity: 0,
                 });
-
                 const t2 = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".ms_03 .box_02",
                         start: "top top",
                         pin: true,
                         scrub: 1,
-                        // markers: true
+                        markers: true
                     },
                     defaults: {
                         duration: 5,
                     }
                 });
                 t2.to(".img_02 img:nth-of-type(1)", {
-
                         opacity: 0,
-                        duration: 10,
                     })
                     .to(".img_02 img:nth-of-type(2)", {
                         opacity: 1,
-                        duration: 10,
                     })
                     .to(".img_02 img:nth-of-type(1), .box_02 img:nth-of-type(2)", {
                         width: 0,
                     })
                     .to(".img_02 img:nth-of-type(3), .box_02 img:nth-of-type(4)", {
                         top: "0",
-                        duration: 10,
                     }, "<")
 
                 const t3 = gsap.timeline({
@@ -644,7 +639,7 @@ include "../../include/dbconn.html";
                     }, '<');
             
             } else if(window.innerWidth >= 767) {
-                // 1200
+                console.log('>=767')
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".ms_03 .box_01 .img_wrap",
@@ -689,7 +684,6 @@ include "../../include/dbconn.html";
                         top: 100,
                         opacity: 1,
                     });
-
                     
                 const t3 = gsap.timeline({
                     scrollTrigger: {
@@ -720,6 +714,7 @@ include "../../include/dbconn.html";
                     })
             } else {
                 // 767
+                console.log('767 이하')
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".ms_03 .box_01 .img_wrap",
@@ -765,7 +760,6 @@ include "../../include/dbconn.html";
                         opacity: 1,
                     });
 
-                    
                 const t3 = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".ms_03 .box_03 .img_wrap",
@@ -794,7 +788,6 @@ include "../../include/dbconn.html";
                         top: 300,
                     })
             }
-
             
             $('.ms_04 .left ul li, .mo_tab li').click(function(){
                 snsIndex = $(this).index();
