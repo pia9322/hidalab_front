@@ -112,15 +112,12 @@ $color-200 : #ea5417;
 
 // ====================================JJ MIXIN====================================
 @mixin fixed-layout_1920 {max-width: 1920px; width: 100%; margin: 0 auto; }
-@mixin fixed-layout_1470 {padding: 0 5%;}
-@mixin fixed-layout-subpage {max-width: 1360px;  width: 100%; margin: 0 auto;}
-@mixin not_fixed_layout {max-width: 100%; width: 100%; margin: 0 auto;}
+@mixin fixed-layout_1412 {max-width: 1412px; width: 100%;}
 @mixin header-height {height: 100px;}
-
-@mixin subMainLine { padding-bottom: 120px; border-bottom: 1px solid #ddd;}
 
 // Margin
 // Top
+@mixin marginTop-200 {margin: 200px auto 0;}
 @mixin marginTop-140 {margin-top: 140px;}
 @mixin marginTop-120 {margin-top: 120px;}
 @mixin marginTop-100 {margin-top: 100px;}
@@ -135,8 +132,6 @@ $color-200 : #ea5417;
 
 
 // Padding
-@mixin padding_1480 {padding: 0 5%;}
-
 @mixin paddingTop-70 {padding-top: 70px;}
 @mixin paddingTop-40 {padding-top: 40px;}
 

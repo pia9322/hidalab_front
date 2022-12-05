@@ -1,189 +1,358 @@
 <?
-$h_menu = "product";
-include "../include/header.html";
+session_start();
+include "../../include/dbconn.html";
 
-$page = htmlspecialchars(trim($_GET['page']), ENT_QUOTES);
-$s_key = htmlspecialchars(trim($_GET['s_key']), ENT_QUOTES);
-$s_value = htmlspecialchars(trim($_GET['s_value']), ENT_QUOTES);
-
-$productList = htmlspecialchars($_GET['productList'], ENT_QUOTES);
-
-$searchType = htmlspecialchars($_GET['searchType'], ENT_QUOTES);
-$f_target = htmlspecialchars($_GET['f_target'], ENT_QUOTES);
-$f_function = htmlspecialchars($_GET['f_function'], ENT_QUOTES);
-
-
-############################ [검색조건 검색] ###############################
-// $where = "where f_div='$f_div'";
-if($f_function) {
-    $where = "where f_show ='Y' and f_function Like '%$f_function%'";
-} else if($f_target) {
-    $where = "where f_show ='Y' and f_target Like '%$f_target%'";
-}else if ($s_value) {
-    $where = "where f_show ='Y' and f_title like '%$s_value%'";
-}
-
-
-// if ($s_key && $s_value) {
-//     $where .= " and $s_key like '%$s_value%'";
-// }
-
-
-
-
-############ 전체 데이터 갯수 ############
-$query_cnt = "select count(*) as cnt from t_product $where";
-// echo "$query_cnt ===<br>";
-$result_cnt = mysqli_query($dbconn, $query_cnt);
-$row_cnt = mysqli_fetch_assoc($result_cnt);
-$total_article = $row_cnt['cnt'];
-
-mysqli_free_result($result_cnt);
-
-
-############ 페이지 변수 ############
-$show_per_page = 9;
-$show_page_block = 10;
-$total_page = ceil($total_article / $show_per_page); // 전체 페이지수
-if ($page > $total_page) {
-    $page = $total_page;
-}
-if (!$page || $page < 1) {
-    $page = 1;
-}
-if (!$total_page) {
-    $total_page = 1;
-}
-$article_no = $total_article - $show_per_page * ($page - 1); // 상대 글번호
-$start = ($page * $show_per_page) - $show_per_page;
 ?>
-<main class="sub_page" id="product_list">
+<!DOCTYPE html>
 
-    <section class="sec sec_01">
-        <article>
-            <div class="page_info flex">
-                <div>
-                    <? if ($productList == "target") { ?>
-                        <h2>대상별 제품보기</h2>
-                    <? } else if($productList == "function") { ?>
-                        <h2>기능별 제품보기</h2>
-                    <? } else if($searchType == "mainsearch") { ?>
-                        <h2>제품보기</h2>
-                    <? } ?>
+<html lang="ko">
 
-                    <p>
-                        에프앤디넷은 믿을 수 있는 건강기능 식품을 제공합니다
-                    </p>
-                </div>
-                <form action="">
-                    <div class="search_box">
-                        <input type="hidden" name="productList" value="<?=$productList?>">
-                        <input type="search" name="s_value" id="" placeholder="찾으시는 제품명을 입력해주세요" value="<?=$s_value?>">
-                        <input type="submit" name="" id="" placeholder="">
-                    </div>
-                </form>
-            </div>
-        </article>
-    </section>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <section class="sec_tab">
-        <article>
-            <? if ($productList == "target") { ?>
-                <ul>
-                    <li><a href="?f_target=all&productList=target" <?= $f_target == 'all' ? "class='active'" : null; ?>>전체보기</a></li>
-                    <li><a href="?f_target=유소아&productList=target" <?= $f_target == '유소아' ? "class='active'" : null; ?>>유·소아</a></li>
-                    <li><a href="?f_target=청소년&productList=target" <?= $f_target == '청소년' ? "class='active'" : null; ?>>청소년</a></li>
-                    <li><a href="?f_target=임산부&productList=target" <?= $f_target == '임산부' ? "class='active'" : null; ?>>임산부</a></li>
-                    <li><a href="?f_target=성인여성&productList=target" <?= $f_target == '성인여성' ? "class='active'" : null; ?>>성인여성</a></li>
-                    <li><a href="?f_target=성인남성&productList=target" <?= $f_target == '성인남성' ? "class='active'" : null; ?>>성인남성</a></li>
-                </ul>
-            <? } else { ?>
-                <ul>
-                    <li><a href="?f_function=all&productList=function" <?= $f_function == 'all' ? "class='active'" : null; ?>>전체보기</a></li>
-                    <li><a href="?f_function=장건강&productList=function" <?= $f_function == '장건강' ? "class='active'" : null; ?>>장건강</a></li>
-                    <li><a href="?f_function=영양보충&productList=function" <?= $f_function == '영양보충' ? "class='active'" : null; ?>>영양보충</a></li>
-                    <li><a href="?f_function=뼈건강&productList=function" <?= $f_function == '뼈건강' ? "class='active'" : null; ?>>뼈건강</a></li>
-                    <li><a href="?f_function=혈행건강&productList=function" <?= $f_function == '혈행건강' ? "class='active'" : null; ?>>혈행건강</a></li>
-                    <li><a href="?f_function=기초건강&productList=function" <?= $f_function == '기초건강' ? "class='active'" : null; ?>>기초건강</a></li>
-                    <li><a href="?f_function=기타제품&productList=function" <?= $f_function == '기타제품' ? "class='active'" : null; ?>>기타제품</a></li>
-                </ul>
-            <? } ?>
-        </article>
-    </section>
+<!-- --------------------SEO-------------------- -->
+<link rel="canonical" href="Canonical URL">
+<link rel="icon" href="../../favicon.ico" type="image/x-icon">
+
+<meta name="author" content="piajj">
+<meta name="description" content="hida, Innovative CMF(Color Material Finish) Design Lab, product design, industrial design, 히다 CMF디자인, 히다랩">
+<meta name="keyword" content="color, material, finish, design, technology, surface, texture, pattern, decoration, product, packaging, plate, nameplate, case, bottle, cosmetic, makeup, trend, fashion, pantone, consulting, manufacturing, production">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:url" content="https://www.hidalab.com/">
+<meta property="og:image" content="https://www.hidalab.com/images/contents/og_title2.png">
+<meta property="og:title" content="hida - Color Material Finish specialists (히다랩)">
+<meta property="og:description" content="hida, Innovative CMF(Color Material Finish) Design Lab, product design, industrial design, 히다 CMF디자인, 히다랩">
 
 
-    <!-- 
-            9개
-        -->
+<meta name="twitter:card" content="photo">
+<meta name="twitter:title" content="hida - Color Material Finish specialists (히다랩)">
+<meta name="twitter:url" content="https://www.hidalab.com//">
+<meta name="twitter:image" content="https://www.hidalab.com//images/contents/og_title2.png">
+<meta name="twitter:description" content="hida, Innovative CMF(Color Material Finish) Design Lab, product design, industrial design, 히다 CMF디자인, 히다랩">
+<!-- --------------------SEO-------------------- -->
+
+<title>hida - Color Material Finish specialists (히다랩)</title>
 
 
-    <section class="sec sec_product">
-        <article>
-            <ul>
-                <?
-                $sql = "SELECT * from t_product $where order by f_sort+0 DESC limit $start, $show_per_page";
-                if ($f_target == 'all' || $f_function == 'all') {
-                    $sql = "SELECT * from t_product where f_show ='Y' order by f_sort+0 DESC limit $start, $show_per_page";
-                }
-                if ($rst = mysqli_query($dbconn, $sql)) {
-                    if ($rst->num_rows) {
-                        while ($row = mysqli_fetch_assoc($rst)) {
-                ?>
-                            <li onclick="location.href='../product/detail.html?f_uid=<?= $row['f_uid'] ?>'" style="cursor:pointer;">
-                                <div class="banner">
-                                    <?
-                                    $functionArr = explode(',', $row['f_function']);
-                                    for ($i = 0; $i < count($functionArr); $i++) {
-                                    ?>
-                                        <div data-name="<?= $functionArr[$i] ?>"><?= $functionArr[$i] ?></div>
-                                    <? }  ?>
-                                </div>
-                                <figure>
-                                    <div class="img_wrap">
-                                        <img src="../../upload/product/<?= $row['f_file_0'] ?>" alt="<?= $row['f_filename_0'] ?>">
-                                    </div>
-                                    <figcaption>
-                                        <p class="cate">
-                                            <?
-                                            $f_targetArr = explode(',', $row['f_target']);
-                                            for ($i = 0; $i < count($f_targetArr); $i++) {
-                                            ?>
-                                                <span data-name="<?= $f_targetArr[$i] ?>"><?= $f_targetArr[$i] ?></span>
-                                            <? }  ?>
-                                        </p>
-                                        <p class="tit">
-                                            <?= $row['f_title'] ?>
-                                        </p>
-                                        <!-- <p class="link">
-                                            <a href="../product/detail.html?f_uid=<?= $row['f_uid'] ?>">자세히보기</a>
-                                        </p> -->
-                                    </figcaption>
-                                </figure>
-                            </li>
-                <?
-                        }
-                    }
-                }
-                ?>
+
+<!-- --------------------CSS-------------------- -->
+<link rel="stylesheet" href="../css/swiper.css">
+<link rel="stylesheet" href="../css/aos.css">
+<link rel="stylesheet" href="../css/jquery.fullpage.min.css">
+<link rel="stylesheet" href="../css/nice-select.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/media.css">
+<!-- --------------------CSS-------------------- -->
+
+
+<!-- --------------------Script-------------------- -->
+<script src="../js/jquery.js"></script>
+<script src="../js/swiper.js"></script>
+<script src="../js/aos.js"></script>
+<script src="../js/fullpage.min.js"></script>
+<script src="../js/nice-select-min.js"></script>
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<!-- --------------------Script-------------------- -->
+</head>
+
+
+<body>
+
+    <header id="header">
+        <nav id="header_wrap">
+
+            <!-- HEADER_LEFT -->
+            <h1 id="header_left">
+                <a href="../main/index.html"><img src="../images/common/logo_01.svg" alt="회사 로고"></a>
+            </h1>
+
+            <!-- HEADER_CENTER -->
+            <ul id="header_center">
+
+                <li>
+                    <a href="#none">CMF Library</a>
+                </li>
+                <li>
+                    <a href="#none">Trend Library</a>
+                </li>
+                <li>
+                    <a href="#none">Category</a>
+                </li>
+                <li>
+                    <a href="#none">Category</a>
+                </li>
+                <li>
+                    <a href="#none">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#none">Contact</a>
+                </li>
+
             </ul>
-        </article>
-    </section>
 
-    <section class="sec pagenum">
+
+            <ul id="header_right">
+                <? if (!$_SESSION['f_email']) { ?>
+                    <li><a href="../member/login.html">Log in</a></li>
+                    <li><a href="../member/join.html">Join for free</a></li>
+                <? } else { ?>
+                    <!-- <li><a href="../member/db_exec.html?mode=logout">로그아웃</a></li> -->
+                    <!-- <li><a href="../member/mypage.html">마이페이지</a></li> -->
+                <? } ?>
+            </ul>
+
+            <div id="header_ham">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div id="header_full">
+                <article>
+                    <nav class="status">
+                        <a href="../member/login.html">
+                            <img src="../images/common/ico_login_01.svg" alt="">Log in
+                        </a>
+                    </nav>
+                    <nav class="menu">
+                        <ul class="depth_01">
+                            <li><a href="">CMF Library</a></li>
+                            <li><a href="">Trend Library</a></li>
+                            <li><a href="">Category</a></li>
+                            <li><a href="">Portfolio</a></li>
+                            <li><a href="">Contact</a></li>
+                        </ul>
+                        <ul class="user_depth">
+                            <li><a href="">My account</a></li>
+                            <li><a href="">Log out</a></li>
+                        </ul>
+                    </nav>
+                </article>
+            </div>
+
+
+        </nav>
+    </header>
+
+
+    <main class="sub_page" id="cmf_library">
+        <section>
+            <article>
+                <div class="sec_tit">
+                    <h2>CMF library <span>425+</span></h2>
+
+                    <ul id="sec_tab">
+                        <li><img src="../images/common/ico_filter_01.svg" alt="">Filter</li>
+                        <li><img src="../images/common/ico_ml_01.svg" alt="">My Library</li>
+                        <li><img src="../images/common/ico_save_01.svg" alt="">Save</li>
+                    </ul>
+
+                    <div id="hidden_tab">
+                        <div class="filter_tab">
+                            <div class="w_180">
+                                <dl>
+                                    <dt>color</dt>
+                                    <dd class="color_wrap">
+                                        <label style="background-color: #fff;"><input type="checkbox" name="search_color[]"><span></span></label>
+                                        <label style="background-color: #d9d9d9;"><input type="checkbox" name="search_color[]"><span></span></label>
+                                        <label style="background-color: #7c7c7c;"><input type="checkbox" name="search_color[]"><span></span></label>
+                                        <label style="background-color: #f00;"><input type="checkbox" name="search_color[]"><span></span></label>
+                                        <label style="background-color: #ad0000;"><input type="checkbox" name="search_color[]"><span></span></label>
+                                        <label style="background-color: #ff6126;"><input type="checkbox" name="search_color[]"><span></span></label>
+                                        <label style="background-color: #f90;"><input type="checkbox" name="search_color[]"><span></span></label>
+                                        <label style="background-color: #fff500;"><input type="checkbox" name="search_color[]"><span></span></label>
+                                    </dd>
+                                </dl>
+                            </div>
+
+                            <div class="w_380">
+                                <dl>
+                                    <dt>Material</dt>
+                                    <dd>
+                                        <label class="half"><input type="checkbox" name=""><i class="ico checkbox"></i><span>Metal</span></label>
+                                        <label class="half"><input type="checkbox" name=""><i class="ico checkbox"></i><span>Fabric</span></label>
+                                        <label class="half"><input type="checkbox" name=""><i class="ico checkbox"></i><span>Film</span></label>
+                                        <label class="half"><input type="checkbox" name=""><i class="ico checkbox"></i><span>Wood</span></label>
+                                        <label class="half"><input type="checkbox" name=""><i class="ico checkbox"></i><span>Composites</span></label>
+                                        <label class="half"><input type="checkbox" name=""><i class="ico checkbox"></i><span>Stone</span></label>
+                                        <label class="half"><input type="checkbox" name=""><i class="ico checkbox"></i><span>Injection molding</span></label>
+                                    </dd>
+                                </dl>
+
+                            </div>
+
+                            <div class="w_180">
+                                <dl>
+                                    <dt>Finish</dt>
+                                    <dd>
+                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Anodizing</span></label>
+                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>3D patterning</span></label>
+                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>UV patterning</span></label>
+                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Wrapping</span></label>
+                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Printing</span></label>
+                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Lamination</span></label>
+                                    </dd>
+                                </dl>
+                            </div>
+
+
+                            <div class="w_180">
+                                <dl>
+                                    <dt>Feeling</dt>
+                                    <dd>
+                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Press molding</span></label>
+                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Forming</span></label>
+                                    </dd>
+                                </dl>
+                            </div>
+
+                            <div class="w_180">
+                                <dl>
+                                    <dt>Trends</dt>
+                                    <dd>
+                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Anodizing</span></label>
+                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>3D patterning</span></label>
+                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>UV patterning</span></label>
+                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Wrapping</span></label>
+                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Printing</span></label>
+                                        <label><input type="checkbox" name=""><i class="ico checkbox"></i><span>Lamination</span></label>
+                                    </dd>
+                                </dl>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="content">
+                    <ul>
+                        <li>
+                            <a href="#none" data-name='cmf_library 데이터'>
+                                <div class="ico_wrap">
+                                    <img src="../images/common/icon_New.svg" alt="">
+                                    <img src="../images/common/icon_Sustainable.svg" alt="">
+                                </div>
+                                <div class="img_wrap">
+                                    <img src="../images/product/sample_01.jpg" alt="">
+                                    <img src="../images/common/prod_bg.png" alt="" class="prod_thumb_bg">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none" data-name='cmf_library 데이터'>
+                                <div class="ico_wrap">
+                                    <img src="../images/common/icon_New.svg" alt="">
+                                    <img src="../images/common/icon_Sustainable.svg" alt="">
+                                </div>
+                                <div class="img_wrap">
+                                    <img src="../images/product/sample_01.jpg" alt="">
+                                    <img src="../images/common/prod_bg.png" alt="" class="prod_thumb_bg">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none" data-name='cmf_library 데이터'>
+                                <div class="ico_wrap">
+                                    <img src="../images/common/icon_New.svg" alt="">
+                                    <img src="../images/common/icon_Sustainable.svg" alt="">
+                                </div>
+                                <div class="img_wrap">
+                                    <img src="../images/product/sample_01.jpg" alt="">
+                                    <img src="../images/common/prod_bg.png" alt="" class="prod_thumb_bg">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none" data-name='cmf_library 데이터'>
+                                <div class="ico_wrap">
+                                    <img src="../images/common/icon_New.svg" alt="">
+                                    <img src="../images/common/icon_Sustainable.svg" alt="">
+                                </div>
+                                <div class="img_wrap">
+                                    <img src="../images/product/sample_01.jpg" alt="">
+                                    <img src="../images/common/prod_bg.png" alt="" class="prod_thumb_bg">
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="more">
+                        <a href="javascript:;" onclick="alert('클릭시 more')">Click here to see more</a>
+                    </div>
+                </div>
+
+            </article>
+        </section>
+    </main>
+
+
+    <footer id="footer">
         <article>
-            <style>
-                .pagenum article {margin: 60px 0 0;}
-            </style>
-            <?
-            ############ [페이징] ############
-            include "../include/pageNavi.html";
-            $all_query = "productList=$productList&f_target=$f_target&f_function=$f_function&f_div=$f_div&s_key=$s_key&s_value=$s_value";
-            pageNavi(2, $bbs_skin, $show_per_page, $show_page_block, $total_article, $all_query, $page);
-            ?>
-        </article>
-    </section>
+            <div class="info_01">
+                <nav>
+                    <h2>
+                        Receive free monthly
+                        <br class="pc_only">
+                        CMF newsletter on various
+                        <br class="pc_only">
+                        trending CMFs in the world.
+                    </h2>
+                </nav>
+                <nav>
+                    <form>
+                        <input type="email" name="" placeholder="Email Address" required>
+                        <input type="submit" value="Subscribe">
+                    </form>
+                    <ul>
+                        <li>
+                            <a href="#none">About us</a>
+                            <a href="#none">Privacy policy</a>
+                            <a href="#none">News</a>
+                            <a href="#none">Terms & Conditions</a>
+                            <a href="#none">Event</a>
+                            <a href="#none">Contact</a>
+                        </li>
+                    </ul>
 
-</main>
-<?
-include "../include/footer.html";
-?>
+                </nav>
+
+            </div>
+
+            <div class="info_02">
+                <nav>
+                    <a href="mailTo:hida@hidalab.com">hida@hidalab.com</a>
+                </nav>
+                <nav>
+                    <p>hida, a part of Intops</p>
+                    <p><a href="">51, Anyangcheonseo-Ro, Manan-Gu, Anyang-Si, Gyeonggi-Do, 14088 South Korea</a></p>
+                    <p><a href="">Tel. +82 31 441 4181</a></p>
+                </nav>
+            </div>
+            <div class="bar"></div>
+
+            <div class="info_03">
+                <p>© 2020-2022. hida, a part of Intops. All rights reserved.</p>
+                <select class="nice">
+                    <option value="">Family Site</option>
+                </select>
+
+            </div>
+
+
+        </article>
+    </footer>
+
+    <!-- --------------------------- MAIN --------------------------- -->
+
+
+    <script src="../js/index.js"></script>
+
+</body>
+
+</html>
