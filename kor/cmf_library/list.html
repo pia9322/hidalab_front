@@ -297,6 +297,7 @@ include "../../include/dbconn.html";
     </main>
     <script>
         $('form[name=search_frm] input').on('change', function() {
+            // console.log($(this).parents('dd').hasClass('color_wrap'))
             if ($(this).is(':checked')) {
                 $(this).parent('label').clone().attr('onclick', 'removeOption(this);').appendTo('.selected_tab')
             } else {
@@ -309,13 +310,17 @@ include "../../include/dbconn.html";
 
         function removeOption(target) {
             var target = $(target),
-                optionColor = target.find('input').val()
+                optionColor = target.find('input').val(),
+                targetColor = $(target).children('input').attr('name');
 
             target.remove();
 
-
-            $('form[name=search_frm] dd:not(.color_wrap) label:contains(' + target.find('span').html() + ')').find('input').prop('checked', false);
-            $('form[name=search_frm] .color_wrap').find('input[value="' + optionColor + '"]').prop('checked', false);
+            if(targetColor.indexOf('search_color') >= 0) {
+                $('form[name=search_frm] .color_wrap').find('input[value="' + optionColor + '"]').prop('checked', false);
+            }else {
+                $('form[name=search_frm] dd:not(.color_wrap) label:contains(' + target.find('span').html() + ')').find('input').prop('checked', false);
+            }
+    
 
             selectedTag()
         }
