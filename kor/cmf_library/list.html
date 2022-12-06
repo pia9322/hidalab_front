@@ -146,17 +146,26 @@ include "../../include/dbconn.html";
                     <h2>CMF library <span>425+</span></h2>
 
                     <ul id="sec_tab">
-                        <li><img src="../images/common/ico_filter_01.svg" alt="">Filter</li>
-                        <li><img src="../images/common/ico_ml_01.svg" alt="">My Library</li>
-                        <li><img src="../images/common/ico_save_01.svg" alt="">Save</li>
+                        <li id="tab_filter"><img src="../images/common/ico_filter_01.svg" alt="">Filter</li>
+                        <li id="tab_library"><img src="../images/common/ico_ml_01.svg" alt="">My Library</li>
+                        <!-- save 버튼 눌렀을떄 파라미터 붙혀서 아래 save_frm open -->
+                        <li id="tab_save"><img src="../images/common/ico_save_01.svg" alt="">Save</li>
                     </ul>
 
 
                     <div id="hidden_tab">
+                        <div class="selected_tab active">
+                            <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Metal</span></label>
+                            <label><input type="checkbox" name="search_color[]" value="#7c7c7c"><span style="background-color: #7c7c7c;"></span></label>
+                            <label><input type="checkbox" name="search_color[]" value="#fff"><span style="background-color: #fff;"></span></label>
+                            <label><input type="checkbox" name="search_color[]" value="#ff6126"><span style="background-color: #ff6126;"></span></label>
+                            <label><input type="checkbox" name="search_color[]" value="#fff500"><span style="background-color: #fff500;"></span></label>
+                            <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Fabric</span></label>
+                            <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>UV patterning</span></label>
+                            <label><input type="checkbox" name="search_feeling[]"><i class="ico checkbox"></i><span>Press molding</span></label>
+                        </div>
 
-                        <div class="selected_tab"></div>
-
-                        <form name="search_frm">
+                        <form id="search_frm" name="search_frm">
                             <div class="filter_tab">
                                 <div class="w_180">
                                     <dl>
@@ -232,13 +241,25 @@ include "../../include/dbconn.html";
                             </div>
                         </form>
                     </div>
+
+                    <!-- 여기에 save파라미터 있으면 class=active -->
+                    <form id="save_frm" name="save_frm">
+                        <p>
+                            <span>(cnt)</span> CMF Selected
+                        </p>
+                        <p>
+                            <a href="javascript:;" id="btn_cancel" class="btn_cancel">Cancel</a>
+                            <a href="javascript:;" id="btn_save" class="btn_save">Save</a>
+                        </p>
+                    </form>
                 </div>
+
 
 
                 <div class="content">
                     <ul>
                         <li>
-                            <a href="#none" data-name='cmf_library 데이터'>
+                            <a href="#none" php-data='cmf_library 데이터'>
                                 <div class="ico_wrap">
                                     <img src="../images/common/icon_New.svg" alt="">
                                     <img src="../images/common/icon_Sustainable.svg" alt="">
@@ -247,10 +268,13 @@ include "../../include/dbconn.html";
                                     <img src="../images/product/sample_01.jpg" alt="">
                                     <img src="../images/common/prod_bg.png" alt="" class="prod_thumb_bg">
                                 </div>
+
+                                <!-- php saveMode 일때 -->
+                                <div class="ico_wrap save"></div>
                             </a>
                         </li>
                         <li>
-                            <a href="#none" data-name='cmf_library 데이터'>
+                            <a href="#none" php-data='cmf_library 데이터'>
                                 <div class="ico_wrap">
                                     <img src="../images/common/icon_New.svg" alt="">
                                     <img src="../images/common/icon_Sustainable.svg" alt="">
@@ -259,10 +283,12 @@ include "../../include/dbconn.html";
                                     <img src="../images/product/sample_01.jpg" alt="">
                                     <img src="../images/common/prod_bg.png" alt="" class="prod_thumb_bg">
                                 </div>
+                                <!-- php saveMode 일때 -->
+                                <div class="ico_wrap save active"></div>
                             </a>
                         </li>
                         <li>
-                            <a href="#none" data-name='cmf_library 데이터'>
+                            <a href="#none" php-data='cmf_library 데이터'>
                                 <div class="ico_wrap">
                                     <img src="../images/common/icon_New.svg" alt="">
                                     <img src="../images/common/icon_Sustainable.svg" alt="">
@@ -271,10 +297,12 @@ include "../../include/dbconn.html";
                                     <img src="../images/product/sample_01.jpg" alt="">
                                     <img src="../images/common/prod_bg.png" alt="" class="prod_thumb_bg">
                                 </div>
+                                <!-- php saveMode 일때 -->
+                                <div class="ico_wrap save active"></div>
                             </a>
                         </li>
                         <li>
-                            <a href="#none" data-name='cmf_library 데이터'>
+                            <a href="#none" php-data='cmf_library 데이터'>
                                 <div class="ico_wrap">
                                     <img src="../images/common/icon_New.svg" alt="">
                                     <img src="../images/common/icon_Sustainable.svg" alt="">
@@ -283,12 +311,13 @@ include "../../include/dbconn.html";
                                     <img src="../images/product/sample_01.jpg" alt="">
                                     <img src="../images/common/prod_bg.png" alt="" class="prod_thumb_bg">
                                 </div>
+                                <div class="ico_wrap save"></div>
                             </a>
                         </li>
                     </ul>
 
                     <div class="more">
-                        <a href="javascript:;" onclick="alert('클릭시 more')">Click here to see more</a>
+                        <a href="javascript:;" php-data='클릭시 다보여주기' onclick="alert('클릭시 more')">Click here to see more</a>
                     </div>
                 </div>
 
@@ -351,6 +380,68 @@ include "../../include/dbconn.html";
         </article>
     </footer>
 
+
+
+    <aside id="popup_cmf" class="popup">
+        <article>
+            <div class="form_wrap">
+                <form>
+                    <div id="btn_pop_close"><img src="../images/common/ico_pop_close_01.svg" alt=""></div>
+                    <div>
+                        <h2>Select Library</h2>
+                        <div class="select_wrap">
+                            <label><input type="radio" name="phpradio" value=""><p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p></label>
+                            <label><input type="radio" name="phpradio" value=""><p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p></label>
+                            <label><input type="radio" name="phpradio" value=""><p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p></label>
+                            <label><input type="radio" name="phpradio" value=""><p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p></label>
+                            <label><input type="radio" name="phpradio" value=""><p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p></label>
+                            <label><input type="radio" name="phpradio" value=""><p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p></label>
+                            <label><input type="radio" name="phpradio" value=""><p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p></label>
+                            <label><input type="radio" name="phpradio" value=""><p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p></label>
+                        </div>
+                    </div>
+
+                    <div class="new_library">
+                        <h2>New Library</h2>
+                        <div>
+                            <label><input type="text" value="" placeholder="New library name"><img id="add_library" src="../images/common/ico_plus_03.svg" alt=""></label>
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Save">
+                </form>
+            </div>
+
+        </article>
+    </aside>
+
+    <script>
+        /* 
+        tab_filter
+        tab_library
+        tab_save
+        */
+        $('#tab_filter').click(() => {
+            $('#search_frm').slideToggle();
+        })
+
+        $('.content > ul > li > a ').click(function() {
+            $(this).children($('.ico_wrap.save')).toggleClass('active');
+        })
+
+        // cmf save 활성화 버튼
+        $('#save_frm #btn_save').click(function() {
+            $('.popup#popup_cmf').addClass('active');
+        })
+        
+        $('#btn_pop_close').click(function() {
+            $(this).parents('.popup').removeClass('active');
+        });
+
+        $('#add_library').click(function() {
+        });
+            
+    </script>
     <!-- --------------------------- MAIN --------------------------- -->
 
 
