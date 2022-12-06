@@ -295,6 +295,71 @@ include "../../include/dbconn.html";
             </article>
         </section>
     </main>
+    <script>
+        $('form[name=search_frm] input').on('change', function() {
+            // console.log($(this).parents('dd').hasClass('color_wrap'))
+            if ($(this).is(':checked')) {
+                $(this).parent('label').clone().attr('onclick', 'removeOption(this);').appendTo('.selected_tab')
+            } else {
+                $(this).parent('label').remove()
+            }
+            selectedTag()
+            setList();
+        });
+
+
+        function removeOption(target) {
+            var target = $(target),
+                optionColor = target.find('input').val(),
+                targetColor = $(target).children('input').attr('name');
+
+            target.remove();
+
+            if(targetColor.indexOf('search_color') >= 0) {
+                $('form[name=search_frm] .color_wrap').find('input[value="' + optionColor + '"]').prop('checked', false);
+            } else {
+                $('form[name=search_frm] dd:not(.color_wrap) label:contains(' + target.find('span').html() + ')').find('input').prop('checked', false);
+            }
+    
+
+            selectedTag()
+        }
+
+        function selectedTag() {
+            if ($('.selected_tab label').length > 0) {
+                $('.selected_tab').show();
+            } else {
+                $('.selected_tab').hide();
+            }
+        }
+        selectedTag()
+
+        function setList() {
+            var queryString = $("form[name=search_frm]").serialize();
+            console.log(queryString)
+            // $.ajax({
+            //     type: "POST",
+            //     url: "ajax_list.php",
+            //     data: queryString,
+            //     dataType: "html",
+            //     success: function(result) {
+
+            //         //console.log("result = "+result);
+
+            //         $('.prodList').html(result);
+
+            //     },
+            //     error: function(e) {
+            //         console.log(e);
+            //         alert("del_cmf Error : " + e);
+            //     }
+
+            // });
+
+        }
+    </script>
+
+
     <footer id="footer">
         <article>
             <div class="info_01">
@@ -355,6 +420,7 @@ include "../../include/dbconn.html";
 
 
     <script src="../js/index.js"></script>
+
 </body>
 
 </html>
