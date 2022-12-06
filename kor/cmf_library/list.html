@@ -390,25 +390,41 @@ include "../../include/dbconn.html";
                     <div>
                         <h2>Select Library</h2>
                         <div class="select_wrap">
-                            <label><input type="radio" name="phpradio" value=""><p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p></label>
-                            <label><input type="radio" name="phpradio" value=""><p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p></label>
-                            <label><input type="radio" name="phpradio" value=""><p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p></label>
-                            <label><input type="radio" name="phpradio" value=""><p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p></label>
-                            <label><input type="radio" name="phpradio" value=""><p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p></label>
-                            <label><input type="radio" name="phpradio" value=""><p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p></label>
-                            <label><input type="radio" name="phpradio" value=""><p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p></label>
-                            <label><input type="radio" name="phpradio" value=""><p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p></label>
+                            <label><input type="radio" name="phpradio" value="">
+                                <p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p>
+                            </label>
+                            <label><input type="radio" name="phpradio" value="">
+                                <p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p>
+                            </label>
+                            <label><input type="radio" name="phpradio" value="">
+                                <p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p>
+                            </label>
+                            <label><input type="radio" name="phpradio" value="">
+                                <p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p>
+                            </label>
+                            <label><input type="radio" name="phpradio" value="">
+                                <p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p>
+                            </label>
+                            <label><input type="radio" name="phpradio" value="">
+                                <p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p>
+                            </label>
+                            <label><input type="radio" name="phpradio" value="">
+                                <p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p>
+                            </label>
+                            <label><input type="radio" name="phpradio" value="">
+                                <p>Library name<img src="../images/common/ico_select_01.svg" alt=""></p>
+                            </label>
                         </div>
                     </div>
 
                     <div class="new_library">
                         <h2>New Library</h2>
                         <div>
-                            <label><input type="text" value="" placeholder="New library name"><img id="add_library" src="../images/common/ico_plus_03.svg" alt=""></label>
+                            <label><input type="text" value="" placeholder="New library name" id="cmf_new"><img id="add_library" src="../images/common/ico_plus_03.svg" alt=""></label>
                         </div>
                     </div>
 
-                    <input type="submit" value="Save">
+                    <input type="submit" value="Save" id="cmf_save" disabled>
                 </form>
             </div>
 
@@ -429,18 +445,27 @@ include "../../include/dbconn.html";
             $(this).children($('.ico_wrap.save')).toggleClass('active');
         })
 
+        // popup
+        $('.select_wrap input').on('change', function() {
+            $('#cmf_save').attr('disabled', false)
+        })
+
+        $('#cmf_new').focus(function() {
+            $('#cmf_save').attr('disabled', true)
+            $('.select_wrap').find('input').prop('checked',false)
+        });
+        // popup
+
         // cmf save 활성화 버튼
         $('#save_frm #btn_save').click(function() {
             $('.popup#popup_cmf').addClass('active');
         })
-        
+
         $('#btn_pop_close').click(function() {
             $(this).parents('.popup').removeClass('active');
         });
 
-        $('#add_library').click(function() {
-        });
-            
+        $('#add_library').click(function() {});
     </script>
     <!-- --------------------------- MAIN --------------------------- -->
 

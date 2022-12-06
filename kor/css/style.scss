@@ -388,15 +388,17 @@ body {
                 }
                
             }
+            input[type=submit]:disabled {background-color: #E5E5E5;color: #999;}
+            
             input[type=submit] {
                 @include font-openSans;
                 width: 100%;
                 margin-top: 50px;
                 padding: 13px;
-                background-color: #000;
                 font-size: 15px;
                 font-weight: bold;
                 letter-spacing: -0.3px;
+                background-color: #000;
                 color: #fff;
             }
         }
