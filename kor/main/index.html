@@ -563,225 +563,225 @@ include "../../include/dbconn.html";
         $(function() {
             gsap.registerPlugin(ScrollTrigger);
             /* 
-                        if (window.innerWidth >= 1200) {
-                            console.log('>=1200')
-                            const tl = gsap.timeline({
-                                scrollTrigger: {
-                                    trigger: ".ms_03 .box_01",
-                                    start: "top top",
-                                    pin: true,
-                                    scrub: 1,
-                                    // invalidateOnRefresh: true,
-                                    // markers: true
-                                },
-                            });
-                            tl.to(".img_01 img:first-child", {
-                                opacity: 0,
-                            });
-                            const t2 = gsap.timeline({
-                                scrollTrigger: {
-                                    trigger: ".ms_03 .box_02",
-                                    start: "top top",
-                                    pin: true,
-                                    scrub: 1,
-                                    markers: true
-                                },
-                                defaults: {
-                                    duration: 5,
-                                }
-                            });
-                            t2.to(".img_02 img:nth-of-type(1)", {
-                                    opacity: 0,
-                                })
-                                .to(".img_02 img:nth-of-type(2)", {
-                                    opacity: 1,
-                                })
-                                .to(".img_02 img:nth-of-type(1), .box_02 img:nth-of-type(2)", {
-                                    width: 0,
-                                })
-                                .to(".img_02 img:nth-of-type(3), .box_02 img:nth-of-type(4)", {
-                                    top: "0",
-                                }, "<")
+            if (window.innerWidth >= 1200) {
+                console.log('>=1200')
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".ms_03 .box_01",
+                        start: "top top",
+                        pin: true,
+                        scrub: 1,
+                        // invalidateOnRefresh: true,
+                        // markers: true
+                    },
+                });
+                tl.to(".img_01 img:first-child", {
+                    opacity: 0,
+                });
+                const t2 = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".ms_03 .box_02",
+                        start: "top top",
+                        pin: true,
+                        scrub: 1,
+                        markers: true
+                    },
+                    defaults: {
+                        duration: 5,
+                    }
+                });
+                t2.to(".img_02 img:nth-of-type(1)", {
+                        opacity: 0,
+                    })
+                    .to(".img_02 img:nth-of-type(2)", {
+                        opacity: 1,
+                    })
+                    .to(".img_02 img:nth-of-type(1), .box_02 img:nth-of-type(2)", {
+                        width: 0,
+                    })
+                    .to(".img_02 img:nth-of-type(3), .box_02 img:nth-of-type(4)", {
+                        top: "0",
+                    }, "<")
 
-                            const t3 = gsap.timeline({
-                                scrollTrigger: {
-                                    trigger: ".ms_03 .box_03",
-                                    start: "top top",
-                                    pin: true,
-                                    scrub: 1,
-                                    // markers: true
-                                },
-                                defaults: {
-                                    duration: 2,
-                                }
-                            });
-                            t3.to(".img_03 img:nth-of-type(3)", {
-                                    width: '260px',
-                                })
-                                .to(".img_03 img:nth-of-type(3)", {
-                                    top: "100%",
-                                })
-                                .to(".img_03 img:nth-of-type(2)", {
-                                    bottom: '10%',
-                                }, '<')
-                                .to(".img_03 img:nth-of-type(4)", {
-                                    bottom: '5%',
-                                }, '<')
-                                .to(".img_03 img:nth-of-type(1)", {
-                                    bottom: 'unset',
-                                    top: '0',
-                                }, '<');
+                const t3 = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".ms_03 .box_03",
+                        start: "top top",
+                        pin: true,
+                        scrub: 1,
+                        // markers: true
+                    },
+                    defaults: {
+                        duration: 2,
+                    }
+                });
+                t3.to(".img_03 img:nth-of-type(3)", {
+                        width: '260px',
+                    })
+                    .to(".img_03 img:nth-of-type(3)", {
+                        top: "100%",
+                    })
+                    .to(".img_03 img:nth-of-type(2)", {
+                        bottom: '10%',
+                    }, '<')
+                    .to(".img_03 img:nth-of-type(4)", {
+                        bottom: '5%',
+                    }, '<')
+                    .to(".img_03 img:nth-of-type(1)", {
+                        bottom: 'unset',
+                        top: '0',
+                    }, '<');
 
-                        } else if (window.innerWidth >= 767) {
-                            console.log('>=767')
-                            const tl = gsap.timeline({
-                                scrollTrigger: {
-                                    trigger: ".ms_03 .box_01 .img_wrap",
-                                    start: "top top",
-                                    scrub: 1,
-                                    pin: true,
-                                    markers: true
-                                },
-                            });
-                            tl.to(".img_01 img:first-child", {
-                                opacity: 0,
-                            });
+            } else if (window.innerWidth >= 767) {
+                console.log('>=767')
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".ms_03 .box_01 .img_wrap",
+                        start: "top top",
+                        scrub: 1,
+                        pin: true,
+                        markers: true
+                    },
+                });
+                tl.to(".img_01 img:first-child", {
+                    opacity: 0,
+                });
 
-                            const t2 = gsap.timeline({
-                                scrollTrigger: {
-                                    trigger: ".ms_03 .box_02 .img_wrap",
-                                    start: "top top",
-                                    scrub: 1,
-                                    pin: true,
-                                    // markers: true,
-                                },
-                                defaults: {
-                                    duration: 10,
-                                }
-                            });
-                            t2.to(".img_02 img:nth-of-type(1)", {
-                                    opacity: 0,
-                                })
-                                .to(".img_02 img:nth-of-type(2)", {
-                                    opacity: 1,
-                                }, '<')
-                                .to(".img_02 img:nth-of-type(2)", {
-                                    opacity: 0,
-                                })
-                                .to(".img_02 img:nth-of-type(3)", {
-                                    opacity: 1,
-                                }, '<')
-                                .to(".img_02 img:nth-of-type(3)", {
-                                    top: 80,
-                                }, '<')
-                                .to(".box_02 img:nth-of-type(4)", {
-                                    top: 100,
-                                    opacity: 1,
-                                });
+                const t2 = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".ms_03 .box_02 .img_wrap",
+                        start: "top top",
+                        scrub: 1,
+                        pin: true,
+                        // markers: true,
+                    },
+                    defaults: {
+                        duration: 10,
+                    }
+                });
+                t2.to(".img_02 img:nth-of-type(1)", {
+                        opacity: 0,
+                    })
+                    .to(".img_02 img:nth-of-type(2)", {
+                        opacity: 1,
+                    }, '<')
+                    .to(".img_02 img:nth-of-type(2)", {
+                        opacity: 0,
+                    })
+                    .to(".img_02 img:nth-of-type(3)", {
+                        opacity: 1,
+                    }, '<')
+                    .to(".img_02 img:nth-of-type(3)", {
+                        top: 80,
+                    }, '<')
+                    .to(".box_02 img:nth-of-type(4)", {
+                        top: 100,
+                        opacity: 1,
+                    });
 
-                            const t3 = gsap.timeline({
-                                scrollTrigger: {
-                                    trigger: ".ms_03 .box_03 .img_wrap",
-                                    start: "top top",
-                                    pin: true,
-                                    scrub: 1,
-                                    // markers: true
-                                },
-                                defaults: {
-                                    duration: 10,
-                                }
-                            });
-                            t3.to(".img_03 img:nth-of-type(3)", {
-                                    height: '360px',
-                                })
-                                .to(".img_03 img:nth-of-type(1)", {
-                                    top: "0",
-                                })
-                                .to(".img_03 img:nth-of-type(2)", {
-                                    top: "10%",
-                                }, '<')
-                                .to(".img_03 img:nth-of-type(4)", {
-                                    top: "10%",
-                                }, '<')
-                                .to(".img_03 img:nth-of-type(3)", {
-                                    top: '10%',
-                                })
-                        } else {
-                            console.log('767 이하')
-                            const tl = gsap.timeline({
-                                scrollTrigger: {
-                                    trigger: ".ms_03 .box_01 .img_wrap",
-                                    start: "top top",
-                                    scrub: 1,
-                                    pin: true,
-                                    markers: true
-                                },
-                            });
-                            tl.to(".img_01 img:first-child", {
-                                opacity: 0,
-                            });
+                const t3 = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".ms_03 .box_03 .img_wrap",
+                        start: "top top",
+                        pin: true,
+                        scrub: 1,
+                        // markers: true
+                    },
+                    defaults: {
+                        duration: 10,
+                    }
+                });
+                t3.to(".img_03 img:nth-of-type(3)", {
+                        height: '360px',
+                    })
+                    .to(".img_03 img:nth-of-type(1)", {
+                        top: "0",
+                    })
+                    .to(".img_03 img:nth-of-type(2)", {
+                        top: "10%",
+                    }, '<')
+                    .to(".img_03 img:nth-of-type(4)", {
+                        top: "10%",
+                    }, '<')
+                    .to(".img_03 img:nth-of-type(3)", {
+                        top: '10%',
+                    })
+            } else {
+                console.log('767 이하')
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".ms_03 .box_01 .img_wrap",
+                        start: "top top",
+                        scrub: 1,
+                        pin: true,
+                        markers: true
+                    },
+                });
+                tl.to(".img_01 img:first-child", {
+                    opacity: 0,
+                });
 
-                            const t2 = gsap.timeline({
-                                scrollTrigger: {
-                                    trigger: ".ms_03 .box_02 .img_wrap",
-                                    start: "top top",
-                                    end: "bottom bottom",
-                                    scrub: 1,
-                                    pin: true,
-                                    markers: true,
-                                },
-                                defaults: {
-                                    duration: 10,
-                                }
-                            });
-                            t2.to(".img_02 img:nth-of-type(1)", {
-                                    opacity: 0,
-                                })
-                                .to(".img_02 img:nth-of-type(2)", {
-                                    opacity: 1,
-                                }, '<')
-                                .to(".img_02 img:nth-of-type(2)", {
-                                    opacity: 0,
-                                })
-                                .to(".img_02 img:nth-of-type(3)", {
-                                    opacity: 1,
-                                }, '<')
-                                .to(".img_02 img:nth-of-type(3)", {
-                                    top: 120,
-                                }, '<')
-                                .to(".box_02 img:nth-of-type(4)", {
-                                    top: 150,
-                                    opacity: 1,
-                                });
+                const t2 = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".ms_03 .box_02 .img_wrap",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 1,
+                        pin: true,
+                        markers: true,
+                    },
+                    defaults: {
+                        duration: 10,
+                    }
+                });
+                t2.to(".img_02 img:nth-of-type(1)", {
+                        opacity: 0,
+                    })
+                    .to(".img_02 img:nth-of-type(2)", {
+                        opacity: 1,
+                    }, '<')
+                    .to(".img_02 img:nth-of-type(2)", {
+                        opacity: 0,
+                    })
+                    .to(".img_02 img:nth-of-type(3)", {
+                        opacity: 1,
+                    }, '<')
+                    .to(".img_02 img:nth-of-type(3)", {
+                        top: 120,
+                    }, '<')
+                    .to(".box_02 img:nth-of-type(4)", {
+                        top: 150,
+                        opacity: 1,
+                    });
 
-                            const t3 = gsap.timeline({
-                                scrollTrigger: {
-                                    trigger: ".ms_03 .box_03 .img_wrap",
-                                    start: "top top",
-                                    pin: true,
-                                    scrub: 1,
-                                    markers: true
-                                },
-                                defaults: {
-                                    duration: 10,
-                                }
-                            });
-                            t3.to(".img_03 img:nth-of-type(3)", {
-                                    height: '250px',
-                                })
-                                .to(".img_03 img:nth-of-type(1)", {
-                                    top: 100,
-                                })
-                                .to(".img_03 img:nth-of-type(2)", {
-                                    top: 150,
-                                }, '<')
-                                .to(".img_03 img:nth-of-type(4)", {
-                                    top: 200,
-                                }, '<')
-                                .to(".img_03 img:nth-of-type(3)", {
-                                    top: 300,
-                                })
-                        }
+                const t3 = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".ms_03 .box_03 .img_wrap",
+                        start: "top top",
+                        pin: true,
+                        scrub: 1,
+                        markers: true
+                    },
+                    defaults: {
+                        duration: 10,
+                    }
+                });
+                t3.to(".img_03 img:nth-of-type(3)", {
+                        height: '250px',
+                    })
+                    .to(".img_03 img:nth-of-type(1)", {
+                        top: 100,
+                    })
+                    .to(".img_03 img:nth-of-type(2)", {
+                        top: 150,
+                    }, '<')
+                    .to(".img_03 img:nth-of-type(4)", {
+                        top: 200,
+                    }, '<')
+                    .to(".img_03 img:nth-of-type(3)", {
+                        top: 300,
+                    })
+            }
              */
             ScrollTrigger.matchMedia({
                 "(min-width: 1200px)": function() {
@@ -931,7 +931,7 @@ include "../../include/dbconn.html";
                 },
             });
 
-            
+
             $('.ms_04 .left ul li, .mo_tab li').click(function() {
                 snsIndex = $(this).index();
                 $('.ms_04 .left ul li a, .mo_tab li a, .right > div').removeClass('active');
@@ -940,69 +940,7 @@ include "../../include/dbconn.html";
                 $('.right > div').eq(snsIndex).addClass('active')
             })
 
-        })
-
-
-
-        // $(window).scroll(function() {
-
-
-        //     gsap.to('.mo_ver .sec04 .half_box', {
-        //         height: 20 + 'vh',
-        //         scrollTrigger: {
-        //             trigger: '.mo_ver .sec04 .sec_wrap',
-        //             start: "top top",
-        //             end: "+=100%",
-        //             scrub: 1,
-        //             // pin: true,
-        //             // markers: true,
-        //         }
-        //     });
-
-
-
-        //     /* 
-        //     var winHei = $(window).height(),
-        //         scrollTop = $(window).scrollTop();
-        //     console.log(scrollTop);
-
-        //     console.log($('.img_wrap.img_01').offset().top)
-        //     boxHei_01 = $('.ms_03 .box_01').height();
-        //     boxImg_01 = $('.img_wrap img').eq(0).offset().top;
-        //     */
-
-
-
-
-
-
-
-        //     // if (높이 <= 2800) {
-        //     //     var 높이 = 2800;
-        //     // } else {
-        //     //     var 높이 = $(window).scrollTop();
-        //     // }
-
-
-        //     // var y = -1 / 500 * 높이 + 330 / 50;
-        //     // $('.cardbg:nth-child(1) .card-img .img1').eq(0).css('opacity', y);
-
-
-        //     // var z = -1 / 500 * 높이 + 630 / 50;
-        //     // $('.cardbg:nth-child(2) .card-img .img1').eq(0).css('opacity', z);
-
-        //     // var w = -1 / 500 * 높이 + 7775 / 500;
-        //     // $('.cardbg:nth-child(2) .card-img .img2').eq(0).css('opacity', w);
-
-
-        //     // var e = (-1 / 7750) * 높이 + 1475 / 775;
-        //     // $('.container3 .cardbg:nth-child(2) .card .box2 .card-img .img2').eq(0).css('transform', `scale( ${e} )`);
-
-
-        //     // var q = (-1 / 5000) * 높이 + 138 / 50;
-        //     // $('.container3 .cardbg:nth-child(3) .card .box2 .card-img .img1').eq(0).css('transform', `scale( ${q} )`);
-
-        // });
+        });
     </script>
 
 

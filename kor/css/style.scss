@@ -921,6 +921,9 @@ body {
                     .default_tab {
                         display: flex; justify-content: space-between;
                         width: 100%;
+                        white-space: nowrap;
+                        overflow: auto;
+                        &::-webkit-scrollbar {display: none}
                         #sec_tab {
                             display: flex; align-items: center; 
                             li {
