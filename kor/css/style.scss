@@ -385,6 +385,7 @@ body {
                         cursor: pointer;
                         position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
                     }
+                    input:focus + img {filter: invert(100%);}
                 }
                
             }
