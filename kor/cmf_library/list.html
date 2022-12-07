@@ -143,14 +143,27 @@ include "../../include/dbconn.html";
         <section>
             <article>
                 <div class="sec_tit">
-                    <h2>CMF library <span>425+</span></h2>
+                    <div class="default_tab">
+                        <h2>CMF library <span>425+</span></h2>
+                        <ul id="sec_tab">
+                            <li id="tab_filter"><img src="../images/common/ico_filter_01.svg" alt="">Filter</li>
+                            <li id="tab_library"><img src="../images/common/ico_ml_01.svg" alt="">My Library</li>
+                            <!-- save 버튼 눌렀을떄 파라미터 붙혀서 아래 save_frm open -->
+                            <li id="tab_save"><img src="../images/common/ico_save_01.svg" alt="">Save</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mo_tab">
+                        <ul id="mo_sec_tab">
+                            <li id="mo_tab_filter"><img src="../images/common/ico_filter_02.svg" alt="">Filter</li>
+                            <li>Color</li>
+                            <li>Material</li>
+                            <li>Finish</li>
+                            <li>Feeling</li>
+                            <li>Trends</li>
+                        </ul>
+                    </div>
 
-                    <ul id="sec_tab">
-                        <li id="tab_filter"><img src="../images/common/ico_filter_01.svg" alt="">Filter</li>
-                        <li id="tab_library"><img src="../images/common/ico_ml_01.svg" alt="">My Library</li>
-                        <!-- save 버튼 눌렀을떄 파라미터 붙혀서 아래 save_frm open -->
-                        <li id="tab_save"><img src="../images/common/ico_save_01.svg" alt="">Save</li>
-                    </ul>
 
 
                     <div id="hidden_tab">
@@ -167,83 +180,100 @@ include "../../include/dbconn.html";
 
                         <form id="search_frm" name="search_frm">
                             <div class="filter_tab">
-                                <div class="w_180">
-                                    <dl>
-                                        <dt>color</dt>
-                                        <dd class="color_wrap">
-                                            <label><input type="checkbox" name="search_color[]" value="#fff"><span style="background-color: #fff;"></span></label>
-                                            <label><input type="checkbox" name="search_color[]" value="#d9d9d9"><span style="background-color: #d9d9d9;"></span></label>
-                                            <label><input type="checkbox" name="search_color[]" value="#7c7c7c"><span style="background-color: #7c7c7c;"></span></label>
-                                            <label><input type="checkbox" name="search_color[]" value="#f00"><span style="background-color: #f00;"></span></label>
-                                            <label><input type="checkbox" name="search_color[]" value="#ad0000"><span style="background-color: #ad0000;"></span></label>
-                                            <label><input type="checkbox" name="search_color[]" value="#ff6126"><span style="background-color: #ff6126;"></span></label>
-                                            <label><input type="checkbox" name="search_color[]" value="#f90"><span style="background-color: #f90;"></span></label>
-                                            <label><input type="checkbox" name="search_color[]" value="#fff500"><span style="background-color: #fff500;"></span></label>
-                                        </dd>
-                                    </dl>
+
+                                <ul class="filter_tab_mo">
+                                    <li class="active">Color</li>
+                                    <li>Material</li>
+                                    <li>Finish</li>
+                                    <li>Feeling</li>
+                                    <li>Trends</li>
+                                </ul>
+
+                                <div class="filter_wrap">
+                                    <div class="filter_box w_180 active">
+                                        <dl>
+                                            <dt>color</dt>
+                                            <dd class="color_wrap">
+                                                <label><input type="checkbox" name="search_color[]" value="#fff"><span style="background-color: #fff;"></span></label>
+                                                <label><input type="checkbox" name="search_color[]" value="#d9d9d9"><span style="background-color: #d9d9d9;"></span></label>
+                                                <label><input type="checkbox" name="search_color[]" value="#7c7c7c"><span style="background-color: #7c7c7c;"></span></label>
+                                                <label><input type="checkbox" name="search_color[]" value="#f00"><span style="background-color: #f00;"></span></label>
+                                                <label><input type="checkbox" name="search_color[]" value="#ad0000"><span style="background-color: #ad0000;"></span></label>
+                                                <label><input type="checkbox" name="search_color[]" value="#ff6126"><span style="background-color: #ff6126;"></span></label>
+                                                <label><input type="checkbox" name="search_color[]" value="#f90"><span style="background-color: #f90;"></span></label>
+                                                <label><input type="checkbox" name="search_color[]" value="#fff500"><span style="background-color: #fff500;"></span></label>
+                                            </dd>
+                                        </dl>
+                                    </div>
+
+                                    <div class="filter_box w_380">
+                                        <dl>
+                                            <dt>Material</dt>
+                                            <dd>
+                                                <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Metal</span></label>
+                                                <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Fabric</span></label>
+                                                <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Film</span></label>
+                                                <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Wood</span></label>
+                                                <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Composites</span></label>
+                                                <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Stone</span></label>
+                                                <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Injection molding</span></label>
+                                            </dd>
+                                        </dl>
+
+                                    </div>
+
+                                    <div class="filter_box w_180">
+                                        <dl>
+                                            <dt>Finish</dt>
+                                            <dd>
+                                                <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>Anodizing</span></label>
+                                                <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>3D patterning</span></label>
+                                                <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>UV patterning</span></label>
+                                                <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>Wrapping</span></label>
+                                                <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>Printing</span></label>
+                                                <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>Lamination</span></label>
+                                            </dd>
+                                        </dl>
+                                    </div>
+
+
+                                    <div class="filter_box w_180">
+                                        <dl>
+                                            <dt>Feeling</dt>
+                                            <dd>
+                                                <label><input type="checkbox" name="search_feeling[]"><i class="ico checkbox"></i><span>Press molding</span></label>
+                                                <label><input type="checkbox" name="search_feeling[]"><i class="ico checkbox"></i><span>Forming</span></label>
+                                            </dd>
+                                        </dl>
+                                    </div>
+
+                                    <div class="filter_box w_180">
+                                        <dl>
+                                            <dt>Trends</dt>
+                                            <dd>
+                                                <label><input type="checkbox" name="search_trends[]"><i class="ico checkbox"></i><span>Anodizing</span></label>
+                                                <label><input type="checkbox" name="search_trends[]"><i class="ico checkbox"></i><span>3D patterning</span></label>
+                                                <label><input type="checkbox" name="search_trends[]"><i class="ico checkbox"></i><span>UV patterning</span></label>
+                                                <label><input type="checkbox" name="search_trends[]"><i class="ico checkbox"></i><span>Wrapping</span></label>
+                                                <label><input type="checkbox" name="search_trends[]"><i class="ico checkbox"></i><span>Printing</span></label>
+                                                <label><input type="checkbox" name="search_trends[]"><i class="ico checkbox"></i><span>Lamination</span></label>
+                                            </dd>
+                                        </dl>
+
+                                    </div>
+
+                                    <div class="mo_filter_state">
+                                        <div id="mo_reset"><img src="../images/common/ico_reset_01.svg" alt="">Reset</div>
+                                        <div id="mo_select"><input type="submit" value="Select"></div>
+                                    </div>
                                 </div>
 
-                                <div class="w_380">
-                                    <dl>
-                                        <dt>Material</dt>
-                                        <dd>
-                                            <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Metal</span></label>
-                                            <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Fabric</span></label>
-                                            <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Film</span></label>
-                                            <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Wood</span></label>
-                                            <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Composites</span></label>
-                                            <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Stone</span></label>
-                                            <label class="half"><input type="checkbox" name="search_material[]"><i class="ico checkbox"></i><span>Injection molding</span></label>
-                                        </dd>
-                                    </dl>
-
-                                </div>
-
-                                <div class="w_180">
-                                    <dl>
-                                        <dt>Finish</dt>
-                                        <dd>
-                                            <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>Anodizing</span></label>
-                                            <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>3D patterning</span></label>
-                                            <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>UV patterning</span></label>
-                                            <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>Wrapping</span></label>
-                                            <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>Printing</span></label>
-                                            <label><input type="checkbox" name="search_finishing[]"><i class="ico checkbox"></i><span>Lamination</span></label>
-                                        </dd>
-                                    </dl>
-                                </div>
-
-
-                                <div class="w_180">
-                                    <dl>
-                                        <dt>Feeling</dt>
-                                        <dd>
-                                            <label><input type="checkbox" name="search_feeling[]"><i class="ico checkbox"></i><span>Press molding</span></label>
-                                            <label><input type="checkbox" name="search_feeling[]"><i class="ico checkbox"></i><span>Forming</span></label>
-                                        </dd>
-                                    </dl>
-                                </div>
-
-                                <div class="w_180">
-                                    <dl>
-                                        <dt>Trends</dt>
-                                        <dd>
-                                            <label><input type="checkbox" name="search_trends[]"><i class="ico checkbox"></i><span>Anodizing</span></label>
-                                            <label><input type="checkbox" name="search_trends[]"><i class="ico checkbox"></i><span>3D patterning</span></label>
-                                            <label><input type="checkbox" name="search_trends[]"><i class="ico checkbox"></i><span>UV patterning</span></label>
-                                            <label><input type="checkbox" name="search_trends[]"><i class="ico checkbox"></i><span>Wrapping</span></label>
-                                            <label><input type="checkbox" name="search_trends[]"><i class="ico checkbox"></i><span>Printing</span></label>
-                                            <label><input type="checkbox" name="search_trends[]"><i class="ico checkbox"></i><span>Lamination</span></label>
-                                        </dd>
-                                    </dl>
-
-                                </div>
                             </div>
                         </form>
                     </div>
 
                     <!-- 여기에 save파라미터 있으면 class=active -->
-                    <form id="save_frm" name="save_frm">
+                    <form id="save_frm" name="save_frm" class="active">
                         <p>
                             <span>(cnt)</span> CMF Selected
                         </p>
@@ -437,14 +467,24 @@ include "../../include/dbconn.html";
         tab_library
         tab_save
         */
-        $('#tab_filter').click(() => {
-            $('#search_frm').slideToggle();
-        })
+       
+        // 767 이상힐때
+        if(window.innerWidth >= 768) {
+            $('#tab_filter').click(() => {
+                $('#search_frm').slideToggle();
+            })
+        } else {
+            $('#mo_tab_filter').click(() => {
+                $('#search_frm').toggleClass('active');
+            })
+        }
 
-        $('.content > ul > li > a ').click(function() {
-            $(this).children($('.ico_wrap.save')).toggleClass('active');
-        })
 
+
+
+        
+
+        // common
         // popup
         $('.select_wrap input').on('change', function() {
             $('#cmf_save').attr('disabled', false)
@@ -452,10 +492,10 @@ include "../../include/dbconn.html";
 
         $('#cmf_new').focus(function() {
             $('#cmf_save').attr('disabled', true)
-            $('.select_wrap').find('input').prop('checked',false)
+            $('.select_wrap').find('input').prop('checked', false)
         });
-   
         // popup
+
 
         // cmf save 활성화 버튼
         $('#save_frm #btn_save').click(function() {
@@ -465,8 +505,35 @@ include "../../include/dbconn.html";
         $('#btn_pop_close').click(function() {
             $(this).parents('.popup').removeClass('active');
         });
+        
+        // save 활성시 product active control
+        $('.content > ul > li > a ').click(function() {
+            $(this).children($('.ico_wrap.save')).toggleClass('active');
+        })
 
-        $('#add_library').click(function() {});
+
+
+        
+
+        // Mo
+
+        // 모바일 필터 탭메뉴
+        $('.filter_tab_mo li').click(function(){
+            filterIdx = $(this).index()
+            $('.filter_box, .filter_tab_mo li').removeClass('active');
+            $(this).addClass('active');
+            $('.filter_box').eq(filterIdx).addClass('active');
+        })
+
+        $('#mo_reset').click(function(){
+            if(confirm('Do you want to initialize?')) {
+                $('.filter_wrap').find('input').prop('checked',false);
+            } else {
+                return false;
+            }
+        })
+
+
     </script>
     <!-- --------------------------- MAIN --------------------------- -->
 
