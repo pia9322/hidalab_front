@@ -153,10 +153,13 @@ $color-200 : #ea5417;
 @mixin hidagradient_01 {
   position: absolute;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff);
-  bottom: 0;
-  left: 0;
+  left: 0; bottom: 0;
   width: 100%;
 }
+@mixin hidagradient_self($direct) {
+  background-image: linear-gradient(to $direct, rgba(255, 255, 255, 0), #ffffff);
+}
+
 @mixin hidaFont_50 {
   font-size: 50px;
   font-weight: bold;
