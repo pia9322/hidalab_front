@@ -382,6 +382,11 @@
 
 
             &.sub_page {
+
+                .btn.more {
+                    margin-top: 85px;
+                }
+
                 &#cmf_library {
                     @include marginTop-200;
                     .sec_tit {
@@ -448,9 +453,7 @@
                                 }
                             }
                         }
-                        .more {
-                            margin-top: 85px;
-                        }
+                  
     
                     }
     

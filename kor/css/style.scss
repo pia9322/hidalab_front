@@ -751,6 +751,21 @@ body {
         }
         
         &.sub_page {
+
+            .btn.more {
+                margin-top: 120px;
+                @include flexCenter;
+                a {
+                    display: inline-block;
+                    padding: 13px 40px;
+                    background-color: #000;
+
+                    @include font-openSans;
+                    font-size: 15px;
+                    letter-spacing: -0.3px;
+                    color: #fff;
+                }
+            }
             
             .sec_tit {
                 position: relative;
@@ -1133,20 +1148,7 @@ body {
                             }
                         }
                     }
-                    .more {
-                        margin-top: 120px;
-                        @include flexCenter;
-                        a {
-                            display: inline-block;
-                            padding: 13px 40px;
-                            background-color: #000;
-
-                            @include font-openSans;
-                            font-size: 15px;
-                            letter-spacing: -0.3px;
-                            color: #fff;
-                        }
-                    }
+                    
 
                 }
 
@@ -1202,7 +1204,6 @@ body {
                             margin-top: 30px;
                             display: flex; gap: 46px;
                             li {
-                                border: 1px solid #f00;
                                 $wh: 440px;
                                 width: $wh; height: $wh;
                                 
@@ -1240,6 +1241,15 @@ body {
                                                 }
                                                 &.bottom {
                                                     left: 0; bottom: 0;
+                                                    backdrop-filter: blur(21px);
+                                                    background-color: rgba(255, 255, 255, 0.2);
+                                                    padding: 20px;
+                                                    
+                                                    font-size: 16px;
+                                                    font-weight: normal;
+                                                    line-height: 1.5;
+                                                    letter-spacing: -0.32px;
+                                                  
                                                 }
                                                 &.arrow {
                                                     max-width: 50px; max-height: 31px;
