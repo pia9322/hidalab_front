@@ -140,12 +140,15 @@ include "../../include/dbconn.html";
     <main class="sub_page detail" id="trend_library">
         <section>
             <article>
-                <div class="detail_head">
+                <!-- <div class="detail_head">
                     <a href=""><img src="../images/common/ico_arrow_05.svg" alt="move to prev page"></a>
-                </div>
+                </div> -->
 
                 <div class="detail_body">
                     <div class="navi">
+
+                        <a href="javascript:;" onclick="history.back()"><img src="../images/common/ico_arrow_05.svg" alt="move to prev page"></a>
+
                         <ul class="lang">
                             <li><a href="" class="active">KOR</a></li>
                             <li><a href="">ENG</a></li>
@@ -195,12 +198,94 @@ include "../../include/dbconn.html";
                                         hïda’s Monthly Selection
                                     </h2>
                                     <p>
-                                        더 다양한 트렌드가 궁금하시다면,
-                                        아래 버튼을 눌러 다양한 트렌드를 확인하세요.
+                                        지난 달, 전 세계에서 주목했던 CMF를 모아 여러분께만 소개합니다.
+                                        <br>
+                                        hïda는 매주 다양한 CMF를 업데이트하면서 차별화된 디자인 영감을 제공하고 있답니다.
+                                        <br>
+                                        각 CMF 이미지를 클릭하면 상세페이지로 이동할 수 있으니 놓치지 마세요.
                                     </p>
                                 </div>
 
-                                <div class="ckeditor">제품 6개</div>
+                                <div class="product">
+                                    <ul>
+                                        <li>
+                                            <a href="">
+                                                <figure>
+                                                    <div class="ico_wrap">
+                                                        <img src="../images/common/icon_Sustainable.svg" alt="">
+                                                        <img src="../images/common/icon_New.svg" alt="">
+                                                    </div>
+                                                    <div class="img_wrap">
+                                                        <img src="../images/product/sample_01.jpg" alt="">
+                                                        <img src="../images/common/prod_bg.png" alt="" class="prod_thumb_bg">
+                                                    </div>
+                                                    <figcaption>
+                                                        <p>ECR - 0030</p>
+                                                        <p>Coffee Brown</p>
+                                                        <p>Liked by</p>
+                                                    </figcaption>
+                                                </figure>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <figure>
+                                                    <div class="ico_wrap">
+                                                        <img src="../images/common/icon_Sustainable.svg" alt="">
+                                                        <img src="../images/common/icon_New.svg" alt="">
+                                                    </div>
+                                                    <div class="img_wrap">
+                                                        <img src="../images/product/sample_01.jpg" alt="">
+                                                        <img src="../images/common/prod_bg.png" alt="" class="prod_thumb_bg">
+                                                    </div>
+                                                    <figcaption>
+                                                        <p>ECR - 0030</p>
+                                                        <p>Coffee Brown</p>
+                                                        <p>Liked by</p>
+                                                    </figcaption>
+                                                </figure>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <figure>
+                                                    <div class="ico_wrap">
+                                                        <img src="../images/common/icon_Sustainable.svg" alt="">
+                                                        <img src="../images/common/icon_New.svg" alt="">
+                                                    </div>
+                                                    <div class="img_wrap">
+                                                        <img src="../images/product/sample_01.jpg" alt="">
+                                                        <img src="../images/common/prod_bg.png" alt="" class="prod_thumb_bg">
+                                                    </div>
+                                                    <figcaption>
+                                                        <p>ECR - 0030</p>
+                                                        <p>Coffee Brown</p>
+                                                        <p>Liked by</p>
+                                                    </figcaption>
+                                                </figure>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <figure>
+                                                    <div class="ico_wrap">
+                                                        <img src="../images/common/icon_Sustainable.svg" alt="">
+                                                        <img src="../images/common/icon_New.svg" alt="">
+                                                    </div>
+                                                    <div class="img_wrap">
+                                                        <img src="../images/product/sample_01.jpg" alt="">
+                                                        <img src="../images/common/prod_bg.png" alt="" class="prod_thumb_bg">
+                                                    </div>
+                                                    <figcaption>
+                                                        <p>ECR - 0030</p>
+                                                        <p>Coffee Brown</p>
+                                                        <p>Liked by</p>
+                                                    </figcaption>
+                                                </figure>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
 
                                 <div class="info">
                                     <div class="btn more"><a href="">CMF 라이브러리 구경하기</a></div>
@@ -209,7 +294,7 @@ include "../../include/dbconn.html";
                         </dl>
 
                         <dl id="newsletter">
-                            <dt>asd</dt>
+                            <dt>지난 뉴스레터 몰아보기</dt>
                             <dd>
                                 <a href="#none">
                                     <img src="" alt="">
@@ -251,21 +336,20 @@ include "../../include/dbconn.html";
                                     <a href="">
                                         <img src="../images/common/ico_list_01.svg" alt="">
                                         <p>Newsletter list</p>
-                                        <span>date</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="">
                                         <img src="../images/common/ico_next_01.svg" alt="">
                                         <p>Next Newsletter Title</p>
-                                        <span>date</span>
+                                        <span>2022-10-16</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="">
                                         <img src="../images/common/ico_prev_01.svg" alt="">
                                         <p>Prev Newsletter Title</p>
-                                        <span>date</span>
+                                        <span>2022-10-16</span>
                                     </a>
                                 </li>
                             </ul>
@@ -335,7 +419,6 @@ include "../../include/dbconn.html";
 
         </article>
     </footer>
-
 
     <script src="../js/index.js"></script>
 </body>

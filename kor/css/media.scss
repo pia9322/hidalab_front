@@ -134,6 +134,7 @@
 
 
     @mixin marginTop-200 {margin: 130px auto 0;}
+
     @mixin subLayoutPadding {padding-left: 4%; padding-right: 4%;}
 
 
@@ -458,6 +459,205 @@
                     }
     
                 }
+
+                &#trend_library {
+                    @include marginTop-200;
+
+                    
+
+                    &.list {
+                        padding-left: 4%;
+                        .content_wrap {
+                            .con {
+                                ul {
+                                    margin-top: 20px; gap: 40px;
+                                    li {
+                                        $wh: 33.3%;
+                                        width: $wh; height: 350px;
+                                        &:nth-child(3n) {
+                                            figure {
+                                                &::after {
+                                                    width: 50%;
+                                                }
+                                            }
+                                        }
+                                        figure {
+                                            .img_wrap {}
+                                            .text_wrap {
+                                                padding: 30px;
+                                                figcaption {
+                                                    p {
+                                                        font-size: 24px;
+                                                        &.top {max-width: 80%;}
+                                                        &.bottom {@include ellipsis(1);}
+                                                        &.arrow {max-width: 20%; max-height: 100%;}
+                                                    }
+                                                }
+                                            }
+                                            
+                                        }
+                                    }
+                                    @media (max-width: 1000px) {
+                                        li {
+                                            height: 275px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    } 
+                        
+                    &.list_detail {
+                        @include subLayoutPadding();
+                        .sec_tit {
+                            .mo_tit {display: block;}
+                            .nav_location {
+                                display: flex;
+                                h2 {
+                                    opacity: 1;
+                                    color: #aaa;
+                                    font-weight: normal;
+                                }
+                            }
+                        }
+
+                        .content_wrap {
+                            .con {
+                                @include marginTop-80;
+                                ul {
+                                    gap: 40px;
+                                    &::after {
+                                        height: calc(440px / 2);
+                                    }
+                                    li {
+                                        $wh: calc(50% - 20px);
+                                        width: $wh; height: 400px;
+                                        figure {
+                                            @include fullsize;
+                                            position: relative;
+                                            
+                                            .text_wrap {
+                                                padding: 30px;
+                                                figcaption {
+                                                    p {
+                                                        &.top {max-width: 80%;}
+                                                        &.arrow {max-width: 20%;}
+                                                    }
+                                                }
+                                            }
+                                            
+                                        }
+                                    }
+                                    @media (max-width: 1000px) {
+                                        li {
+                                            height: 350px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &.detail{
+                        @include subLayoutPadding();
+                        .detail_body {
+                            gap: 40px;
+                            .navi {
+                                background-color: #fff;
+                                top: 15px;  z-index: 9999;
+                                max-width: 400px; min-width: 300px;
+                                .lang {
+                                    margin: 60px 0 20px 0;
+                                }
+                                h2 {
+                                    @include hidaFont_50;
+                                    margin-bottom: 40px;
+                                }
+                                .info {
+                                    li {font-size: 16px;}
+                                }
+                            }
+
+                            .content {
+                                margin-top: calc(60px + 32px);
+                                dl {
+                                    &#trend, &#cmf, &#newsletter {
+                                        padding-bottom: 40px;
+                                    }
+                            
+
+                                    &#trend {
+                                        .info {
+                                            .btn.more {
+                                                margin-top: 20px;
+                                            }
+                                        }
+                                    }
+
+                                    &#cmf {
+                                        .product {
+                                            margin-top: 40px;
+                                            ul {
+                                                display: flex; flex-wrap: wrap; gap: 30px;
+                                                li {
+                                                    width: calc(33.3333% - 20px);
+                                                    a {
+                                                        figure {
+                                                            div {
+                                                                &.ico_wrap {
+                                                                    position: absolute; right: 0; top: 0; z-index: 1;
+                                                                    display: flex;
+                                                                    img {
+                                                                        width: 15px; height: 15px;
+                                                                        opacity: .2;
+                                                                    }
+                                                                }
+                                                                &.img_wrap {
+                                                                    width: 100%; height: 100%;
+                                                                }
+                                                            }
+                                                            figcaption {
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                         
+                                    }
+
+                                    &#newsletter {
+                                        dd {
+                                            display: flex;  gap: 20px;
+                                            margin-top: 20px;
+                                            a {
+                                                width: calc(33.3333% - 14px); 
+                                                img {
+                                                    width: 100%;
+                                                    height:250px;
+                                                }
+                                            }
+                                        }
+
+                                    }
+
+                                    &#hida_info {
+                                        ul {
+                                            gap: 20px 40px; flex-wrap: wrap;
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+
+
+
+
+                    
+                }
     
             }
         } 
@@ -467,7 +667,7 @@
 
 
 
-// ms_03
+// ms_03, trend_detail
 @media (max-width: 1200px) {
     @mixin paddingLeft_10 { padding-left: 0; }
 
@@ -584,6 +784,25 @@
                 }
                 
             }
+
+
+            &.sub_page {
+                &#trend_library {
+                    &.detail{
+                        .detail_body {
+                            flex-direction: column;
+                            .navi {
+                                background-color: transparent;
+                                position: unset; z-index: unset;
+                                max-width: 100%;
+                                > a {display: none;}
+                            }
+                        }
+                    }
+                }
+            }
+            
+
         } 
     }
 }
@@ -707,6 +926,9 @@
 
     @mixin marginTop-200 {margin: 130px auto 0;}
     @mixin subLayoutPadding {padding-left: 4%; padding-right: 4%;}
+
+
+    @mixin marginTop-80 {margin-top: 50px;}
 
     
     // footer 
@@ -1107,6 +1329,115 @@
 
                 }
 
+                &#trend_library {
+                    @include marginTop-200;
+
+                    .sec_tit {
+                        border: none;
+                    }
+    
+                    &.list {
+                        padding-left: 4%;
+                        .content_wrap {
+                            .con {
+                                @include marginTop-80;
+                                ul {
+                                    overflow: auto;
+                                    &::-webkit-scrollbar{display: none;}
+                                    li {
+                                        $wh: auto;
+                                        width: $wh; height: $wh;
+                                        &:nth-child(3n) {
+                                            figure {
+                                                &::after {
+                                                    width: 50%;
+                                                }
+                                            }
+                                        }
+                                        figure {
+                                            .img_wrap {
+                                                width: 280px;
+                                                height: 280px;
+                                            }
+                                            .text_wrap {
+                                                position: relative;
+                                                width: auto; height: auto;
+                                                padding: 0;
+                                                figcaption {
+                                                    p {
+                                                        &.bottom,&.arrow {display: none;}
+                                                        &.top {
+                                                            font-weight: normal;
+                                                            @include clipText(1);
+                                                            position: relative;
+                                                            margin-top: 16px;
+                                                            max-width: 100%;
+
+                                                            font-size: 24px;
+                                                            line-height: 1.5;
+                                                            letter-spacing: -0.48px;
+                                                            color: #000;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    } 
+                    
+                    &.list_detail {
+                        @include subLayoutPadding();
+                        .sec_tit {
+                            .nav_location {
+                                h2 {
+                                    font-size: 20px;
+                                    &:not(:first-child) {
+                                        &::after {
+                                            width: 8px; height: 8px;
+                                            background: url('../images/common/ico_arrow_03.svg')no-repeat center/cover; 
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .content_wrap {
+                            .con {
+                                @include marginTop-80;
+                                ul {
+                                    gap: 40px;
+                                    &::after {
+                                        height: calc(310px / 2);
+                                    }
+                                    li {
+                                        $wh: calc(50% - 20px);
+                                        width: $wh; height: 250px;
+                                        figure {
+                                            .text_wrap {
+                                                padding: 30px;
+                                                figcaption {
+                                                    p {
+                                                        &.bottom,&.arrow {display: none;}
+                                                        &.top {
+                                                            max-width: 100%;
+                                                            font-size: 24px;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
             }
 
         }
@@ -1123,7 +1454,10 @@
     @mixin marginTop-200 {margin: 100px auto 0;}
     @mixin subLayoutPadding {padding-left: 4%; padding-right: 4%;}
 
+    @mixin marginTop-80 {margin-top: 50px;}
 
+
+    // header footer
     body {
         #header{
             #header_wrap {
@@ -1606,6 +1940,96 @@
                         }
                     }
 
+                }
+
+                
+                &#trend_library {
+                    @include marginTop-200;
+
+                    &.list {
+                        padding-left: 4%;
+                        .content_wrap {
+                            .con {
+                                ul {
+                                    gap: 20px;
+                                    li {
+                                        figure {
+                                            .img_wrap {
+                                                width: 175px;
+                                                height: 175px;
+                                            }
+                                            .text_wrap {
+                                                figcaption {
+                                                    p {
+                                                        &.top {
+                                                            // font-size: 24px;
+                                                            font-size: 18px;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    } 
+
+                    
+                    &.list_detail {
+                        @include subLayoutPadding();
+                        .sec_tit {
+                            flex-direction: column;
+                            align-items: flex-start;
+                            .nav_location {
+                                h2 {
+                                    font-size: 14px;
+                                    margin-right: 20px;
+                                    &:last-child{margin-right: 0;}
+                                    &:not(:first-child) {
+                                        &::after {
+                                            width: 8px; height: 8px;
+                                            margin-right: 5px;
+                                            background: url('../images/common/ico_arrow_03.svg')no-repeat center/cover; 
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .content_wrap {
+                            .con {
+                                @include marginTop-80;
+                                ul {
+                                    gap: 20px;
+                                    &::after {
+                                        height: calc(310px / 2);
+                                    }
+                                    li {
+                                        $wh: calc(50% - 10px);
+                                        width: $wh; height: 175px;
+                                        figure {
+                                            .text_wrap {
+                                                padding: 20px;
+                                                figcaption {
+                                                    p {
+                                                        &.top {
+                                                            max-width: 100%;
+                                                            // font-size: 24px;
+                                                            font-size: 18px;
+                                                        }
+                                                        &.arrow {display: none;}
+                                                    }
+                                                }
+                                            }
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
 
             }
