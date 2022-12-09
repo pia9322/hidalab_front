@@ -782,153 +782,156 @@ include "../../include/dbconn.html";
                     })
             }
             */
-            ScrollTrigger.matchMedia({
-                "(min-width: 1200px)": function() {
-                    console.log('1200px')
-                    const tl = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: ".ms_03 .box_01",
-                            start: "top top",
-                            pin: true,
-                            scrub: 1,
-                            // invalidateOnRefresh: true,
-                            markers: true
-                        },
-                    });
-                    tl.to(".img_01 img:first-child", {
-                        opacity: 0,
-                    });
-                    const t2 = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: ".ms_03 .box_02",
-                            start: "top top",
-                            pin: true,
-                            scrub: 1,
-                            // markers: true
-                        },
-                        defaults: {
-                            duration: 5,
-                        }
-                    });
-                    t2.to(".img_02 img:nth-of-type(1)", {
+           $(function(){
+                ScrollTrigger.matchMedia({
+                    "(min-width: 1200px)": function() {
+                        console.log('1200px')
+                        const tl = gsap.timeline({
+                            scrollTrigger: {
+                                trigger: ".ms_03 .box_01",
+                                start: "top top",
+                                pin: true,
+                                scrub: 1,
+                                // invalidateOnRefresh: true,
+                                markers: true
+                            },
+                        });
+                        tl.to(".img_01 img:first-child", {
                             opacity: 0,
-                        })
-                        .to(".img_02 img:nth-of-type(2)", {
-                            opacity: 1,
-                        })
-                        .to(".img_02 img:nth-of-type(1), .box_02 img:nth-of-type(2)", {
-                            width: 0,
-                        })
-                        .to(".img_02 img:nth-of-type(3), .box_02 img:nth-of-type(4)", {
-                            top: "0",
-                        }, "<")
+                        });
+                        const t2 = gsap.timeline({
+                            scrollTrigger: {
+                                trigger: ".ms_03 .box_02",
+                                start: "top top",
+                                pin: true,
+                                scrub: 1,
+                                // markers: true
+                            },
+                            defaults: {
+                                duration: 5,
+                            }
+                        });
+                        t2.to(".img_02 img:nth-of-type(1)", {
+                                opacity: 0,
+                            })
+                            .to(".img_02 img:nth-of-type(2)", {
+                                opacity: 1,
+                            })
+                            .to(".img_02 img:nth-of-type(1), .box_02 img:nth-of-type(2)", {
+                                width: 0,
+                            })
+                            .to(".img_02 img:nth-of-type(3), .box_02 img:nth-of-type(4)", {
+                                top: "0",
+                            }, "<")
 
-                    const t3 = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: ".ms_03 .box_03",
-                            start: "top top",
-                            pin: true,
-                            scrub: 1,
-                            // markers: true
-                        },
-                        defaults: {
-                            duration: 2,
-                        }
-                    });
-                    t3.to(".img_03 img:nth-of-type(3)", {
-                            width: '260px',
-                        })
-                        .to(".img_03 img:nth-of-type(3)", {
-                            top: "100%",
-                        })
-                        .to(".img_03 img:nth-of-type(2)", {
-                            bottom: '10%',
-                        }, '<')
-                        .to(".img_03 img:nth-of-type(4)", {
-                            bottom: '5%',
-                        }, '<')
-                        .to(".img_03 img:nth-of-type(1)", {
-                            bottom: 'unset',
-                            top: '0',
-                        }, '<');
-                },
-                "(max-width: 767px)": function() {
-                    console.log('>=767')
-                    const tl = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: ".ms_03 .box_01 .img_wrap",
-                            start: "top top",
-                            scrub: 1,
-                            pin: true,
-                            // markers: true
-                        },
-                    });
-                    tl.to(".img_01 img:first-child", {
-                        opacity: 0,
-                    });
-
-                    const t2 = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: ".ms_03 .box_02 .img_wrap",
-                            start: "top top",
-                            end: 'bottom bottom',
-                            scrub: 1,
-                            pin: true,
-                            // markers: true,
-                        },
-                        defaults: {
-                            duration: 10,
-                        }
-                    });
-                    t2.to(".img_02 img:nth-of-type(1)", {
+                        const t3 = gsap.timeline({
+                            scrollTrigger: {
+                                trigger: ".ms_03 .box_03",
+                                start: "top top",
+                                pin: true,
+                                scrub: 1,
+                                // markers: true
+                            },
+                            defaults: {
+                                duration: 2,
+                            }
+                        });
+                        t3.to(".img_03 img:nth-of-type(3)", {
+                                width: '260px',
+                            })
+                            .to(".img_03 img:nth-of-type(3)", {
+                                top: "100%",
+                            })
+                            .to(".img_03 img:nth-of-type(2)", {
+                                bottom: '10%',
+                            }, '<')
+                            .to(".img_03 img:nth-of-type(4)", {
+                                bottom: '5%',
+                            }, '<')
+                            .to(".img_03 img:nth-of-type(1)", {
+                                bottom: 'unset',
+                                top: '0',
+                            }, '<');
+                    },
+                    "(max-width: 767px)": function() {
+                        console.log('>=767')
+                        const tl = gsap.timeline({
+                            scrollTrigger: {
+                                trigger: ".ms_03 .box_01 .img_wrap",
+                                start: "top top",
+                                scrub: 1,
+                                pin: true,
+                                // markers: true
+                            },
+                        });
+                        tl.to(".img_01 img:first-child", {
                             opacity: 0,
-                        })
-                        .to(".img_02 img:nth-of-type(2)", {
-                            opacity: 1,
-                        }, '<')
-                        .to(".img_02 img:nth-of-type(2)", {
-                            opacity: 0,
-                        })
-                        .to(".img_02 img:nth-of-type(3)", {
-                            opacity: 1,
-                        }, '<')
-                        .to(".img_02 img:nth-of-type(3)", {
-                            top: 80,
-                        }, '<')
-                        .to(".box_02 img:nth-of-type(4)", {
-                            top: 100,
-                            opacity: 1,
                         });
 
-                    const t3 = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: ".ms_03 .box_03 .img_wrap",
-                            start: "top top",
-                            pin: true,
-                            scrub: 1,
-                            // markers: true
-                        },
-                        defaults: {
-                            duration: 10,
-                        }
-                    });
-                    t3.to(".img_03 img:nth-of-type(3)", {
-                            height: '360px',
-                        })
-                        .to(".img_03 img:nth-of-type(1)", {
-                            top: "0",
-                        })
-                        .to(".img_03 img:nth-of-type(2)", {
-                            top: "10%",
-                        }, '<')
-                        .to(".img_03 img:nth-of-type(4)", {
-                            top: "10%",
-                        }, '<')
-                        .to(".img_03 img:nth-of-type(3)", {
-                            top: '10%',
-                        })
-                },
-            });
+                        const t2 = gsap.timeline({
+                            scrollTrigger: {
+                                trigger: ".ms_03 .box_02 .img_wrap",
+                                start: "top top",
+                                end: 'bottom bottom',
+                                scrub: 1,
+                                pin: true,
+                                // markers: true,
+                            },
+                            defaults: {
+                                duration: 10,
+                            }
+                        });
+                        t2.to(".img_02 img:nth-of-type(1)", {
+                                opacity: 0,
+                            })
+                            .to(".img_02 img:nth-of-type(2)", {
+                                opacity: 1,
+                            }, '<')
+                            .to(".img_02 img:nth-of-type(2)", {
+                                opacity: 0,
+                            })
+                            .to(".img_02 img:nth-of-type(3)", {
+                                opacity: 1,
+                            }, '<')
+                            .to(".img_02 img:nth-of-type(3)", {
+                                top: 80,
+                            }, '<')
+                            .to(".box_02 img:nth-of-type(4)", {
+                                top: 100,
+                                opacity: 1,
+                            });
+
+                        const t3 = gsap.timeline({
+                            scrollTrigger: {
+                                trigger: ".ms_03 .box_03 .img_wrap",
+                                start: "top top",
+                                pin: true,
+                                scrub: 1,
+                                // markers: true
+                            },
+                            defaults: {
+                                duration: 10,
+                            }
+                        });
+                        t3.to(".img_03 img:nth-of-type(3)", {
+                                height: '360px',
+                            })
+                            .to(".img_03 img:nth-of-type(1)", {
+                                top: "0",
+                            })
+                            .to(".img_03 img:nth-of-type(2)", {
+                                top: "10%",
+                            }, '<')
+                            .to(".img_03 img:nth-of-type(4)", {
+                                top: "10%",
+                            }, '<')
+                            .to(".img_03 img:nth-of-type(3)", {
+                                top: '10%',
+                            })
+                    },
+                });
+            })
+
 
 
             $('.ms_04 .left ul li, .mo_tab li').click(function() {
