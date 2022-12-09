@@ -853,8 +853,8 @@ include "../../include/dbconn.html";
                                 top: '0',
                             }, '<');
                     },
-                    "(max-width: 767px)": function() {
-                        console.log('>=767')
+                    "(max-width: 1199px)": function() {
+                        console.log('>=1199px')
                         const tl = gsap.timeline({
                             scrollTrigger: {
                                 trigger: ".ms_03 .box_01 .img_wrap",
@@ -872,10 +872,9 @@ include "../../include/dbconn.html";
                             scrollTrigger: {
                                 trigger: ".ms_03 .box_02 .img_wrap",
                                 start: "top top",
-                                end: 'bottom bottom',
                                 scrub: 1,
                                 pin: true,
-                                // markers: true,
+                                markers: true,
                             },
                             defaults: {
                                 duration: 10,
@@ -892,14 +891,12 @@ include "../../include/dbconn.html";
                             })
                             .to(".img_02 img:nth-of-type(3)", {
                                 opacity: 1,
-                            }, '<')
-                            .to(".img_02 img:nth-of-type(3)", {
                                 top: 80,
                             }, '<')
                             .to(".box_02 img:nth-of-type(4)", {
                                 top: 100,
                                 opacity: 1,
-                            });
+                            },);
 
                         const t3 = gsap.timeline({
                             scrollTrigger: {
