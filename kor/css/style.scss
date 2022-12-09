@@ -640,6 +640,7 @@ body {
                                 &.img_03 {
                                     img {
                                         position: absolute;
+                                        max-width: 320px; width: 100%;
                                         // &:not(:nth-child(3)) {top: 100%;}
                                         &:nth-child(1) {left: unset; right: 0; bottom: -100vh;}
                                         &:nth-child(2) {left: 0; bottom: -100vh;}
