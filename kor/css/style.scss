@@ -1186,8 +1186,6 @@ body {
                  
                 }
 
-
-                
                 &.list {
                     .content_wrap {
                         .con {
@@ -1659,6 +1657,7 @@ body {
                                             a {
                                                 display: flex; align-items: center;
                                                 p {
+                                                    @include ellipsis(1);
                                                     @include transition(color .15s);
                                                     margin-left: 68px;
                                                     font-size: 16px;
@@ -1670,6 +1669,9 @@ body {
                                                     margin: 0 0 0 auto;
                                                     font-size: 14px;
                                                     color: #999;
+                                                    min-width: 80px;
+                                                    white-space: nowrap;
+                                                    text-align: right;
                                                 }
                                             }
                                         }
