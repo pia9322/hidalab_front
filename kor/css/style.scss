@@ -1693,6 +1693,255 @@ body {
                 
             }
 
+             
+            &#category {
+                @include marginTop-200;
+                @include fixed-layout_1412;
+
+
+                .sec_tit {
+                    .mo_tit {display: none;}
+                    .nav_location {
+                        display: flex;
+                        h2 {
+                            position: relative;
+                            margin-right: 48px;
+                            opacity: .2;
+                            &:last-child {margin-right: 0}
+                            &:not(:first-child) {
+                                &::after {
+                                    content: '';
+                                    position: absolute; right: 100%; top: 50%;
+                                    //  transform: translate(-50%,-50%);
+                                    transform: translateY(-50%);
+                                    margin-right: 20px;
+                                    width: 8px; height: 17px;
+                                    background: url('../images/common/ico_arrow_03.svg')no-repeat center/contain; 
+                                }
+                            }
+                            &:last-child {opacity: 1}
+                            &:only-child {opacity: 1}
+                        }
+                    }
+                 
+                }
+                
+                &.list {
+                    .content_wrap {
+                        .con {
+                            @include marginTop-80;
+                            
+                            &.banner {
+                                height: 500px;
+                                background: url('../images/category/banner_01.png')no-repeat center/cover;
+                                figure {
+                                    @include fullsize;
+                                    display: flex; align-items: center;
+                                    figcaption {
+                                        padding-left: 100px;
+                                        p {
+                                            margin-top: 20px;
+                                            font-size: 24px;
+                                            font-weight: bold;
+                                            line-height: 1.5;
+                                            letter-spacing: -0.48px;
+                                            text-align: left;
+                                            color: #666;
+                                        }
+                                    }
+                                }
+                            } 
+                            h2 {
+                                font-family: Arial;
+                                font-size: 24px;
+                                font-weight: bold;
+                                line-height: 1.5;
+                                letter-spacing: -0.48px;
+                                a {
+                                    display: flex;
+                                    img{margin: 0 0 0 10px;}
+                                }
+                            }
+    
+                            ul {
+                                margin-top: 30px;
+                                display: flex; gap: 46px;
+                                li {
+                                    $wh: 440px;
+                                    width: $wh; height: $wh;
+                                    
+                                    &:nth-child(3n) {
+                                        figure {
+                                            &::after {
+                                                content: '';
+                                                @include fullsize;
+                                                @include hidagradient_self(right);
+                                                position: absolute; right:0; top:0;
+                                            }
+                                        }
+                                    }
+                                    a {display: block; @include fullsize;}
+                                    
+                                    figure {
+                                        @include fullsize;
+                                        position: relative;
+                                        .img_wrap {
+                                            @include fullsize;
+                                            img {
+                                                @include fullsize; 
+                                                object-fit: cover;
+                                            }
+                                        }
+                                        .text_wrap {
+                                            @include fullsize;
+                                            position: absolute; left: 0; top: 0;
+                                            padding: 40px;
+                                            overflow: hidden;
+                                            figcaption {
+                                                position: relative;
+                                                @include fullsize;
+                                                &:hover {
+                                                    .arrow {
+                                                        opacity: 1;
+                                                    }
+                                                    .bottom {bottom: 0}
+                                                }
+                                                p {
+                                                    position: absolute; 
+                                                    width: 100%;
+                                                    font-size: 32px;
+                                                    font-weight: bold;
+                                                    line-height: 1.38;
+                                                    letter-spacing: -0.64px;
+                                                    color: #fff;
+
+                                                    &.top {
+                                                        max-width: 310px;
+                                                        left: 0; top: 0;
+                                                        display: flex; justify-content: space-between;
+                                                    }
+                                                    &.bottom {
+                                                        @include transition(all .5s);
+                                                        left: 0; bottom: -100%;
+                                                        backdrop-filter: blur(21px);
+                                                        background-color: rgba(255, 255, 255, 0.2);
+                                                        padding: 20px;
+                                                        
+                                                        font-size: 16px;
+                                                        font-weight: normal;
+                                                        line-height: 1.5;
+                                                        letter-spacing: -0.32px;
+                                                      
+                                                    }
+                                                    &.arrow {
+                                                        @include transition(all .15s);
+                                                        max-width: 50px; max-height: 31px;
+                                                        width: auto;
+                                                        right: 0; top: 0;
+                                                        opacity: 0;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                &.list_detail {
+                    .content_wrap {
+                        .con {
+                            @include marginTop-80;
+                            ul {
+                                display: flex;  flex-wrap: wrap; gap: 46px;
+                                position: relative;
+                                &::after {
+                                    content: '';
+                                    width: 100%; height: calc(440px / 2);
+                                    @include hidagradient_self(bottom);
+                                    position: absolute; left:0; bottom:0;
+                                }
+                                li {
+                                    $wh: 440px;
+                                    width: $wh; height: $wh;
+                                    a {display: block; @include fullsize;}
+                                  
+                                    
+                                    figure {
+                                        @include fullsize;
+                                        position: relative;
+                                        .img_wrap {
+                                            @include fullsize;
+                                            img {
+                                                @include fullsize; 
+                                                object-fit: cover;
+                                            }
+                                        }
+                                        .text_wrap {
+                                            @include fullsize;
+                                            position: absolute; left: 0; top: 0;
+                                            padding: 40px;
+                                            overflow: hidden;
+                                            figcaption {
+                                                position: relative;
+                                                @include fullsize;
+                                                &:hover {
+                                                    .arrow {
+                                                        opacity: 1;
+                                                    }
+                                                    .bottom {bottom: 0}
+                                                }
+                                                p {
+                                                    position: absolute; 
+                                                    width: 100%;
+                                                    font-size: 32px;
+                                                    font-weight: bold;
+                                                    line-height: 1.38;
+                                                    letter-spacing: -0.64px;
+                                                    color: #fff;
+
+                                                    &.top {
+                                                        max-width: 310px;
+                                                        left: 0; top: 0;
+                                                        display: flex; justify-content: space-between;
+                                                    }
+                                                    &.bottom {
+                                                        @include transition(all .5s);
+                                                        left: 0; bottom: -100%;
+                                                        backdrop-filter: blur(21px);
+                                                        background-color: rgba(255, 255, 255, 0.2);
+                                                        padding: 20px;
+                                                        
+                                                        font-size: 16px;
+                                                        font-weight: normal;
+                                                        line-height: 1.5;
+                                                        letter-spacing: -0.32px;
+                                                      
+                                                    }
+                                                    &.arrow {
+                                                        @include transition(all .15s);
+                                                        max-width: 50px; max-height: 31px;
+                                                        width: auto;
+                                                        right: 0; top: 0;
+                                                        opacity: 0;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+            
+
         }
         
     } 

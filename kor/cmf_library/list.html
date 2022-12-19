@@ -74,16 +74,13 @@ include "../../include/dbconn.html";
             <ul id="header_center">
 
                 <li>
-                    <a href="#none">CMF Library</a>
+                    <a href="../cmf_library/list.html">CMF Library</a>
                 </li>
                 <li>
-                    <a href="#none">Trend Library</a>
+                    <a href="../trend_library/list.html">Trend Library</a>
                 </li>
                 <li>
-                    <a href="#none">Category</a>
-                </li>
-                <li>
-                    <a href="#none">Category</a>
+                    <a href="../category/list.html">Category</a>
                 </li>
                 <li>
                     <a href="#none">Portfolio</a>
@@ -120,9 +117,9 @@ include "../../include/dbconn.html";
                     </nav>
                     <nav class="menu">
                         <ul class="depth_01">
-                            <li><a href="">CMF Library</a></li>
-                            <li><a href="">Trend Library</a></li>
-                            <li><a href="">Category</a></li>
+                            <li><a href="../cmf_library/list.html">CMF Library</a></li>
+                            <li><a href="../trend_library/list.html">Trend Library</a></li>
+                            <li><a href="../category/list.html">Category</a></li>
                             <li><a href="">Portfolio</a></li>
                             <li><a href="">Contact</a></li>
                         </ul>
@@ -152,7 +149,7 @@ include "../../include/dbconn.html";
                             <li id="tab_save"><img src="../images/common/ico_save_01.svg" alt="">Save</li>
                         </ul>
                     </div>
-                    
+
                     <div class="mo_tab">
                         <ul id="mo_sec_tab">
                             <li id="mo_tab_filter"><img src="../images/common/ico_filter_02.svg" alt="">Filter</li>
@@ -467,9 +464,9 @@ include "../../include/dbconn.html";
         tab_library
         tab_save
         */
-       
+
         // 767 이상힐때
-        if(window.innerWidth >= 768) {
+        if (window.innerWidth >= 768) {
             $('#tab_filter').click(() => {
                 $('#search_frm').slideToggle();
             })
@@ -482,7 +479,7 @@ include "../../include/dbconn.html";
 
 
 
-        
+
 
         // common
         // popup
@@ -505,7 +502,7 @@ include "../../include/dbconn.html";
         $('#btn_pop_close').click(function() {
             $(this).parents('.popup').removeClass('active');
         });
-        
+
         // save 활성시 product active control
         $('.content > ul > li > a ').click(function() {
             $(this).children($('.ico_wrap.save')).toggleClass('active');
@@ -513,27 +510,25 @@ include "../../include/dbconn.html";
 
 
 
-        
+
 
         // Mo
 
         // 모바일 필터 탭메뉴
-        $('.filter_tab_mo li').click(function(){
+        $('.filter_tab_mo li').click(function() {
             filterIdx = $(this).index()
             $('.filter_box, .filter_tab_mo li').removeClass('active');
             $(this).addClass('active');
             $('.filter_box').eq(filterIdx).addClass('active');
         })
 
-        $('#mo_reset').click(function(){
-            if(confirm('Do you want to initialize?')) {
-                $('.filter_wrap').find('input').prop('checked',false);
+        $('#mo_reset').click(function() {
+            if (confirm('Do you want to initialize?')) {
+                $('.filter_wrap').find('input').prop('checked', false);
             } else {
                 return false;
             }
         })
-
-
     </script>
     <!-- --------------------------- MAIN --------------------------- -->
 
