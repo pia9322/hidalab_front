@@ -1947,6 +1947,9 @@ body {
                                 .product_detail {
                                     display: flex;
                                     gap: 4.5%;
+                                    border-bottom: 2px solid #000;
+                                    margin-top: 80px;
+                                    padding-bottom: 98px;
                                     .product_thumb {
                                         max-width: 620px; width: 100%;
                                         .thumb_big {
@@ -1958,8 +1961,12 @@ body {
                                             @include marginTop-50;
                                             .swiper-slide {
                                                 opacity: .3;
-                                                @include transition(opacity .3s);
-                                                &.swiper-slide-thumb-active {opacity: 1;}
+                                                @include transition(all .3s);
+                                                border: solid 2px transparent;
+                                                &.swiper-slide-thumb-active {
+                                                    opacity: 1;
+                                                    border: solid 2px #000;
+                                                }
                                             }
                                             .swiper-container {
                                                 max-width: 90%;
@@ -1982,6 +1989,7 @@ body {
                                     
 
                                         .info_wrap {
+                                     
                                             >h3 {
                                                 margin: 50px 0 30px;
                                                 padding-bottom: 9px;
@@ -2053,6 +2061,71 @@ body {
 
                                         }
 
+                                    }
+                                }
+
+                                .related {
+                                    margin-top: 100px;
+                                    > h2 {
+                                        font-size: 24px;
+                                        font-weight: bold;
+                                        line-height: 1.5;
+                                        letter-spacing: -0.48px;
+                                        color: #000;
+                                    }
+                                    ul {
+                                        display: flex; flex-wrap: wrap;  gap: 50px 128px;
+                                        margin-top: 50px;
+                                        padding: 0 5%;
+                                        li {
+                                            &:not(.more) {
+                                                a {
+                                                    figure {
+                                                        img {
+                                                            width: 320px; height: 320px;
+                                                            object-fit: cover;
+                                                        }
+                                                        figcaption {
+                                                            margin-top: 16px;
+                                                            font-size: 16px;
+                                                            line-height: 1.5;
+                                                            letter-spacing: -0.32px;
+                                                            color: #000;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            
+                                            &.more {
+                                                width: 320px; height: 320px; padding: 50px;
+                                                border: solid 1px #d9d9d9;
+                                                figcaption {
+                                                    font-size: 30px;
+                                                    font-weight: bold;
+                                                    line-height: 1.13;
+                                                    letter-spacing: -1.2px;
+                                                    color: #bbbcbc;
+                                                }
+                                                img {
+                                                    margin-top: 40px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.portfolio {
+                                        ul {
+                                            li {
+                                                a {
+                                                    figure {
+                                                        img {
+                                                        }
+                                                        figcaption {
+                                                          
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
