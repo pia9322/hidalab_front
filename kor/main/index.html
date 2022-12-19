@@ -874,7 +874,7 @@ include "../../include/dbconn.html";
                                 start: "top top",
                                 scrub: 1,
                                 pin: true,
-                                markers: true,
+                                // markers: true,
                             },
                             defaults: {
                                 duration: 10,
@@ -896,7 +896,7 @@ include "../../include/dbconn.html";
                             .to(".box_02 img:nth-of-type(4)", {
                                 top: 100,
                                 opacity: 1,
-                            },);
+                            },'<');
 
                         const t3 = gsap.timeline({
                             scrollTrigger: {
@@ -921,10 +921,10 @@ include "../../include/dbconn.html";
                             }, '<')
                             .to(".img_03 img:nth-of-type(4)", {
                                 top: "10%",
-                            }, '<')
+                            })
                             .to(".img_03 img:nth-of-type(3)", {
                                 top: '10%',
-                            })
+                            },'<')
                     },
                 });
             })
