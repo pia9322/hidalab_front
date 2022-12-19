@@ -206,7 +206,6 @@ $(function () {
         },
     });
 
-
     const mainbottomproduct = new Swiper('.ms_02 .bottom .swiper-container', {
         // effect: "slide",
         // freeMode: true,
@@ -226,9 +225,6 @@ $(function () {
         },
     });
     
-
-    
-    
     const img_mainSlide = new Swiper('.img_main .swiper-container', {
         slidesPerView: "auto",
     });
@@ -240,7 +236,37 @@ $(function () {
     // img_mainSlide.controller.control = img_subSlide;
     // img_subSlide.controller.control = img_mainSlide;
 
+
+
+    // category_detail 
+ 
+    // category_detail 
+    const cateProductSmallSwiper = new Swiper('.thumb_small .swiper-container', {
+        // effect: "slide",
+        // freeMode: true,
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesProgress: true,
+        // touchRatio: 0,
+   
+    });
+
     
+    const cateProductBigSwiper = new Swiper('.thumb_big.swiper-container', {
+        // effect: "slide",
+        // freeMode: true,
+        // touchRatio: 0,
+        spaceBetween: 10,
+        thumbs: {
+          swiper: cateProductSmallSwiper,
+        },
+        navigation: {
+            nextEl: ".swiper-navi-wrap .swiper-button-next",
+            prevEl: ".swiper-navi-wrap .swiper-button-prev",
+          },
+    });
+
     function swiperStopStart() {
         $('.swiper-onOff').click(function(){
             $(this).toggleClass('active')

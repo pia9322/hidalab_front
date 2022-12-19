@@ -620,4 +620,20 @@ button.swiper-pagination-bullet {
 }
 
 
-/*  */
+
+
+/* jj_add */
+.swiper-navi-wrap .swiper-button-next, 
+.swiper-navi-wrap .swiper-button-prev {
+  left: unset; right: unset; width: unset; height: unset;
+  margin: unset; padding: unset;
+  width: 12px; height: 12px;
+}
+.swiper-navi-wrap .swiper-button-next {
+  right: 0;
+  background: url('../images/common/swiper_next_01.svg')no-repeat center/cover;
+}
+.swiper-navi-wrap .swiper-button-prev {
+  left: 0;
+  background: url('../images/common/swiper_prev_01.svg')no-repeat center/cover;
+}

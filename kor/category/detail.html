@@ -1,210 +1,380 @@
 <?
-$h_menu = "product";
-include "../include/header.html";
+session_start();
+include "../../include/dbconn.html";
 
-
-$f_uid = htmlspecialchars(trim($_GET['f_uid']), ENT_QUOTES);
-
-$page = htmlspecialchars(trim($_GET['page']), ENT_QUOTES);
-$s_key = htmlspecialchars(trim($_GET['s_key']), ENT_QUOTES);
-$s_value = htmlspecialchars(trim($_GET['s_value']), ENT_QUOTES);
-
-$productList = htmlspecialchars($_GET['productList'], ENT_QUOTES);
-
-$f_target = htmlspecialchars($_GET['f_target'], ENT_QUOTES);
-$f_function = htmlspecialchars($_GET['f_function'], ENT_QUOTES);
-
-
-$sql = "SELECT * FROM t_product WHERE f_uid = '$f_uid' ";
-$rst = mysqli_query($dbconn, $sql);
-$row = mysqli_fetch_assoc($rst);
 ?>
+<!DOCTYPE html>
 
-<main class="sub_page" id="product_detail">
+<html lang="ko">
 
-    <section class="sec sec_detail">
-        <article class="wrap">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <div class="p_title">
+<!-- --------------------SEO-------------------- -->
+<link rel="canonical" href="Canonical URL">
+<link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
-                <div class="img_wrap">
-                    <div class="img_main">
+<meta name="author" content="piajj">
+<meta name="description" content="hida, Innovative CMF(Color Material Finish) Design Lab, product design, industrial design, 히다 CMF디자인, 히다랩">
+<meta name="keyword" content="color, material, finish, design, technology, surface, texture, pattern, decoration, product, packaging, plate, nameplate, case, bottle, cosmetic, makeup, trend, fashion, pantone, consulting, manufacturing, production">
 
-                        <img src="../../upload/product/<?= $row['f_file_0'] ?>" alt="<?= $row['f_filename_0'] ?>">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:url" content="https://www.hidalab.com/">
+<meta property="og:image" content="https://www.hidalab.com/images/contents/og_title2.png">
+<meta property="og:title" content="hida - Color Material Finish specialists (히다랩)">
+<meta property="og:description" content="hida, Innovative CMF(Color Material Finish) Design Lab, product design, industrial design, 히다 CMF디자인, 히다랩">
 
-                    </div>
+
+<meta name="twitter:card" content="photo">
+<meta name="twitter:title" content="hida - Color Material Finish specialists (히다랩)">
+<meta name="twitter:url" content="https://www.hidalab.com//">
+<meta name="twitter:image" content="https://www.hidalab.com//images/contents/og_title2.png">
+<meta name="twitter:description" content="hida, Innovative CMF(Color Material Finish) Design Lab, product design, industrial design, 히다 CMF디자인, 히다랩">
+<!-- --------------------SEO-------------------- -->
+
+<title>hida - Color Material Finish specialists (히다랩)</title>
+
+
+
+<!-- --------------------CSS-------------------- -->
+<link rel="stylesheet" href="../css/swiper.css">
+<link rel="stylesheet" href="../css/aos.css">
+<link rel="stylesheet" href="../css/jquery.fullpage.min.css">
+<link rel="stylesheet" href="../css/nice-select.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/media.css">
+<!-- --------------------CSS-------------------- -->
+
+
+<!-- --------------------Script-------------------- -->
+<script src="../js/jquery.js"></script>
+<script src="../js/swiper.js"></script>
+<script src="../js/aos.js"></script>
+<script src="../js/fullpage.min.js"></script>
+<script src="../js/nice-select-min.js"></script>
+<script src="../js/gsap.min.js"></script>
+<script src="../js/ScrollTrigger.min.js"></script>
+<!-- --------------------Script-------------------- -->
+</head>
+
+
+<body>
+
+    <header id="header">
+        <nav id="header_wrap">
+
+            <!-- HEADER_LEFT -->
+            <h1 id="header_left">
+                <a href="../main/index.html"><img src="../images/common/logo_01.svg" alt="회사 로고"></a>
+            </h1>
+
+            <!-- HEADER_CENTER -->
+            <ul id="header_center">
+
+                <li>
+                    <a href="../cmf_library/list.html">CMF Library</a>
+                </li>
+                <li>
+                    <a href="../trend_library/list.html">Trend Library</a>
+                </li>
+                <li>
+                    <a href="../category/list.html">Category</a>
+                </li>
+                <li>
+                    <a href="#none">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#none">Contact</a>
+                </li>
+
+            </ul>
+
+
+            <ul id="header_right">
+                <? if (!$_SESSION['f_email']) { ?>
+                    <li><a href="../member/login.html">Log in</a></li>
+                    <li><a href="../member/join.html">Join for free</a></li>
+                <? } else { ?>
+                    <!-- <li><a href="../member/db_exec.html?mode=logout">로그아웃</a></li> -->
+                    <!-- <li><a href="../member/mypage.html">마이페이지</a></li> -->
+                <? } ?>
+            </ul>
+
+            <div id="header_ham">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div id="header_full">
+                <article>
+                    <nav class="status">
+                        <a href="../member/login.html">
+                            <img src="../images/common/ico_login_01.svg" alt="">Log in
+                        </a>
+                    </nav>
+                    <nav class="menu">
+                        <ul class="depth_01">
+                            <li><a href="../cmf_library/list.html">CMF Library</a></li>
+                            <li><a href="../trend_library/list.html">Trend Library</a></li>
+                            <li><a href="../category/list.html">Category</a></li>
+                            <li><a href="">Portfolio</a></li>
+                            <li><a href="">Contact</a></li>
+                        </ul>
+                        <ul class="user_depth">
+                            <li><a href="">My account</a></li>
+                            <li><a href="">Log out</a></li>
+                        </ul>
+                    </nav>
+                </article>
+            </div>
+
+
+        </nav>
+    </header>
+
+
+    <main class="sub_page detail" id="category">
+        <section>
+            <article>
+                <div class="detail_head">
+                    <a href=""><img src="../images/common/ico_arrow_05.svg" alt="move to prev page"></a>
                 </div>
 
-                <div class="info_wrap">
+                <div class="detail_body">
 
-                    <div class="info_01">
-                        <p class="cate">
-                            <?
-                            $f_targetArr = explode(',', $row['f_target']);
-                            for ($i = 0; $i < count($f_targetArr); $i++) {
-                            ?>
-                                <span data-name="<?= $f_targetArr[$i] ?>"><?= $f_targetArr[$i] ?></span>
-                            <? }  ?>
-                        </p>
-                        <p class="tit">
-                            <?= $row['f_title'] ?>
-                        </p>
-                        <p class="tit_sub">
-                            <?= $row['f_title_sub'] ?>
-                        </p>
-                    </div>
+                    <div class="product_detail">
 
-                    <div class="info_02">
+                        <div class="product_thumb">
 
-                        <div>
-                            <p class="tit">제품타겟</p>
-                            <p class="target">
-                                <?
-                                $f_targetArr = explode(',', $row['f_target']);
-                                for ($i = 0; $i < count($f_targetArr); $i++) {
-                                    if($f_targetArr[$i] == '유소아') {
-                                ?>
-                                        <img src="../images/product/ico_target_ch.png" alt="유소아">
-                                    <?} else if($f_targetArr[$i] == '청소년') {?>
-                                        <img src="../images/product/ico_target_te.png" alt="">
-                                    <?} else if($f_targetArr[$i] == '임산부') {?>
-                                        <img src="../images/product/ico_target_pwo.png" alt="">
-                                    <?} else if($f_targetArr[$i] == '성인여성') {?>
-                                        <img src="../images/product/ico_target_wo.png" alt="">
-                                    <?} else if($f_targetArr[$i] == '성인남성') {?>
-                                        <img src="../images/product/ico_target_me.png" alt="">
-                                    <?} else if($f_targetArr[$i] == 'all') {?>
-                                        <img src="../images/product/ico_target_all.png" alt="">
-                                    <?}?>
-                                <? }  ?>
-                            </p>
-                        </div>
-                        <!--                         
-                        <?
-                        $f_spec = explode("@", $row['f_spec']);
-                        for ($i = 0; $i < count($f_spec); $i++) {
-                        ?>
-                            <div>
-                                <?
-                                $f_row = explode('|', $f_spec[$i]);
-                                if ($f_row[0] != "") {
-                                ?>
-                                    <p class="tit"><?= str_replace('&quot;', '', $f_row[0]) ?></p>
-                                    <span><?= htmlspecialchars_decode(nl2br(str_replace('&quot;', '', $f_row[1]))) ?></span>
-                                <? } ?>
+                            <div thumbsSlider="" class="thumb_big swiper-container">
+                                <ul class="swiper-wrapper">
+                                    <li class="swiper-slide"><img src="../images/category/p_01.png" alt=""></li>
+                                    <li class="swiper-slide"><img src="../images/category/p_01_02.png" alt=""></li>
+                                    <li class="swiper-slide"><img src="../images/category/p_01_03.png" alt=""></li>
+                                    <li class="swiper-slide"><img src="../images/category/p_01_03.png" alt=""></li>
+                                </ul>
                             </div>
-                        <? }
-                        unset($f_spec, $f_row) ?>
+
+                            <div class="thumb_small">
+
+                                <div thumbsSlider="" class="swiper-container">
+                                    <ul class="swiper-wrapper">
+                                        <li class="swiper-slide"><img src="../images/category/p_01_01.png" alt=""></li>
+                                        <li class="swiper-slide"><img src="../images/category/p_01_02.png" alt=""></li>
+                                        <li class="swiper-slide"><img src="../images/category/p_01_03.png" alt=""></li>
+                                        <li class="swiper-slide"><img src="../images/category/p_01_03.png" alt=""></li>
+                                    </ul>
+                                </div>
+
+                                <div class="swiper-navi-wrap">
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- 
+                            .board_wrap {
+                                board로 감싼 a
+                                dd > p.board_wrap > a
+                            }
+                            .line_wrap {
+                                line 감싼 a
+                                dd > p.line_wrap > a
+                            }
                         -->
+                        <div class="product_info">
+                            <h2>PU (Polyurethane)</h2>
 
-                    <?if($row['f_spec_01_01'] &&  $row['f_spec_01_03']) {?>
-                            
-                        <div>
-                            <p class="tit">1일 섭취량</p>
-                            <p>
-                            <?
-                            for ($i=1; $i <= 4; $i++) { 
-                                if($row['f_spec_01_0'.$i.'']) {
-                                    if($i == 3) {
-                                        echo '<span class="'.f_spec_01_0.$i.'"> '.$row[f_spec_01_0.$i].'</span>';
-                                    } else {
-                                        echo '<span class="'.f_spec_01_0.$i.'">'.$row[f_spec_01_0.$i].'</span>';
-                                    }
-                                }
-                            }
-                            ?>
-                            </p>
+                            <div class="info_wrap">
+                                <dl>
+                                    <dt>Character</dt>
+                                    <dd>
+                                        PU is bonded by an adhesive (polyurethane, nitrile, neoprene, epoxy, cyanacrylate)
+                                        PU is tough, resistant to chemicals, and has good elasticity, so it is often used as a
+                                        substitute for rubber.
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>+</dt>
+                                    <dd>
+                                        - Various surface by fabric kind
+                                        - Feature of large defomation under heating & preasure
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>Eco</dt>
+                                    <dd>
+                                        <p class="board_wrap">
+                                            <a href="">Sustainable</a>
+                                        </p>
+                                    </dd>
+                                </dl>
+
+                                <!-- Material -->
+                                <h3>Material</h3>
+                                <dl>
+                                    <dt>Type</dt>
+                                    <dd>
+                                        <p class="board_wrap">
+                                            <a href="">Fabric</a>
+                                            <a href="">Fabric</a>
+                                            <a href="">Fabric</a>
+                                            <a href="">Fabric</a>
+                                        </p>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>Type</dt>
+                                    <dd>
+                                        <p class="line_wrap">
+                                            <a href="" class="">Fabric</a>
+                                            <a href="" class="">PU</a>
+                                        </p>
+                                        <p class="line_wrap">
+                                            <a href="" class="">Fabric</a>
+                                            <a href="" class="">PU</a>
+                                        </p>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>+</dt>
+                                    <dd>
+                                        <p>
+                                            Synthetic fiber, Vegan leather with PU coated
+                                        </p>
+                                    </dd>
+                                </dl>
+
+
+                                <!-- Related Finish -->
+                                <h3>Related Finish</h3>
+                                <dl>
+                                    <dt>Type</dt>
+                                    <dd>
+                                        <a href="">Wrapping</a>
+                                        <a href="">Lamination</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>Category</dt>
+                                    <dd>
+                                        <p class="line_wrap">
+                                            <a href="" class="">Wrapping</a>
+                                            <a href="" class="">3D Wrapping</a>
+                                        </p>
+                                        <p class="line_wrap">
+                                            <a href="" class="">Lamination</a>
+                                            <a href="" class="">Heat laminationg (Heal Seal)</a>
+                                        </p>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>+</dt>
+                                    <dd>
+                                        Processing is different accordance with thickness of fabric & coating condition
+                                    </dd>
+                                </dl>
+
+
+                                <!-- Application -->
+                                <h3>Application</h3>
+                                <dl>
+                                    <dt>Industries</dt>
+                                    <dd>
+                                        <p>Automotive, Mobile device parts, Appliances, Cosmetic</p>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>Industries</dt>
+                                    <dd>
+                                        <p>Automotive, Mobile device parts, Appliances, Cosmetic</p>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>Industries</dt>
+                                    <dd>
+                                        <p>Automotive, Mobile device parts, Appliances, Cosmetic</p>
+                                    </dd>
+                                </dl>
+
+
+
+
+                            </div>
                         </div>
 
-                    <?}?>
-
-
-                    <?if($row['f_spec_02_01'] &&  $row['f_spec_02_03'] && $row['f_spec_02_05']) {?>
-                        <div>
-                            <p class="tit">총용량</p>
-                            <p>
-                            <?
-                            for ($i=1; $i <= 7; $i++) { 
-                                if($row['f_spec_02_0'.$i.'']) {
-                                    if($i == 2 || $i ==4 ){
-                                        echo '<span class="'.f_spec_02_0.$i.'">'.$row[f_spec_02_0.$i].'</span>';
-                                        echo '<span class="text_x"> X </span>';
-                                    } else if($i == 7){
-                                        echo '<span class="'.f_spec_02_0.$i.'"> ('.$row[f_spec_02_0.$i].') </span>';
-                                    } else {
-                                        echo '<span class="'.f_spec_02_0.$i.'">'.$row[f_spec_02_0.$i].'</span>';
-                                    }
-                                }
-                            }
-                            ?>
-                            </p>
-                        </div>
-                    <?}?>
-
-
-                        <style>
-                            .f_spec_01_01, .f_spec_01_03, .f_spec_02_01, .f_spec_02_03, .f_spec_02_05 {
-                                font-size: 3.2rem !important; font-weight: 600 !important;
-                            }  
-                            
-                        </style>
-
-                        
-
-<!-- 
-                        <div>
-                            <p class="tit">1일 섭취량</p>
-                            <span>1일 1포</span>
-                        </div>
-                        <div>
-                            <p class="tit">총 용량</p>
-                            <span>60포 x 2Box (총 4개월분)</span>
-                        </div>
- -->
                     </div>
-
 
                 </div>
 
+            </article>
+        </section>
+    </main>
+
+
+
+    <footer id="footer">
+        <article>
+            <div class="info_01">
+                <nav>
+                    <h2>
+                        Receive free monthly
+                        <br class="pc_only">
+                        CMF newsletter on various
+                        <br class="pc_only">
+                        trending CMFs in the world.
+                    </h2>
+                </nav>
+                <nav>
+                    <form>
+                        <input type="email" name="" placeholder="Email Address" required>
+                        <input type="submit" value="Subscribe">
+                    </form>
+                    <ul>
+                        <li>
+                            <a href="#none">About us</a>
+                            <a href="#none">Privacy policy</a>
+                            <a href="#none">News</a>
+                            <a href="#none">Terms & Conditions</a>
+                            <a href="#none">Event</a>
+                            <a href="#none">Contact</a>
+                        </li>
+                    </ul>
+
+                </nav>
+
             </div>
 
-            <div class="p_detail">
-                <div class="detail_wrap">
-                    <div class="pc_ver">
-                        <?=$row['ckeditor_00']?>
-                    </div>
-                    <div class="mo_ver">
-                        <?=$row['ckeditor_01']?>
-                    </div>
-                </div>
+            <div class="info_02">
+                <nav>
+                    <a href="mailTo:hida@hidalab.com">hida@hidalab.com</a>
+                </nav>
+                <nav>
+                    <p>hida, a part of Intops</p>
+                    <p><a href="">51, Anyangcheonseo-Ro, Manan-Gu, Anyang-Si, Gyeonggi-Do, 14088 South Korea</a></p>
+                    <p><a href="">Tel. +82 31 441 4181</a></p>
+                </nav>
+            </div>
+            <div class="bar"></div>
+
+            <div class="info_03">
+                <p>© 2020-2022. hida, a part of Intops. All rights reserved.</p>
+                <select class="nice">
+                    <option value="">Family Site</option>
+                </select>
+
             </div>
 
-            <div class="p_info">
-                <ul>
-                <?
-                if ($row['f_product_info']) {
-                    $row['f_product_info'] = explode('◀', $row['f_product_info']);
-                    for ($i = 0; $i < count($row['f_product_info']); $i++) {
-                        $row_info = explode('〓', $row['f_product_info'][$i]);
-                        if($row['f_product_info'][$i] != null) {
-                ?>
-                    <li>
-                        <h3><?=nl2br($row_info[0])?></h3>
-                        <p><?=nl2br($row_info[1])?></p>
-                    </li>
-                <?
-                        }   
-                    }
-                }
-                ?>
 
-                </ul>
-            </div>
         </article>
-    </section>
+    </footer>
 
-</main>
+    <script src="../js/index.js"></script>
+</body>
 
-<?
-include "../include/footer.html";
-?>
+</html>
