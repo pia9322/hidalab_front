@@ -2230,6 +2230,39 @@ body {
 
                 }
             }
+
+            &#my_library {
+                @include marginTop-200;
+                @include fixed-layout_1412;
+                
+                .sec_tit {
+                    display: flex; flex-wrap: wrap;;
+                    // backdrop-filter: blur(4px);
+                    background-color: rgba(255,255,255,0.5);
+                    
+                    .default_tab {
+                        display: flex; justify-content: space-between;
+                        width: 100%;
+                        white-space: nowrap;
+                        #sec_tab {
+                            display: flex; align-items: center; 
+                            li {
+                                cursor: pointer;
+                                display: flex; align-items: center;
+                                margin-right: 30px; 
+                                font-size: 15px;
+                                line-height: 1.33;
+                                letter-spacing: -0.3px;
+                                color: #000;
+                                &:last-child {margin: 0;}
+                                img {margin-right: 10px;}
+                            }
+                        }
+                    }
+ 
+                }
+
+            }
             
 
         }
