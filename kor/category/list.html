@@ -62,7 +62,6 @@ include "../../include/dbconn.html";
 
 <body>
 
-
     <header id="header">
         <nav id="header_wrap">
 
@@ -74,32 +73,35 @@ include "../../include/dbconn.html";
             <!-- HEADER_CENTER -->
             <ul id="header_center">
 
-                <li>
-                    <a href="../cmf_library/list.html">CMF Library</a>
-                </li>
-                <li>
-                    <a href="../trend_library/list.html">Trend Library</a>
-                </li>
-                <li>
-                    <a href="../category/list.html">Category</a>
-                </li>
-                <li>
-                    <a href="#none">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#none">Contact</a>
-                </li>
-
+                <li><a href="../cmf_library/list.html">CMF Library</a></li>
+                <li><a href="../trend_library/list.html">Trend Library</a></li>
+                <li><a href="../category/list.html">Category</a></li>
+                <li><a href="../portfolio/list.html">Portfolio</a></li>
+                <li><a href="../contact/inquiry.html">Contact</a></li>
             </ul>
 
 
             <ul id="header_right">
                 <? if (!$_SESSION['f_email']) { ?>
-                    <li><a href="../member/login.html">Log in</a></li>
-                    <li><a href="../member/join.html">Join for free</a></li>
+                    <!-- <li><a href="../member/login.html">Log in</a></li> -->
+                    <!-- <li><a href="../member/join.html">Join for free</a></li> -->
                 <? } else { ?>
-                    <!-- <li><a href="../member/db_exec.html?mode=logout">로그아웃</a></li> -->
-                    <!-- <li><a href="../member/mypage.html">마이페이지</a></li> -->
+                    <li class="btn_member">
+                        <a href="../member/mypage.html">Hello, 회원이름 <img src="../images/common/ico_prev_01.svg" alt=""></a> 
+                        <div class="member_box">
+                            <dl>
+                                <dt>
+                                    <p class="name">회원이름</p>
+                                    <p class="email">이메일</p>
+                                </dt>
+                                <dd>
+                                    <a href="../member/my_library.html">My library</a>
+                                    <a href="../member/mypage.html">My account</a>
+                                    <a href="../member/logout.html">Logout</a>
+                                </dd>
+                            </dl>
+                        </div>
+                    </li>
                 <? } ?>
             </ul>
 
@@ -122,7 +124,7 @@ include "../../include/dbconn.html";
                             <li><a href="../trend_library/list.html">Trend Library</a></li>
                             <li><a href="../category/list.html">Category</a></li>
                             <li><a href="../portfolio/list.html">Portfolio</a></li>
-                            <li><a href="">Contact</a></li>
+                            <li><a href="../contact/inquiry.html">Contact</a></li>
                         </ul>
                         <ul class="user_depth">
                             <li><a href="">My account</a></li>
@@ -131,8 +133,6 @@ include "../../include/dbconn.html";
                     </nav>
                 </article>
             </div>
-
-
         </nav>
     </header>
     <main class="sub_page list cType_01" id="category">

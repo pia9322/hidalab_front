@@ -275,17 +275,11 @@ $(function () {
     const portfolioProductSmallSwiper = new Swiper('#portfolio .thumb_small .swiper-container', {
         // effect: "slide",
         // freeMode: true,
-        spaceBetween: 26,
         slidesPerView: 'auto',
+        spaceBetween: 26,
         freeMode: true,
         watchSlidesProgress: true,
         // touchRatio: 0,
-        breakpoints: {
-            476: {
-                slidesPerView: 4,
-                spaceBetween: 10,
-            },
-        },
     });
 
     

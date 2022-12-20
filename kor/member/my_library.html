@@ -121,96 +121,35 @@ include "../../include/dbconn.html";
             </div>
         </nav>
     </header>
-    <main class="sub_page list" id="portfolio">
+
+
+    <main class="sub_page" id="cmf_library">
         <section>
             <article>
                 <div class="sec_tit">
-                    <div class="nav_location">
-                        <h2>Portfolio</h2>
-                        <ul>
-                            <li><a class="active" href="?f_class=All">All</a></li>
-                            <li><a href="?f_class=Cosmteics">Cosmteics</a></li>
-                            <li><a href="?f_class=Electrinocs">Electrinocs</a></li>
-                            <li><a href="?f_class=Automotive">Automotive</a></li>
-                            <li><a href="?f_class=Others">Others</a></li>
+                    <div class="default_tab">
+                        <h2>My Library</h2>
+                        <ul id="sec_tab">
+                            <li id="tab_add"><img src="../images/common/ico_add.svg" alt="library_add">Add</li>
                         </ul>
                     </div>
+
+                    <!-- 
+                    <div id="hidden_tab">
+                        <div class="selected_tab active">
+                        </div>
+                    </div>
+                    -->
+
                 </div>
 
-                <div class="content_wrap">
 
-                    <div class="con">
-                        <ul>
-                            <li>
-                                <a href="./detail.html">
-                                    <figure>
-                                        <div class="img_wrap"><img src="../images/portfolio/image 48.png" alt=""></div>
-                                        <figcaption>
-                                            YSL Over rose collector 22’ / Loreal
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./detail.html">
-                                    <figure>
-                                        <div class="img_wrap"><img src="../images/portfolio/image 49.png" alt=""></div>
-                                        <figcaption>
-                                            Plastic
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./detail.html">
-                                    <figure>
-                                        <div class="img_wrap"><img src="../images/portfolio/image 50.png" alt=""></div>
-                                        <figcaption>
-                                            Side chair | Confidential
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./detail.html">
-                                    <figure>
-                                        <div class="img_wrap"><img src="../images/portfolio/image 51.png" alt=""></div>
-                                        <figcaption>
-                                            Side chair | Confidential
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./detail.html">
-                                    <figure>
-                                        <div class="img_wrap"><img src="../images/portfolio/image 52.png" alt=""></div>
-                                        <figcaption>
-                                            Side chair | Confidential
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./detail.html">
-                                    <figure>
-                                        <div class="img_wrap"><img src="../images/portfolio/image 53.png" alt=""></div>
-                                        <figcaption>
-                                            Side chair | Confidential
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="content">
                 </div>
 
             </article>
         </section>
     </main>
-
-
-
     <footer id="footer">
         <article>
             <div class="info_01">
@@ -266,6 +205,57 @@ include "../../include/dbconn.html";
 
         </article>
     </footer>
+
+
+
+    <aside id="popup_myLibrary" class="popup">
+        <article>
+            <div class="form_wrap">
+                <form>
+                    <div id="btn_pop_close"><img src="../images/common/ico_pop_close_01.svg" alt=""></div>
+                    <div>
+                        <h2>Add Board</h2>
+                        <div class="select_wrap">
+                            <label><input type="text" value="" placeholder="New Board Name Here" id="cmf_new"><img id="add_library" src="../images/common/ico_plus_03.svg" alt=""></label>
+                        </div>
+                    </div>
+
+
+                    <input type="submit" value="Save" id="cmf_save" disabled>
+                </form>
+            </div>
+
+        </article>
+    </aside>
+
+    <script>
+        /* 
+        tab_add
+        */
+
+        $('#tab_add').click(function() {
+            $('#popup_myLibrary').addClass('active');
+        })
+
+        // common
+        // popup
+        $('.select_wrap input').on({
+            keyup: function() {
+                if ($(this).val() == '') {
+                    $('#cmf_save').attr('disabled', true)
+                } else {
+                    $('#cmf_save').attr('disabled', false)
+                }
+            },
+        })
+
+        $('#btn_pop_close').click(function() {
+            $(this).parents('.popup').removeClass('active');
+        });
+
+
+    </script>
+    <!-- --------------------------- MAIN --------------------------- -->
 
 
     <script src="../js/index.js"></script>
