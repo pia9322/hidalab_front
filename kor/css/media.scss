@@ -381,12 +381,12 @@
                 
             }
 
-
             &.sub_page {
 
                 .btn.more {
                     margin-top: 85px;
                 }
+                .sec_tit {border: none}
 
                 &#cmf_library {
                     @include marginTop-200;
@@ -460,105 +460,98 @@
     
                 }
 
-                &#trend_library {
-                    @include marginTop-200;
-
-                    
-
-                    &.list {
-                        padding-left: 4%;
-                        .content_wrap {
-                            .con {
-                                ul {
-                                    margin-top: 20px; gap: 40px;
-                                    li {
-                                        $wh: 33.3%;
-                                        width: $wh; height: 350px;
-                                        &:nth-child(3n) {
-                                            figure {
-                                                &::after {
-                                                    width: 50%;
-                                                }
-                                            }
-                                        }
+                
+                /*
+                    trend, category
+                    common list.html Type & list_detail.html type  
+                    cType_01
+                */
+                &.list.cType_01 {
+                    padding-left: 4%;
+                    .content_wrap {
+                        .con {
+                            ul {
+                                margin-top: 20px; gap: 40px;
+                                li {
+                                    $wh: 33.3%;
+                                    width: $wh; height: auto;
+                                    &:nth-child(3n) {
                                         figure {
-                                            .img_wrap {}
-                                            .text_wrap {
-                                                padding: 30px;
-                                                figcaption {
-                                                    p {
-                                                        font-size: 24px;
-                                                        &.top {max-width: 80%;}
-                                                        &.bottom {@include ellipsis(1);}
-                                                        &.arrow {max-width: 20%; max-height: 100%;}
-                                                    }
+                                            &::after {
+                                                width: 50%;
+                                            }
+                                        }
+                                    }
+                                    figure {
+                                        .img_wrap {}
+                                        .text_wrap {
+                                            padding: 30px;
+                                            figcaption {
+                                                p {
+                                                    font-size: 24px;
+                                                    &.top {max-width: 80%;}
+                                                    &.bottom {@include ellipsis(1);}
+                                                    &.arrow {max-width: 20%; max-height: 100%;}
                                                 }
                                             }
-                                            
                                         }
-                                    }
-                                    @media (max-width: 1000px) {
-                                        li {
-                                            height: 275px;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                    } 
-                        
-                    &.list_detail {
-                        @include subLayoutPadding();
-                        .sec_tit {
-                            .mo_tit {display: block;}
-                            .nav_location {
-                                display: flex;
-                                h2 {
-                                    opacity: 1;
-                                    color: #aaa;
-                                    font-weight: normal;
-                                }
-                            }
-                        }
-
-                        .content_wrap {
-                            .con {
-                                @include marginTop-80;
-                                ul {
-                                    gap: 40px;
-                                    &::after {
-                                        height: calc(440px / 2);
-                                    }
-                                    li {
-                                        $wh: calc(50% - 20px);
-                                        width: $wh; height: 400px;
-                                        figure {
-                                            @include fullsize;
-                                            position: relative;
-                                            
-                                            .text_wrap {
-                                                padding: 30px;
-                                                figcaption {
-                                                    p {
-                                                        &.top {max-width: 80%;}
-                                                        &.arrow {max-width: 20%;}
-                                                    }
-                                                }
-                                            }
-                                            
-                                        }
-                                    }
-                                    @media (max-width: 1000px) {
-                                        li {
-                                            height: 350px;
-                                        }
+                                        
                                     }
                                 }
                             }
                         }
                     }
 
+                } 
+                    
+                &.list_detail.cType_01 {
+                    @include subLayoutPadding();
+                    .sec_tit {
+                        .mo_tit {display: block;}
+                        .nav_location {
+                            display: flex;
+                            h2 {
+                                opacity: 1;
+                                color: #aaa;
+                                font-weight: normal;
+                            }
+                        }
+                    }
+
+                    .content_wrap {
+                        .con {
+                            @include marginTop-80;
+                            ul {
+                                gap: 40px;
+                                &::after {
+                                    height: calc(440px / 2);
+                                }
+                                li {
+                                    $wh: calc(50% - 20px);
+                                    width: $wh; height: auto;
+                                    figure {
+                                        @include fullsize;
+                                        position: relative;
+                                        
+                                        .text_wrap {
+                                            padding: 30px;
+                                            figcaption {
+                                                p {
+                                                    &.top {max-width: 80%;}
+                                                    &.arrow {max-width: 20%;}
+                                                }
+                                            }
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &#trend_library {
+                    @include marginTop-200;
                     &.detail{
                         @include subLayoutPadding();
                         .detail_body {
@@ -652,11 +645,168 @@
                             }
                         }
                     }
+                }
+                &#category {
+                    @include marginTop-200;
+                        
+                    &.list {
+                        .banner {
+                            margin-right: 4%;
+                            // height: 500px;
+                            // figure {
+                            //     @include fullsize;
+                            //     display: flex; align-items: center;
+                            //     figcaption {
+                            //         padding-left: 100px;
+                            //         p {
+                            //             margin-top: 20px;
+                            //             font-size: 24px;
+                            //             font-weight: bold;
+                            //             line-height: 1.5;
+                            //             letter-spacing: -0.48px;
+                            //             text-align: left;
+                            //             color: #666;
+                            //         }
+                            //     }
+                            // }
+                        } 
+                    }
+                    &.detail {
+                        @include subLayoutPadding;
+                        > section {
+                            >article {                        
+                                .detail_body {
+                                    .product_detail {
+                                        .product_thumb {
+                                            max-width: 400px; 
+                                            top: 15px;
+                                            .thumb_big {
+                                                margin-top: 60px;
+                                            }
+                                            .thumb_small {
+                                                @include marginTop-50;
+                                            }
+                                         
+                                        }
+    
+                                        .product_info {
+                                            margin-top: calc(60px + 32px);
+                                            > h2 {
+                                                // font-size: 24px;
+                                                padding-bottom: 8px;
+                                            }
+                                        
+    
+                                            .info_wrap {
+                                                >h3 {
+                                                    margin: 50px 0;
+                                                    padding-bottom: 8px;
+                                                    border-bottom: 2px solid #e5e5e5;
+                                                    // font-size: 20px;
+                                                }
+                                                > dl {
+                                                    margin-bottom: 30px;
+                                                    > dt {
+                                                        min-width: 130px;
+                                                        // font-size: 16px;
+                                                    }
+                                                    > dd {
+                                                        // font-size: 16px;
+                                                        > p {
+                                                            &.board_wrap {
+                                                                gap: 5px 10px;
+                                                                a {
+                                                                    padding: 7px 20px;
+                                                                    // font-size: 14px;
+                                                                }
+                                                            }
+                                                            &.line_wrap {
+                                                                gap: 10px 30px;
+                                                                a {
+                                                                    &:last-child {
+                                                                        &::after {
+                                                                            width: 6px; height: 14px;
+                                                                            left: -18px;
+                                                                        }
+                                                                    }
+                                                                }
+    
+                                                            }
+    
+                                                       
+                                                        }
+                                                    }
+                                                }
+    
+                                            }
+    
+                                        }
+                                    }
+    
+                                        
+                                    .related {
+                                        // margin-top: 100px;
+                                        > h2 {
+                                            // font-size: 24px;
+                                        }
+                                        ul {
+                                            gap: 90px 100px;
+                                            // margin-top: 50px;
+                                            padding: 0;
+                                            li {
+                                                max-width: calc(33.333% - 67px);
+                                                width: 100%;
+                                                &:not(.more) {
+                                                    a {
+                                                        figure {
+                                                            figcaption {
+                                                                // margin-top: 16px;
+                                                                // font-size: 16px;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                
+                                                &.more {
+                                                    max-width: calc(33.333% - 67px); width: 100%; height: auto;
+                                                    // padding: 50px;
+                                                    figcaption {
+                                                        // font-size: 30px;
+                                                    }
+                                                    img {
+                                                        // margin-top: 20px;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        &.trend {
+                                            ul {
+                                                gap: 100px;
+                                            }
+                                        }
+                                        &.portfolio {
+                                            ul {
+                                                li {
+                                                    a {
+                                                        figure {
+                                                            img {
+                                                            }
+                                                            figcaption {
+                                                            
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                        }
 
+                    }
 
-
-
-                    
                 }
     
             }
@@ -667,7 +817,7 @@
 
 
 
-// ms_03, trend_detail
+// ms_03, trend_detail, category_detail
 @media (max-width: 1200px) {
     @mixin paddingLeft_10 { padding-left: 0; }
 
@@ -800,7 +950,33 @@
                         }
                     }
                 }
+
+                
+                &#category {
+                    &.detail {
+                        > section {
+                            >article {                        
+                                .detail_body {
+                                    .product_detail {
+                                        flex-direction: column;
+                                        .product_thumb {
+                                            position: unset; z-index: unset;
+                                            max-width: 500px;
+                                            margin: 0 auto;
+                                            #backNavi {display: none;}
+                                            .thumb_big {margin-top: 0;}
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+
+                }
             }
+
+
             
 
         } 
@@ -928,7 +1104,6 @@
     @mixin subLayoutPadding {padding-left: 4%; padding-right: 4%;}
 
 
-    @mixin marginTop-80 {margin-top: 50px;}
 
     
     // footer 
@@ -1329,113 +1504,120 @@
 
                 }
 
+                    
+                
+                /*
+                    trend, category
+                    common list.html Type & list_detail.html type  
+                    cType_01
+                */
+                &.list.cType_01 {
+                    padding-left: 4%;
+                    .content_wrap {
+                        .con {
+                            @include marginTop-80;
+                            ul {
+                                overflow: auto;
+                                &::-webkit-scrollbar{display: none;}
+                                li {
+                                    $wh: auto;
+                                    width: $wh; height: $wh;
+                                    &:nth-child(3n) {
+                                        figure {
+                                            &::after {
+                                                width: 50%;
+                                            }
+                                        }
+                                    }
+                                    figure {
+                                        .img_wrap {
+                                            width: 280px;
+                                            height: 280px;
+                                        }
+                                        .text_wrap {
+                                            position: relative;
+                                            width: auto; height: auto;
+                                            padding: 0;
+                                            figcaption {
+                                                p {
+                                                    &.bottom,&.arrow {display: none;}
+                                                    &.top {
+                                                        font-weight: normal;
+                                                        @include clipText(1);
+                                                        position: relative;
+                                                        margin-top: 16px;
+                                                        max-width: 100%;
+
+                                                        font-size: 24px;
+                                                        line-height: 1.5;
+                                                        letter-spacing: -0.48px;
+                                                        color: #000;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                } 
+                &.list_detail.cType_01 {
+                    @include subLayoutPadding();
+                    .sec_tit {
+                        .nav_location {
+                            h2 {
+                                font-size: 20px;
+                                &:not(:first-child) {
+                                    &::after {
+                                        width: 8px; height: 8px;
+                                        background: url('../images/common/ico_arrow_03.svg')no-repeat center/cover; 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .content_wrap {
+                        .con {
+                            @include marginTop-80;
+                            ul {
+                                gap: 40px;
+                                &::after {
+                                    height: calc(310px / 2);
+                                }
+                                li {
+                                    $wh: calc(50% - 20px);
+                                    width: $wh; height: auto;
+                                    figure {
+                                        .text_wrap {
+                                            padding: 30px;
+                                            figcaption {
+                                                p {
+                                                    &.bottom,&.arrow {display: none;}
+                                                    &.top {
+                                                        max-width: 100%;
+                                                        font-size: 24px;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
                 &#trend_library {
                     @include marginTop-200;
 
                     .sec_tit {
                         border: none;
                     }
-    
-                    &.list {
-                        padding-left: 4%;
-                        .content_wrap {
-                            .con {
-                                @include marginTop-80;
-                                ul {
-                                    overflow: auto;
-                                    &::-webkit-scrollbar{display: none;}
-                                    li {
-                                        $wh: auto;
-                                        width: $wh; height: $wh;
-                                        &:nth-child(3n) {
-                                            figure {
-                                                &::after {
-                                                    width: 50%;
-                                                }
-                                            }
-                                        }
-                                        figure {
-                                            .img_wrap {
-                                                width: 280px;
-                                                height: 280px;
-                                            }
-                                            .text_wrap {
-                                                position: relative;
-                                                width: auto; height: auto;
-                                                padding: 0;
-                                                figcaption {
-                                                    p {
-                                                        &.bottom,&.arrow {display: none;}
-                                                        &.top {
-                                                            font-weight: normal;
-                                                            @include clipText(1);
-                                                            position: relative;
-                                                            margin-top: 16px;
-                                                            max-width: 100%;
 
-                                                            font-size: 24px;
-                                                            line-height: 1.5;
-                                                            letter-spacing: -0.48px;
-                                                            color: #000;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                            
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                    } 
-                    
-                    &.list_detail {
-                        @include subLayoutPadding();
-                        .sec_tit {
-                            .nav_location {
-                                h2 {
-                                    font-size: 20px;
-                                    &:not(:first-child) {
-                                        &::after {
-                                            width: 8px; height: 8px;
-                                            background: url('../images/common/ico_arrow_03.svg')no-repeat center/cover; 
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        .content_wrap {
-                            .con {
-                                @include marginTop-80;
-                                ul {
-                                    gap: 40px;
-                                    &::after {
-                                        height: calc(310px / 2);
-                                    }
-                                    li {
-                                        $wh: calc(50% - 20px);
-                                        width: $wh; height: 250px;
-                                        figure {
-                                            .text_wrap {
-                                                padding: 30px;
-                                                figcaption {
-                                                    p {
-                                                        &.bottom,&.arrow {display: none;}
-                                                        &.top {
-                                                            max-width: 100%;
-                                                            font-size: 24px;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                            
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
 
                     &.detail{
 
@@ -1628,6 +1810,154 @@
                         }
                     }
                 }
+                &#category {
+                    @include marginTop-200;
+                    &.list {
+                        .banner {
+                            height: 660px;
+                            margin-bottom: 80px;
+                            figure {
+                                align-items: unset;
+                                figcaption {
+                                    padding: 7.4% 0 0 7.4%;
+                                    p {
+                                        // font-size: 24px;
+                                    }
+                                }
+                            }
+                        } 
+                    }
+
+                    &.detail {
+                        @include subLayoutPadding;
+                        > section {
+                            >article {                        
+                                .detail_body {
+                                    .product_detail {
+                                        padding-bottom: 48px;
+                                        .product_thumb {
+                                            max-width: 100%; 
+                                            .thumb_big {
+                                                margin-top: 0;
+                                            }
+                                            .thumb_small {
+                                                @include marginTop-50;
+                                                img {width: 100%;}
+                                            }
+                                         
+                                        }
+    
+                                        .product_info {
+                                            margin-top: 130px;
+                                            > h2 {
+                                                font-size: 34px;
+                                            }
+                                        
+    
+                                            .info_wrap {
+                                                >h3 {
+                                                    font-size: 28px;
+                                                }
+                                                > dl {
+                                                    > dt {
+                                                        min-width: 170px;
+                                                        font-size: 24px;
+                                                    }
+                                                    > dd {
+                                                        font-size: 24px;
+                                                        > p {
+                                                            &.board_wrap {
+                                                                a {
+                                                                    font-size: 24px;
+                                                                }
+                                                            }
+                                                            &.line_wrap {
+                                                                gap: 10px 30px;
+                                                                a {
+                                                                    &:last-child {
+                                                                        &::after {
+                                                                            width: 6px; height: 14px;
+                                                                            left: -18px;
+                                                                        }
+                                                                    }
+                                                                }
+    
+                                                            }
+    
+                                                       
+                                                        }
+                                                    }
+                                                }
+    
+                                            }
+    
+                                        }
+                                    }
+    
+                                        
+                                    .related {
+                                        margin-top: 130px;
+                                        > h2 {
+                                            font-size: 28px;
+                                        }
+                                        ul {
+                                            gap: 60px 30px;
+                                            // margin-top: 50px;
+                                            li {
+                                                max-width: calc(50% - 15px);
+                                                &:not(.more) {
+                                                    a {
+                                                        figure {
+                                                            figcaption {
+                                                                // margin-top: 16px;
+                                                                // font-size: 16px;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                
+                                                &.more {
+                                                    max-width: calc(50% - 15px);
+                                                    // padding: 50px;
+                                                    figcaption {
+                                                        // font-size: 30px;
+                                                    }
+                                                    img {
+                                                        // margin-top: 20px;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        &.trend {
+                                            ul {
+                                                gap: 100px 30px;
+                                            }
+                                        }
+                                  
+                                        &.portfolio {
+                                            ul {
+                                                li {
+                                                    a {
+                                                        figure {
+                                                            img {
+                                                            }
+                                                            figcaption {
+                                                            
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                        }
+
+                    }
+                }
+                
 
             }
 
@@ -2135,94 +2465,98 @@
                 }
 
                 
-                &#trend_library {
-                    @include marginTop-200;
-
-                    &.list {
-                        padding-left: 4%;
-                        .content_wrap {
-                            .con {
-                                ul {
-                                    gap: 20px;
-                                    li {
-                                        figure {
-                                            .img_wrap {
-                                                width: 175px;
-                                                height: 175px;
-                                            }
-                                            .text_wrap {
-                                                figcaption {
-                                                    p {
-                                                        &.top {
-                                                            // font-size: 24px;
-                                                            font-size: 18px;
-                                                        }
+                
+                /*
+                    trend, category
+                    common list.html Type & list_detail.html type  
+                    cType_01
+                */
+                &.list.cType_01 {
+                    padding-left: 4%;
+                    .content_wrap {
+                        .con {
+                            @include marginTop-80;
+                            ul {
+                                gap: 20px;
+                                li {
+                                    figure {
+                                        .img_wrap {
+                                            width: 175px;
+                                            height: 175px;
+                                        }
+                                        .text_wrap {
+                                            figcaption {
+                                                p {
+                                                    &.top {
+                                                        // font-size: 24px;
+                                                        font-size: 18px;
                                                     }
                                                 }
                                             }
-                                            
                                         }
-                                    }
-                                }
-                            }
-                        }
-
-                    } 
-
-                    
-                    &.list_detail {
-                        @include subLayoutPadding();
-                        .sec_tit {
-                            flex-direction: column;
-                            align-items: flex-start;
-                            .nav_location {
-                                h2 {
-                                    font-size: 14px;
-                                    margin-right: 20px;
-                                    &:last-child{margin-right: 0;}
-                                    &:not(:first-child) {
-                                        &::after {
-                                            width: 8px; height: 8px;
-                                            margin-right: 5px;
-                                            background: url('../images/common/ico_arrow_03.svg')no-repeat center/cover; 
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        .content_wrap {
-                            .con {
-                                @include marginTop-80;
-                                ul {
-                                    gap: 20px;
-                                    &::after {
-                                        height: calc(310px / 2);
-                                    }
-                                    li {
-                                        $wh: calc(50% - 10px);
-                                        width: $wh; height: 175px;
-                                        figure {
-                                            .text_wrap {
-                                                padding: 20px;
-                                                figcaption {
-                                                    p {
-                                                        &.top {
-                                                            max-width: 100%;
-                                                            // font-size: 24px;
-                                                            font-size: 18px;
-                                                        }
-                                                        &.arrow {display: none;}
-                                                    }
-                                                }
-                                            }
-                                            
-                                        }
+                                        
                                     }
                                 }
                             }
                         }
                     }
 
+                } 
+                &.list_detail.cType_01 {
+                    @include subLayoutPadding();
+                    .sec_tit {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        .nav_location {
+                            h2 {
+                                font-size: 14px;
+                                margin-right: 20px;
+                                &:last-child{margin-right: 0;}
+                                &:not(:first-child) {
+                                    &::after {
+                                        width: 8px; height: 8px;
+                                        margin-right: 5px;
+                                        background: url('../images/common/ico_arrow_03.svg')no-repeat center/cover; 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .content_wrap {
+                        .con {
+                            @include marginTop-80;
+                            ul {
+                                gap: 20px;
+                                &::after {
+                                    height: calc(310px / 2);
+                                }
+                                li {
+                                    $wh: calc(50% - 10px);
+                                    width: $wh; height: 175px;
+                                    figure {
+                                        .text_wrap {
+                                            padding: 20px;
+                                            figcaption {
+                                                p {
+                                                    &.top {
+                                                        max-width: 100%;
+                                                        // font-size: 24px;
+                                                        font-size: 18px;
+                                                    }
+                                                    &.arrow {display: none;}
+                                                }
+                                            }
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                &#trend_library {
+                    @include marginTop-200;
                     
                     &.detail{
                         .btn.more {
@@ -2372,6 +2706,159 @@
                             }
                         }
                     }
+                }
+
+                &#category {
+                    @include marginTop-200;
+                    &.list {
+                        .banner {
+                            height: auto;
+                            margin-bottom: 0;
+                            figure {
+                                align-items: unset;
+                                figcaption {
+                                    padding: 10%;
+                                    p {
+                                        // font-size: 24px;
+                                        font-size: 18px;
+                                    }
+                                }
+                            }
+                        } 
+                    }
+                    &.detail {
+                        @include subLayoutPadding;
+                        > section {
+                            >article {                        
+                                .detail_body {
+                                    .product_detail {
+                                        padding-bottom: 40px;
+                                        .product_thumb {
+                                            .thumb_small {
+                                                @include marginTop-50;
+                                            }
+                                        }
+    
+                                        .product_info {
+                                            margin-top: 80px;
+                                            > h2 {
+                                                // font-size: 34px;
+                                                margin: 0 0 40px 0;
+                                                font-size: 24px;
+                                            }
+                                        
+    
+                                            .info_wrap {
+                                                >h3 {
+                                                    margin: 0 0 40px 0;
+                                                    // font-size: 28px;
+                                                    font-size: 20px;
+                                                }
+                                                > dl {
+                                                    flex-direction: column;
+                                                    > dt {
+                                                        min-width: 100%;
+                                                        // font-size: 24px;
+                                                        font-size: 18px;
+                                                    }
+                                                    > dd {
+                                                        margin: 10px 0 0 0;
+                                                        // font-size: 24px;
+                                                        font-size: 16px;
+                                                        > p {
+                                                            &.board_wrap {
+                                                                a {
+                                                                    // font-size: 24px;
+                                                                    font-size: 18px;
+                                                                }
+                                                            }
+                                                            &.line_wrap {
+                                                                // gap: 10px 30px;
+                                                                a {
+                                                                    &:last-child {
+                                                                        &::after {
+                                                                            // width: 6px; height: 14px;
+                                                                            // left: -18px;
+                                                                        }
+                                                                    }
+                                                                }
+    
+                                                            }
+    
+                                                       
+                                                        }
+                                                    }
+                                                }
+    
+                                            }
+    
+                                        }
+                                    }
+    
+                                        
+                                    .related {
+                                        margin-top: 100px;
+                                        > h2 {
+                                            // font-size: 28px;
+                                            font-size: 20px;
+                                        }
+                                        ul {
+                                            gap: 40px 20px;
+                                            margin-top: 20px;
+                                            li {
+                                                max-width: calc(50% - 10px);
+                                                &:not(.more) {
+                                                    a {
+                                                        figure {
+                                                            figcaption {
+                                                                // margin-top: 16px;
+                                                                // font-size: 16px;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                
+                                                &.more {
+                                                    max-width: calc(50% - 10px);
+                                                    padding: 30px 0 0 30px;
+                                                    figcaption {
+                                                        // font-size: 30px;
+                                                        font-size: 20px;
+                                                    }
+                                                    img {
+                                                        height: 30px;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        &.trend {
+                                            ul {
+                                                gap: 100px 20px;
+                                            }
+                                        }
+                                        &.portfolio {
+                                            ul {
+                                                li {
+                                                    a {
+                                                        figure {
+                                                            img {
+                                                            }
+                                                            figcaption {
+                                                            
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                        }
+
+                    }
+
                 }
 
             }

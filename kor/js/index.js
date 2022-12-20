@@ -249,6 +249,11 @@ $(function () {
         freeMode: true,
         watchSlidesProgress: true,
         // touchRatio: 0,
+        breakpoints: {
+            767: {
+                spaceBetween: 20,
+            },
+        },
    
     });
 
