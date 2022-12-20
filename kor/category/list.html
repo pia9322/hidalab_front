@@ -62,6 +62,7 @@ include "../../include/dbconn.html";
 
 <body>
 
+
     <header id="header">
         <nav id="header_wrap">
 
@@ -120,7 +121,7 @@ include "../../include/dbconn.html";
                             <li><a href="../cmf_library/list.html">CMF Library</a></li>
                             <li><a href="../trend_library/list.html">Trend Library</a></li>
                             <li><a href="../category/list.html">Category</a></li>
-                            <li><a href="">Portfolio</a></li>
+                            <li><a href="../portfolio/list.html">Portfolio</a></li>
                             <li><a href="">Contact</a></li>
                         </ul>
                         <ul class="user_depth">
@@ -134,7 +135,6 @@ include "../../include/dbconn.html";
 
         </nav>
     </header>
-
     <main class="sub_page list cType_01" id="category">
         <section>
             <article>
@@ -150,9 +150,14 @@ include "../../include/dbconn.html";
 
                     <div class="con banner">
                         <style>
-                            .banner {background: url('../images/category/banner_pc_01.png')no-repeat center/cover;}
+                            .banner {
+                                background: url('../images/category/banner_pc_01.png')no-repeat center/cover;
+                            }
+
                             @media (max-width: 767px) {
-                            .banner {background: url('../images/category/banner_mo_01.png')no-repeat center/cover;}
+                                .banner {
+                                    background: url('../images/category/banner_mo_01.png')no-repeat center/cover;
+                                }
                             }
                         </style>
                         <figure>

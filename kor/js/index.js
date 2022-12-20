@@ -254,7 +254,6 @@ $(function () {
                 spaceBetween: 20,
             },
         },
-   
     });
 
     
