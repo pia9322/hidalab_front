@@ -126,7 +126,7 @@
 
 
 // subpage media gogo 
-@media (max-width: 1470px) {
+@media (max-width: 1412px) {
     @mixin paddingLeft_10 { padding-left: 0; }
     @mixin hidaFont_50 {font-size: 40px;}
     @mixin hidaFont_16 {font-size: 24px;}
@@ -815,10 +815,13 @@
 
                     &.list {
                         .sec_tit {
-                            @include subLayoutPadding;
                             border-bottom: 2px solid #f1f1f1;
                             .nav_location {
+                                h2 {
+                                   @include subLayoutPadding;
+                                }
                                 ul {
+                                   @include subLayoutPadding;
                                     // gap: 30px;
                                     li {
                                         a {
@@ -829,7 +832,6 @@
                             }
                         }
                         .content_wrap {
-                            margin-top: 110px;
                             padding: 0 8.3%;
                             .con {
                                 ul {
@@ -837,15 +839,10 @@
                                     li {
                                         width: calc(33.3333% - 27px);
                                         a {
-                                            display: block;
                                             figure {
-                                                .img_wrap { background-color: #F5F5F5; }
                                                 figcaption {
-                                                    margin-top: 16px;
-                                                    font-size: 16px;
-                                                    line-height: 1.5;
-                                                    letter-spacing: -0.32px;
-                                                    color: #000;
+                                                    // margin-top: 16px;
+                                                    // font-size: 16px;
                                                 }
                                             }
                                         }
@@ -854,6 +851,94 @@
                             }
 
                         }
+                    }
+
+                        
+                    &.detail {
+                        > section {
+                            >article {                        
+                                @include subLayoutPadding();
+
+                                &.fixed {
+                                    padding-top: 130px;
+                                }
+                                &.fixed_margin {
+                                    padding-bottom: 100px; //footer 땜에 넣어둠
+                                }
+                                .product_detail {
+                                    .product_thumb {
+                                        .thumb_big {
+                                            margin-top: 50px;
+                                        }
+                                        
+                                        .thumb_small {
+                                            margin-top: 5%;
+                                        }
+                                    }
+                                }
+                                
+                                .product_info {
+                                    padding: 80px 0;
+                                    flex-direction: column;
+
+                                    .comment_wrap {
+                                        margin-top: 100px;
+                                        max-width: 100%;
+                                    }
+                                }
+                                
+                                .related {
+                                    // margin-top: 100px;
+                                    > h2 {
+                                        // font-size: 24px;
+                                    }
+                                    ul {
+                                        gap: 90px 100px;
+                                        // margin-top: 50px;
+                                        padding: 0;
+                                        li {
+                                            max-width: calc(33.333% - 67px);
+                                            width: 100%;
+                                            &:not(.more) {
+                                                a {
+                                                    figure {
+                                                        figcaption {
+                                                            // margin-top: 16px;
+                                                            // font-size: 16px;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            
+                                            &.more {
+                                                max-width: calc(33.333% - 67px); width: 100%; height: auto;
+                                            }
+                                        }
+                                    }
+                                }
+                                @media (max-height: 800px) {
+                                    &.fixed {
+                                        padding-top: 6%;
+                                    }
+                                    .product_detail {
+                                        .product_thumb {
+                                            #backNavi {display: block;}
+                                            .thumb_big {
+                                                max-width: 300px; max-height: 300px;
+                                                margin-top: 20px;
+                                            }
+                                            .thumb_small {
+                                                margin-top: 5%;
+                                                .swiper-slide {
+                                                }
+                                            }
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
                     }
                 }
             
@@ -1015,6 +1100,28 @@
                                             #backNavi {display: none;}
                                             .thumb_big {margin-top: 0;}
                                         }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+
+                }
+                
+                &#portfolio {
+                    &.detail {
+                        > section {
+                            >article {                        
+                                &.fixed {
+                                    padding-top: 0;
+                                    display: flex;
+                                    align-items: center;
+                                }
+                                .product_detail {
+                                    .product_thumb {
+                                        #backNavi {display: none;}
+                                        .thumb_big {margin-top: 0;}
                                     }
                                 }
                             }
@@ -2006,6 +2113,134 @@
 
                     }
                 }
+                &#portfolio {
+                    @include marginTop-200;
+                    &.list {
+                        .sec_tit {
+                            padding: 0;
+                            border-bottom: 1px solid #f1f1f1;
+                            .nav_location {
+                                flex-direction: column;
+                                h2 {
+                                    padding: 0 4% 17px 4%;
+                                    border-bottom: 1px solid #f1f1f1;
+                                }
+                                ul {
+                                    padding: 20px 4%;
+                                    overflow: auto;
+                                    &::-webkit-scrollbar {display: none;}
+                                    // gap: 30px;
+                                    li {
+                                        a {
+                                            // font-size: 15px;
+                                            font-size: 24px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .content_wrap {
+                            margin-top: 80px;
+                            .con {
+                                ul {
+                                    gap: 50px 40px;
+                                    li {
+                                        width: calc(50% - 20px);
+                                        a {
+                                            figure {
+                                                figcaption {
+                                                    // margin-top: 16px;
+                                                    font-size: 24px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                        
+                    &.detail {
+                        > section {
+                            >article {                        
+                                &.fixed {
+                                    @include marginTop-200;
+                                    position: static;
+                                    left: 0;top: 0; height: auto;
+                                }
+                                &.fixed_margin {
+                                    margin-top: 0;
+                                }
+                                .product_detail {
+                                    .product_thumb {
+                                        .thumb_big {
+                                            max-width: 500px; max-height: 500px;
+                                        }
+                                    }
+                                }
+                                .product_info {
+                                    padding: 100px 0 48px;
+                                    > h2 {
+                                        font-size: 34px;
+                                    }
+                                
+                                    .info_wrap {
+                                        > dl {
+                                            margin-bottom: 30px;
+                                            > dt {
+                                                min-width: 170px;
+                                                font-size: 24px;
+                                            }
+                                            > dd {
+                                                font-size: 24px;
+                                            }
+                                        }
+                                    }
+                                    .comment_wrap {
+                                        font-size: 24px;
+                                    }
+                                }
+                                .related {
+                                    margin-top: 130px;
+                                    > h2 {
+                                        font-size: 28px;
+                                    }
+                                    ul {
+                                        gap: 60px 30px;
+                                        // margin-top: 50px;
+                                        li {
+                                            max-width: calc(50% - 15px);
+                                            &:not(.more) {
+                                                a {
+                                                    figure {
+                                                        figcaption {
+                                                            // margin-top: 16px;
+                                                            // font-size: 16px;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            
+                                            &.more {
+                                                max-width: calc(50% - 15px);
+                                                // padding: 50px;
+                                                figcaption {
+                                                    // font-size: 30px;
+                                                }
+                                                img {
+                                                    // margin-top: 20px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        }
+
+                    }
+                }
                 
 
             }
@@ -2909,7 +3144,135 @@
                     }
 
                 }
-                
+
+                &#portfolio {
+                    @include marginTop-200;
+                    &.list {
+                        .sec_tit {
+                            .nav_location {
+                                h2 {
+                                }
+                                ul {
+                                    padding: 10px 4%;
+                                    gap: 20px;
+                                    li {
+                                        a {
+                                            // font-size: 15px;
+                                            // font-size: 24px;
+                                            font-size: 18px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .content_wrap {
+                            @include marginTop-80;
+                            @include subLayoutPadding();
+                            .con {
+                                ul {
+                                    gap: 40px 20px;
+                                    li {
+                                        width: calc(50% - 10px);
+                                        a {
+                                            figure {
+                                                figcaption {
+                                                    // margin-top: 16px;
+                                                    // font-size: 24px;
+                                                    font-size: 18px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                    
+                    &.detail {
+                        > section {
+                            >article {                        
+                                &.fixed {
+                                    @include marginTop-200;
+                                }
+                                .product_detail {
+                                    .product_thumb {
+                                        .thumb_small {
+                                            width: auto; height: auto;
+                                        }
+                                    }
+                                }
+                                .product_info {
+                                    padding: 80px 0 40px;
+                                    > h2 {
+                                        // font-size: 34px;
+                                        margin: 0 0 40px 0;
+                                        font-size: 24px;
+                                    }
+                                
+                                    .info_wrap {
+                                        > dl {
+                                            margin-bottom: 30px;
+                                            flex-direction: column;
+                                            > dt {
+                                                min-width: 100%;
+                                                // font-size: 24px;
+                                                font-size: 18px;
+                                            }
+                                            > dd {
+                                                // font-size: 24px;
+                                                font-size: 16px;
+                                            }
+                                        }
+                                    }
+                                    .comment_wrap {
+                                        margin-top: 60px;
+                                        // font-size: 24px;
+                                        font-size: 16px;
+                                    }
+                                }
+                                .related {
+                                    
+                                    margin-top: 100px;
+                                    > h2 {
+                                        // font-size: 28px;
+                                        font-size: 20px;
+                                    }
+                                    ul {
+                                        gap: 40px 20px;
+                                        margin-top: 20px;
+                                        li {
+                                            max-width: calc(50% - 10px);
+                                            &:not(.more) {
+                                                a {
+                                                    figure {
+                                                        figcaption {
+                                                            // margin-top: 16px;
+                                                            // font-size: 16px;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            
+                                            &.more {
+                                                max-width: calc(50% - 10px);
+                                                padding: 30px 0 0 30px;
+                                                figcaption {
+                                                    // font-size: 30px;
+                                                    font-size: 20px;
+                                                }
+                                                img {
+                                                    height: 30px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
 
             }
         }

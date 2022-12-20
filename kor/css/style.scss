@@ -171,8 +171,10 @@ body {
         }
     }
     #footer {
+        position: relative; z-index: 10;
         margin-top: 150px;
         background: #000;
+        &.noMargin {margin: 0;}
         article {
             padding: 100px 0 130px;
             max-width: 1546px; margin: 0 auto;
@@ -1163,6 +1165,7 @@ body {
                 trend, category
                 common list.html Type & list_detail.html type  
                 cType_01
+                moreBox
             */
             &.list.cType_01 {
                 .content_wrap {
@@ -1378,6 +1381,21 @@ body {
                             }
                         }
                     }
+                }
+            }
+
+            .more.box {
+                width: 320px; height: 320px; padding: 50px 0 0 50px;
+                border: solid 1px #d9d9d9;
+                figcaption {
+                    font-size: 30px;
+                    font-weight: bold;
+                    line-height: 1.13;
+                    letter-spacing: -1.2px;
+                    color: #bbbcbc;
+                }
+                img {
+                    margin-top: 40px;
                 }
             }
             
@@ -1869,9 +1887,9 @@ body {
                                         color: #000;
                                     }
                                     ul {
-                                        display: flex; flex-wrap: wrap;  gap: 50px 128px;
+                                        display: flex; flex-wrap: wrap;  gap: 50px 126px;
                                         margin-top: 50px;
-                                        padding: 0 5%;
+                                        padding: 0 100px;
                                         li {
                                             max-width: 320px; width: 100%;
                                             &:not(.more) {
@@ -1898,26 +1916,11 @@ body {
                                                     }
                                                 }
                                             }
-                                            
-                                            &.more {
-                                                width: 320px; height: 320px; padding: 50px 0 0 50px;
-                                                border: solid 1px #d9d9d9;
-                                                figcaption {
-                                                    font-size: 30px;
-                                                    font-weight: bold;
-                                                    line-height: 1.13;
-                                                    letter-spacing: -1.2px;
-                                                    color: #bbbcbc;
-                                                }
-                                                img {
-                                                    margin-top: 40px;
-                                                }
-                                            }
                                         }
                                     }
                                     &.trend {
                                         ul {
-                                            gap: 90px 128px;
+                                            gap: 90px 126px;
                                         }
                                     }
                                     &.portfolio {
@@ -1954,7 +1957,6 @@ body {
                             display: flex; justify-content: space-between;
                             ul {
                                 display: flex; align-items: center; gap: 30px;
-                                flex-wrap: wrap;
                                 li {
                                     a {
                                         @include font-openSans;
@@ -1997,6 +1999,192 @@ body {
                         }
 
                     }
+                }
+                
+                &.detail {
+                    margin: 0 auto;
+                    > section {
+                        >article {                        
+                            width: 100%; height: 100%;
+                            &.fixed {
+                                padding-top: 200px;
+                                position: fixed; z-index: 0; left: 0; top: 0;
+                                height: 100vh;
+                            }
+                            &.fixed_margin {
+                                position: relative; z-index: 1;
+                                margin-top: 100vh;
+                                background: #fff;
+                                padding-bottom: 150px;  //footer 땜에 넣어둠
+                            }
+                            .product_detail {
+                                @include fixed-layout_1412;
+                                margin: 0 auto;
+                                .product_thumb {
+                                    #backNavi {display: block;}
+                                    .thumb_big {
+                                        max-width: 500px; max-height: 500px;
+                                        margin-top: 50px;
+                                        img {@include fullsize;object-fit: cover;}
+                                    }
+                                    
+                                    .thumb_small {
+                                        position: relative;
+                                        margin-top: 70px;
+                                        .swiper-slide {
+                                            width: 120px; height: 120px;
+                                            opacity: .3;
+                                            @include transition(all .3s);
+                                            border: solid 2px transparent;
+                                            &.swiper-slide-thumb-active {
+                                                opacity: 1;
+                                                border: solid 2px #000;
+                                            }
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                            .product_info {
+                                padding: 100px 0;
+                                border-bottom: 2px solid #000;
+                                display: flex; flex-wrap: wrap; justify-content: space-between;
+                                > h2 {
+                                    width: 100%;
+                                    font-size: 24px;
+                                    font-weight: bold;
+                                    line-height: 1.5;
+                                    letter-spacing: -0.48px;
+                                    margin-bottom: 50px;
+                                    padding-bottom: 8px;
+                                    border-bottom: 2px solid #000;
+                                }
+                            
+                                .info_wrap {
+                                    >h3 {
+                                        margin: 50px 0 30px;
+                                        padding-bottom: 9px;
+                                        border-bottom: 1px solid #e5e5e5;
+
+                                        font-size: 20px;
+                                        font-weight: bold;
+                                        line-height: 1.5;
+                                        letter-spacing: -0.4px;
+                                        color: #000;
+                                    }
+                                    > dl {
+                                        margin-bottom: 20px;
+                                        &:last-child {margin-bottom: 0;}
+                                        display: flex;
+                                        > dt {
+                                            min-width: 140px;
+                                            font-size: 16px;
+                                            font-weight: bold;
+                                            line-height: 1.5;
+                                            letter-spacing: -0.32px;
+                                            color: #999;
+                                        }
+                                        > dd {
+                                            font-size: 16px;
+                                            line-height: 1.5;
+                                            letter-spacing: -0.32px;
+                                            color: #000;
+                                            > p {
+                                                display: flex; flex-wrap: wrap;
+                                                &.board_wrap {
+                                                    gap: 5px 10px;
+                                                    a {
+                                                        @include transition(all .15s);
+                                                        padding: 8px 15px;
+                                                        display: inline-block;
+                                                        border: solid 1px #ddd;
+                                                        border-radius: 2px;
+                                                        font-size: 14px;
+                                                        line-height: 1.43;
+                                                        letter-spacing: -0.28px;
+                                                        color: #000;
+                                                        &:hover {
+                                                            background-color: #000;
+                                                            color: #fff;
+                                                        }
+                                                    }
+                                                }
+                                                &.line_wrap {
+                                                    gap: 10px 24px;
+                                                    a {
+                                                        text-decoration: underline;
+                                                        &:last-child {
+                                                            position: relative;
+                                                            &::after {
+                                                                position: absolute;
+                                                                left: -14px; top: 50%; transform: translateY(-50%);
+                                                                content: '';
+                                                                width: 4px; height: 9px;
+                                                                background: url('../images/common/ico_arrow_06.svg')no-repeat center/cover;
+                                                            }
+                                                        }
+                                                    }
+
+                                                }
+
+                                            
+                                            }
+                                        }
+                                    }
+                                }
+                                .comment_wrap {
+                                    max-width: 640px;  width: 100%;
+                                    font-size: 18px;
+                                    line-height: 1.5;
+                                    letter-spacing: -0.36px;
+                                }
+
+                            }
+                            .related {
+                                margin-top: 100px;
+                                > h2 {
+                                    font-size: 24px;
+                                    font-weight: bold;
+                                    line-height: 1.5;
+                                    letter-spacing: -0.48px;
+                                }
+                                ul {
+                                    display: flex; flex-wrap: wrap;  gap: 50px 124px;
+                                    margin-top: 50px;
+                                    padding: 0 100px;
+                                    li {
+                                        max-width: 320px; width: 100%;
+                                        &:not(.more) {
+                                            a {
+                                                figure {
+                                                    position: relative;
+                                                    .img_wrap {
+                                                        position: relative;
+                                                        .prod_thumb_bg {
+                                                            position: absolute;left: 0; top: 0;
+                                                        }
+                                                    }
+                                                    img {
+                                                        @include fullsize;
+                                                        object-fit: cover;
+                                                    }
+                                                    figcaption {
+                                                        position: absolute; left: 0; top: 100%;
+                                                        margin-top: 16px;
+                                                        font-size: 16px;
+                                                        line-height: 1.5;
+                                                        letter-spacing: -0.32px;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                 }
             }
             
