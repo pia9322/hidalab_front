@@ -128,7 +128,7 @@ include "../../include/dbconn.html";
                     <div class="default_tab">
                         <h2>My Library</h2>
                         <ul id="sec_tab">
-                            <li id="tab_add"><img src="../images/common/ico_add.svg" alt="library_add">Add</li>
+                            <li id="btnAdd"><img src="../images/common/ico_add.svg" alt="library_add">Add</li>
                         </ul>
                     </div>
 
@@ -330,34 +330,52 @@ include "../../include/dbconn.html";
         </article>
     </footer>
 
-    <aside id="popup_myLibrary" class="popup">
+    <aside id="popup_myLibraryAdd" class="popup">
         <article>
             <div class="form_wrap">
                 <form>
-                    <div id="btn_pop_close"><img src="../images/common/ico_pop_close_01.svg" alt=""></div>
+                    <div class="btn_pop_close"><img src="../images/common/ico_pop_close_01.svg" alt=""></div>
                     <div>
                         <h2>Add Board</h2>
                         <div class="select_wrap">
-                            <label><input type="text" value="" placeholder="New Board Name Here" id="cmf_new"><img id="add_library" src="../images/common/ico_plus_03.svg" alt=""></label>
+                            <label><input type="text" value="" placeholder="New Board Name Here"><img id="add_library" src="../images/common/ico_plus_03.svg" alt=""></label>
                         </div>
                     </div>
-
-
                     <input type="submit" value="Save" id="cmf_save" disabled>
                 </form>
             </div>
-
         </article>
     </aside>
 
+    <aside id="popup_myLibraryEdit" class="popup">
+        <article>
+            <div class="form_wrap">
+                <form>
+                    <div class="btn_pop_close"><img src="../images/common/ico_pop_close_01.svg" alt=""></div>
+                    <div>
+                        <h2>Edit Board</h2>
+                        <div class="select_wrap">
+                            <label><input type="text" value="" placeholder="Board Name is already to inputed here" ><img id="add_library" src="../images/common/ico_plus_03.svg" alt=""></label>
+                        </div>
+                    </div>
+                    <input type="submit" value="Save" id="cmf_save" disabled>
+                </form>
+            </div>
+        </article>
+    </aside>
+    
     <script>
         /* 
         tab_add
         */
 
-        $('#tab_add').click(function() {
-            $('#popup_myLibrary').addClass('active');
+        $('#btnAdd').click(function() {
+            $('#popup_myLibraryAdd').addClass('active');
         })
+        $('#myLibrarayEdit').click(function() {
+            $('#popup_myLibraryEdit').addClass('active');
+        })
+
         $('#my_library .selected_tab a').on('click',function(){
             let idx = $(this).index();
             // console.log(idx);
@@ -374,17 +392,23 @@ include "../../include/dbconn.html";
 
         // common
         // popup
-        $('.select_wrap input').on({
-            keyup: function() {
-                if ($(this).val() == '') {
-                    $('#cmf_save').attr('disabled', true)
-                } else {
-                    $('#cmf_save').attr('disabled', false)
-                }
-            },
-        })
 
-        $('#btn_pop_close').click(function() {
+        function saveBtnDisabled(target_01 ,target_02){
+            $(target_01).on({
+                keyup: function() {
+                    if ($(this).val() == '') {
+                        $(target_02).attr('disabled', true)
+                    } else {
+                        $(target_02).attr('disabled', false)
+                    }
+                },
+            })
+        }
+        saveBtnDisabled('#popup_myLibraryAdd .select_wrap input','#popup_myLibraryAdd #cmf_save')
+        saveBtnDisabled('#popup_myLibraryEdit .select_wrap input','#popup_myLibraryEdit #cmf_save')
+        
+
+        $('.btn_pop_close').click(function() {
             $(this).parents('.popup').removeClass('active');
         });
     </script>

@@ -374,7 +374,7 @@ body {
                 padding: 30px 50px;
                 form {
                     position: relative;
-                    #btn_pop_close {
+                    .btn_pop_close {
                         cursor: pointer;
                         position: absolute; right: 0;top: 0;
                         &:hover {img {filter: invert(100%);}}

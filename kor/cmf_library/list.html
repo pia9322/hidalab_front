@@ -400,7 +400,7 @@ include "../../include/dbconn.html";
         <article>
             <div class="form_wrap">
                 <form>
-                    <div id="btn_pop_close"><img src="../images/common/ico_pop_close_01.svg" alt=""></div>
+                    <div class="btn_pop_close"><img src="../images/common/ico_pop_close_01.svg" alt=""></div>
                     <div>
                         <h2>Select Library</h2>
                         <div class="select_wrap">
@@ -486,7 +486,7 @@ include "../../include/dbconn.html";
             $('.popup#popup_cmf').addClass('active');
         })
 
-        $('#btn_pop_close').click(function() {
+        $('.btn_pop_close').click(function() {
             $(this).parents('.popup').removeClass('active');
         });
 
