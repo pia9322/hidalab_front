@@ -282,6 +282,14 @@ $(function () {
         // touchRatio: 0,
     });
 
+    // portfolio_detail 
+    const myLibrarySwiper = new Swiper('.board_wrap.swiper-container', {
+        // effect: "slide",
+        // freeMode: true,
+        slidesPerView: 'auto',
+        // touchRatio: 0,
+    });
+
     
     const portfolioProductBigSwiper = new Swiper('#portfolio .thumb_big.swiper-container', {
         effect: "fade",

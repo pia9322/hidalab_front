@@ -2237,9 +2237,6 @@ body {
                 
                 .sec_tit {
                     display: flex; flex-wrap: wrap;;
-                    // backdrop-filter: blur(4px);
-                    background-color: rgba(255,255,255,0.5);
-                    
                     .default_tab {
                         display: flex; justify-content: space-between;
                         width: 100%;
@@ -2259,8 +2256,92 @@ body {
                             }
                         }
                     }
- 
+                    #hidden_tab {
+                        display: none;
+                        width: 100%;
+                        position: absolute; left: 0; top: calc(100% + 2px); 
+                        background-color: #fff;
+                        .selected_tab {
+                            display: flex;
+                            flex-wrap: wrap; gap: 30px;
+                            a {
+                                &.active {font-weight: bold;}
+                                font-size: 24px;
+                                line-height: 1.5;
+                                letter-spacing: -0.48px;
+                            }
+                        }
+                    }
                 }
+                .content {
+                    @include marginTop-80;
+                    display: flex; justify-content: space-between; gap: 92px;
+                    > div {
+                        width: 50%;
+                        max-width: 660px;
+                        &.list_wrap {
+                            &.active {display: block;}
+                            display: none;
+                            h2 {
+                                font-size: 18px;
+                                line-height: 1.5;
+                                letter-spacing: -0.36px;
+                                padding-bottom: 9px;
+                                border-bottom: 1px solid #000;
+                            }
+                            .board_wrap {
+                                margin-top: 20px;
+                                border: 1px solid #e5e5e5;
+                                padding: 20px 30px;
+                                ul {
+                                    display: flex;
+                                    li {
+                                        $wh: 100px;
+                                        width:$wh; height:$wh;
+                                        a {
+                                            display: block;
+                                            padding: 15px;
+                                            img {}
+                                        }
+                                    }
+                                }
+                                dl {
+                                    background-color: #f9f9f9;
+                                    display: flex; align-items: center; justify-content: space-between;
+                                    padding: 8px 20px;
+                                    dt {
+                                        display: flex;
+                                        font-size: 16px;
+                                        line-height: 1.5;
+                                        letter-spacing: -0.32px;
+                                        h3 {
+                                            margin-left: 20px;
+                                            font-size: 14px;
+                                            line-height: 1.71;
+                                            letter-spacing: -0.28px;
+                                            color: #666;
+                                        }
+                                    }
+                                    dd {
+                                        display: flex; align-items: center;
+                                        p {
+                                            display: flex;
+                                            gap: 20px;
+                                            font-size: 14px;
+                                            line-height: 1.71;
+                                            letter-spacing: -0.28px;
+                                            color: #999;
+                                        }
+                                    }
+                                }
+                            }
+    
+                        }
+
+                    }
+                    
+                }
+
 
             }
             
