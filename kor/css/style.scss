@@ -2287,7 +2287,7 @@ body {
                                 line-height: 1.5;
                                 letter-spacing: -0.36px;
                                 padding-bottom: 9px;
-                                border-bottom: 1px solid #000;
+                                border-bottom: 2px solid #000;
                             }
                             .board_wrap {
                                 margin-top: 20px;
@@ -2307,10 +2307,10 @@ body {
                                 }
                                 dl {
                                     background-color: #f9f9f9;
-                                    display: flex; align-items: center; justify-content: space-between;
+                                    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
                                     padding: 8px 20px;
                                     dt {
-                                        display: flex;
+                                        display: flex; align-items: center;
                                         font-size: 16px;
                                         line-height: 1.5;
                                         letter-spacing: -0.32px;
